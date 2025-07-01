@@ -1,0 +1,14 @@
+{
+  "id": "paradox_ideas",
+  "name": "Paradox's Stupid Ideas",
+  "display_name": "Paradox's Ideas",
+  "author": [ "UnusedParadox" ],
+  "description": "Adds various different things with varying degrees of balance. Talisman with BigNum score limit or higher and Challenger Deep is recommended for the full experience, though not required.",
+  "prefix": "para",
+  "main_file": "main.lua",
+  "badge_colour": "262680",
+  "badge_text_colour": "2dcddd",
+  "version": "1.0.0",
+  "priority": 1,
+  "dependencies": [ "Steamodded (>=1.*)", "Lovely (>=0.6)" ]
+}
