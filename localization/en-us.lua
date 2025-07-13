@@ -139,18 +139,24 @@ return {
 		        text = {
 			        'When exiting the {C:attention}shop{}',
 			        'after defeating a {C:attention}Boss Blind{},',
-			        'open a {C:enhanced}Snack Pack{}',
+			        'create a {C:enhanced}Safe Room Tag{}',
 			        '{C:inactive,s:0.8}I\'m a chef cooker!!!'
 		        }
             },
             j_para_bluecard = {
                 name = 'Blue Card',
 		        text = {
-			        'This Joker gains {C:chips}+#1#{} Chips',
-			        'when any {C:attention}Booster Pack{} is opened.',
-			        '{C:inactive}(Currently {}{C:chips}+#2#{} {C:inactive}Chips){}',
-                    '{C:inactive,s:0.8}I\'m blue, da ba dee da ba die,',
-                    '{C:inactive,s:0.8}da ba dee da ba die, da ba dee da ba die.'
+                    {
+			            'This Joker gains {C:chips}+#1#{} Chips',
+			            'when any {C:attention}Booster Pack{} is opened.',
+			            '{C:inactive}(Currently {}{C:chips}+#2#{} {C:inactive}Chips){}',
+                        '{C:inactive,s:0.8}I\'m blue, da ba dee da ba die,',
+                        '{C:inactive,s:0.8}da ba dee da ba die, da ba dee da ba die.'
+                    },
+                    {
+                        "Art credit to",
+                        "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
+                    }
 		        }
             },
             j_para_orangecard = {
@@ -166,8 +172,8 @@ return {
 		        name = 'Yellow Card',
 		        text = {
 			        'Earn {C:money}$#1#{} at end of round. ',
-			        'Payout increases by {C:money}$#2#{} every',
-			        '#3# {C:inactive}(#4#){} {C:attention}Booster Pack{} skipped.',
+			        'Payout increases by {C:money}$#2#{} when',
+			        'any {C:attention}Booster Pack{} is skipped.',
 		        }
             },
             j_para_pineapple = {
@@ -189,18 +195,29 @@ return {
             j_para_plantainchips = {
                 name = 'Plantain Chips',
                 text = {
-                    '{X:chips,C:white}X#1#{} Chips',
-                    'For each round played, lose {X:chips,C:white}X#2#{} Chips',
-                    '{C:inactive,s:0.8}Crunchy. Delicious. And full of potassium.',
-                    '{C:inactive,s:0.8}That\'s plantain chips!!!'
+                    {
+                        '{X:chips,C:white}X#1#{} Chips',
+                        'For each round played, lose {X:chips,C:white}X#2#{} Chips',
+                        '{C:inactive,s:0.8}Crunchy. Delicious. And full of potassium.',
+                        '{C:inactive,s:0.8}That\'s plantain chips!!!'
+                    },
+                    {
+                        "Art credit to",
+                        "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
+                    }
                 }
             },
             j_para_onigiri = {
                 name = 'Onigiri',
                 text = {
-                    'Gives either {C:chips}+#1#{} Chips, {C:mult}+#2#{} Mult, or {X:mult,C:white}X#3#{} Mult',
-                    'Disappears in {C:attention}#4#{} hands',
-                    '{C:inactive,s:0.8}The onigiri have various fruits inside them.'
+                    {
+                        'Gives either {C:chips}+#1#{} Chips, {C:mult}+#2#{} Mult, or {X:mult,C:white}X#3#{} Mult',
+                        'Disappears in {C:attention}#4#{} hands',
+                    },
+                    {
+                        "Art credit to",
+                        "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
+                    }
                 }
             },
             j_para_fishhead = {
@@ -228,16 +245,21 @@ return {
                     "{X:mult,C:white}X#1#{} Mult per chapter of",
                     "{C:attention}Deltarune{} released",
                     "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
-                    '{C:inactive,s:0.8}Deltarune tomorrow fr fr'
+                    '{C:inactive,s:0.8}HOW MUCH LONGER NOW...',
+                    '{C:inactive,s:0.8}MY DELTARUNE.'
                 }
             },
             j_para_madeline = {
                 name = "Madeline",
                 text = {
-                    "On the next {C:attention}#2#{} cards",
-                    "triggered, {C:mult}+#1#{} Mult",
-                    "{C:inactive,s:0.8}Art credit to{}",
-                    "{C:inactive,s:0.8}@secun on Discord"
+                    {
+                        "On the next {C:attention}#2#{} cards",
+                        "triggered, {C:mult}+#1#{} Mult",
+                    },
+                    {
+                        "Art credit to",
+                        "{C:planet}@secun{} on {C:spectral}Discord"
+                    }
                 }
             },
             j_para_burntsamosas = {
@@ -252,68 +274,81 @@ return {
             j_para_palmier = {
                 name = "Palmiers",
                 text = {
-                    "{C:chips}+#1#{} Chips",
-                    "Every time a playing card is",
-                    "triggered, that card will",
-                    "permanently take {C:chips}+#2#{} Chips",
-                    "from this Joker for itself",
-                    "{C:inactive,s:0.8}They're yummy, they're{}",
-                    "{C:inactive,s:0.8}crunchy, they get crumbs{}",
-                    "{C:inactive,s:0.8}everywhere, MOVING ON!{}"
+                    {
+                        "{C:chips}+#1#{} Chips",
+                        "Every time a playing card is",
+                        "triggered, this Joker loses",
+                        "{C:chips}-#2#{} Chips and that card",
+                        "gains {C:chips}+#2#{} Chips",
+                        "{C:inactive,s:0.8}They're yummy, they're{}",
+                        "{C:inactive,s:0.8}crunchy, they get crumbs{}",
+                        "{C:inactive,s:0.8}everywhere, MOVING ON!{}"
+                    },
+                    {
+                        "Art credit to",
+                        "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
+                    }
                 }
             },
             j_para_malangafritter = {
                 name = "Malanga Fritters",
                 text = {
                     "For the next {C:attention}#1#{} hands,",
-                    "first played card becomes {C:dark_edition}Negative{}.",
+                    "first played card becomes {C:dark_edition}Polychrome{}.",
                     "{C:inactive}(First played card must have no{}",
                     "{C:inactive}edition for Joker to trigger){}",
                     "{C:inactive,s:0.8}You just feel like they're missing{}",
                     "{C:inactive,s:0.8}some spicy peppers for some reason.{}",
                 }
-            }, --[[
-            j_para_noikoneshot = {
-                name = "The Noik (from OneShot)",
-                text = {
-                    "{X:mult,C:white}X#1#{} Mult",
-                    "If you would normally lose",
-                    "the run, {C:red}lose the run{}",
-                    "After the run is won,",
-                    "{C:red}lose the run{}",
-                    "{C:inactive,s:0.8}You only have one sho- wait,{}",
-                    "{C:inactive,s:0.8}this is a roguelike?{}",
-                }
-            } ]]--
+            },
             j_para_airplane = {
                 name = "Airplane",
                 text = {
-                    "For each purchased {C:attention}Tier 1{} Voucher,",
-                    "gain {C:attention}#1#{} free {C:green}reroll{} per shop",
-                    "{C:inactive}#3#{C:attention}#2#{C:inactive}#4#",
-                    "{C:inactive,s:0.8}Art credit to",
-                    "{C:inactive,s:0.8}@silly_goober_0nthewall on Discord"
+                    {
+                        "For each purchased {C:attention}Tier 1{} Voucher,",
+                        "gain {C:attention}#1#{} free {C:green}reroll{} per shop",
+                        "{C:inactive}#3#{C:attention}#2#{C:inactive}#4#",
+                    },
+                    {
+                        "Art credit to",
+                        "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
+                    }
                 }
             },
             j_para_tower = {
                 name = "Tower",
                 text = {
-                    "Earn {C:money}$#1#{} at end of round",
-                    "if you have at least two {C:attention}Towers",
-                    "Duplicate {C:attention}Towers{} can appear",
-                    "without {C:attention}Showman",
-                    "{C:inactive,s:0.8}oh boy i sure hope nobody",
-                    "{C:inactive,s:0.8}crashes an airplane into me"
+                    {
+                        "Earn {C:money}$#1#{} at end of round",
+                        "if you have at least two {C:attention}Towers",
+                        "Duplicate {C:attention}Towers{} can appear",
+                        "without {C:attention}Showman",
+                        "{C:inactive,s:0.8}oh boy i sure hope nobody",
+                        "{C:inactive,s:0.8}crashes an airplane into me"
+                    },
+                    {
+                        "Art credit to",
+                        "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
+                    }
                 }
             },
             j_para_astro = {
                 name = "< Astro >w< >", -- < • Astro >⩊< • >, balala cant render the dot or the omega
                 text = {
-                    "{X:dark_edition,C:white}^^#1#{} Chips if played hand is a {C:attention}Flush",
-                    "Gains {X:dark_edition,C:white}^^#2#{} Chips for each scoring {C:spades}Spade",
-                    "Awakens a {C:attention}great power{} in another Joker",
-                    "{C:inactive,s:0.8}Art credit to",
-                    "{C:inactive,s:0.8}@silly_goober_0nthewall on Discord"
+                    {
+                        "{X:dark_edition,C:white}^^#1#{} Chips if played hand is a {C:attention}Flush",
+                        "Gains {X:dark_edition,C:white}^^#2#{} Chips for each scoring {C:spades}Spade",
+                    },
+                    {
+                        "Used {C:planet}Planet{} cards have a {C:green}#3# in #4#{} chance",
+                        "to {C:attention}level up{} the card's poker hand",
+                        "{C:attention}1{} additional time",
+                        "(Must be a standard planet card)"
+                    },
+                    {
+                        "Art credit to",
+                        "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
+                    }
                 }
             },
             j_para_green_credit_card = {
@@ -326,9 +361,45 @@ return {
             j_para_card = {
                 name = 'card',
                 text = {
-                    "{C:chips}+1{} chip",
-                    "{C:inactive,s:0.8}Cards together strong"
+                    {
+                        "{C:chips}+#1#{} chip",
+                        "{C:inactive,s:0.8}Cards together strong"
+                    },
+                    {
+                        "Art credit to",
+                        "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
+                    }
                 }
+            },
+            j_para_pancake = {
+		        name = 'Pancakes',
+		        text = {
+                    {
+			            'Scored {C:attention}Food Jokers{} give {C:mult}+#1#{} Mult',
+			            'Lose {C:mult}-#2#{} Mult at end of round',
+                        '{C:inactive,s:0.8}"So you hate waffles?" No bitch. Dats a',
+                        '{C:inactive,s:0.8}whole new sentence. Wtf is you talkin about.'
+                    },
+                    {
+                        "Art credit to",
+                        "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
+                    }
+		        }
+            },
+            j_para_paradox = {
+		        name = 'UnusedParadox',
+		        text = {
+                    {
+			            'When leaving shop, create a random',
+			            '{C:attention}Joker{} from {B:2,V:1}Paradox\'s Stupid Ideas{}',
+                        "with the {C:dark_edition}Negative{} edition",
+                        '{C:inactive,s:0.8}no way thats me. woag',
+                    },
+                    {
+                        "Art credit to",
+                        "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
+                    }
+		        }
             },
         },
         Other = {
@@ -364,11 +435,11 @@ return {
     misc = {
         achievement_descriptions = {
             ach_para_deathbypineapple = 'Snack on some pineapple slices.',
-            ach_para_nineelevenplus = "Purchase an airplane while holding a certain Joker on a specific date."
+            ach_para_cardcollector = "Obtain every colorful card."
         },
         achievement_names = {
             ach_para_deathbypineapple = 'Best idea you\'ve ever had!',
-            ach_para_nineelevenplus = "Don't you dare."
+            ach_para_cardcollector = "Color Collector"
         },
         blind_states = {},
         challenge_names = {
@@ -385,9 +456,7 @@ return {
             para_k_inactive = "Inactive",
             para_k_l = "L",
             para_k_snacktime = 'Snacks time!',
-            para_k_chips = " Chips",
             para_k_transformed = "Transformed!",
-            para_k_watercooled = "Water cooled!",
             k_para_mythic = "Mythic",
             k_para_nft = "NFT",
             airplane_a1 = "(Currently ",

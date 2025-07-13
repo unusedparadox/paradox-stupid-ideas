@@ -4,6 +4,12 @@ SMODS.Atlas{
 	px = 71,
 	py = 95
 }
+SMODS.Atlas{
+	key = 'Jokers_Soul',
+	path = 'Jokers_Soul.png',
+	px = 71,
+	py = 95
+}
 SMODS.Joker{ -- Blue Card implementation
 	key = 'bluecard',
 	atlas = 'Jokers',
@@ -16,6 +22,7 @@ SMODS.Joker{ -- Blue Card implementation
 	rarity = 1,
 	blueprint_compat = true,
 	cost = 4,
+	pools = {["parajoker"] = true},
 	loc_vars = function(self,info_queue,card)
 		return {vars = {card.ability.extra.chip_gain, card.ability.extra.chips}}
 	end,
@@ -23,13 +30,18 @@ SMODS.Joker{ -- Blue Card implementation
 		if context.open_booster and not context.blueprint then 
 			card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_gain
 			return {
-				message = localize{type = 'variable', key = 'a_chips', vars = {to_big(card.ability.extra.chip_gain)}} .. localize("para_k_chips"),
+				message = localize{type = 'variable', key = 'a_chips', vars = {to_big(card.ability.extra.chip_gain)}},
 				colour = G.C.CHIPS
 			}
 		elseif context.joker_main then
 			return {
 				chips = card.ability.extra.chips
 			}
+		end
+	end,
+	add_to_deck = function(self, card, from_debuff)
+		if next(SMODS.find_card("j_red_card", true)) and next(SMODS.find_card("j_para_orangecard", true)) and next(SMODS.find_card("j_para_yellowcard", true)) then
+			check_for_unlock({type = 'cardcollector'})
 		end
 	end
 }
@@ -38,22 +50,25 @@ SMODS.Joker{ -- Orange Card implementation
 	atlas = 'Jokers',
 	pos = {x = 1, y = 0},
 	config = { extra = {
-		xmult_gain = 0.1,
+		xmult_gain = 0.25,
 		xmult = 1,
 		is_active = true,
-		active_msg = "Active"
 	}
 	},
 	rarity = 2,
+	pools = {["parajoker"] = true},
 	blueprint_compat = true,
 	cost = 6,
 	loc_vars = function(self,info_queue,card)
-		return {vars = {card.ability.extra.xmult_gain, card.ability.extra.xmult, card.ability.extra.active_msg}}
+		local active_msg = localize("para_k_inactive")
+		if card.ability.extra.is_active then
+			active_msg = localize("para_k_active")
+		end
+		return {vars = {card.ability.extra.xmult_gain, card.ability.extra.xmult, active_msg}}
 	end,
 	calculate = function(self,card,context)
 		if context.skipping_booster and not context.blueprint and card.ability.extra.is_active then -- Booster Pack is skipped, deactivate the Joker and increase the XMult
 			card.ability.extra.is_active = false
-			card.ability.extra.active_msg = localize("para_k_inactive")
 			card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
 			return {
 				message = localize{type = 'variable', key = 'a_xmult', vars = {to_big(card.ability.extra.xmult)}},
@@ -62,7 +77,6 @@ SMODS.Joker{ -- Orange Card implementation
 		elseif context.ending_shop then -- Reactivate the Joker
 			if not card.ability.extra.is_active then
 				card.ability.extra.is_active = true
-				card.ability.extra.active_msg = localize("para_k_active")
 				return {
 					message = localize('para_k_reactivated'),
 					colour = G.C.ATTENTION
@@ -73,6 +87,11 @@ SMODS.Joker{ -- Orange Card implementation
 				xmult = card.ability.extra.xmult
 			}
 		end
+	end,
+	add_to_deck = function(self, card, from_debuff)
+		if next(SMODS.find_card("j_red_card", true)) and next(SMODS.find_card("j_para_bluecard", true)) and next(SMODS.find_card("j_para_yellowcard", true)) then
+			check_for_unlock({type = 'cardcollector'})
+		end
 	end
 }
 SMODS.Joker{ -- Yellow Card implementation
@@ -81,33 +100,23 @@ SMODS.Joker{ -- Yellow Card implementation
 	pos = {x = 2, y = 0},
 	config = { extra = {
 		money = 0,
-		money_gain = 1,
-		pack_require = 3,
-		pack_amount = 3
+		money_gain = 1
 	}
 	},
 	rarity = 2,
+	pools = {["parajoker"] = true},
 	blueprint_compat = false,
 	cost = 6,
 	loc_vars = function(self,info_queue,card)
-		return {vars = {card.ability.extra.money, card.ability.extra.money_gain, card.ability.extra.pack_require, card.ability.extra.pack_amount}}
+		return {vars = {card.ability.extra.money, card.ability.extra.money_gain}}
 	end,
 	calculate = function(self,card,context)
-		if context.skipping_booster and not context.blueprint then -- Booster Pack is skipped, decrement the counter
-			card.ability.extra.pack_amount = card.ability.extra.pack_amount - 1
-			if card.ability.extra.pack_amount == 0 then
-				card.ability.extra.pack_amount = card.ability.extra.pack_require
-				card.ability.extra.money = card.ability.extra.money + card.ability.extra.money_gain
-				return {
-					message = "+" .. SMODS.signed_dollars(card.ability.extra.money_gain),
-					colour = G.C.MONEY
-				}
-			else
-				return {
-					message = card.ability.extra.pack_amount .. '',
-					colour = G.C.ATTENTION
-				}
-			end
+		if context.skipping_booster and not context.blueprint then
+			card.ability.extra.money = card.ability.extra.money + card.ability.extra.money_gain
+			return {
+				message = "+" .. SMODS.signed_dollars(card.ability.extra.money_gain),
+				colour = G.C.MONEY
+			}
 		end
 	end,
 	calc_dollar_bonus = function(self, card) -- Apparently money isn't in the calculate function. Who knew?
@@ -115,6 +124,70 @@ SMODS.Joker{ -- Yellow Card implementation
 			return nil
 		else
 			return card.ability.extra.money
+		end
+	end,
+	add_to_deck = function(self, card, from_debuff)
+		if next(SMODS.find_card("j_red_card", true)) and next(SMODS.find_card("j_para_orangecard", true)) and next(SMODS.find_card("j_para_bluecard", true)) then
+			check_for_unlock({type = 'cardcollector'})
+		end
+	end
+}
+SMODS.Joker{ -- card implementation
+    key = "card",
+    blueprint_compat = true,
+    rarity = 1,
+    cost = 1,
+	atlas = 'Jokers',
+	pools = {["parajoker"] = true},
+    pos = { x = 9, y = 1 },
+	config = {extra = {
+		chips = 1,
+		eeechips = 2,
+		requirement = 5
+	}},
+	loc_vars = function(self,info_queue,card)
+		return {vars = {card.ability.extra.chips}}
+	end,
+	calculate = function(self, card, context)
+		local supercard = (#SMODS.find_card("j_para_card", false) >= card.ability.extra.requirement) and next(SMODS.find_mod("Talisman"))
+		if context.joker_main and not supercard then
+			return {
+				chips = card.ability.extra.chips
+			}
+		elseif context.joker_main and supercard then
+			return {
+				eeechips = card.ability.extra.eeechips
+			}
+		end
+	end,
+	in_pool = function(self, args)
+		return true, {allow_duplicates = true}
+	end
+}
+SMODS.Joker{ -- Why is steammodded so hard I spent so much crabbing time on them
+	key = 'bonnie',
+	atlas = 'Jokers',
+	pos = {x = 3, y = 0},
+	cost = 5,
+	rarity = 2,
+	pools = {["parajoker"] = true},
+	config = {extra = {active = false}},
+	blueprint_compat = false,
+	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue+1] = {key = 'tag_para_foodtag', set = 'Tag'}
+		info_queue[#info_queue+1] = G.P_CENTERS.p_para_foodpack
+		-- info_queue[#info_queue+1] = {key = 'para_negativesticker', set = 'Other'}
+	end,
+	calculate = function(self,card,context)
+		if context.end_of_round and context.beat_boss and not context.blueprint then
+			card.ability.extra.active = true
+		elseif context.ending_shop and card.ability.extra.active and not context.blueprint then
+			add_tag(Tag("tag_para_foodtag"))
+			card.ability.extra.active = false
+			return {
+				message = localize('para_k_snacktime'),
+				colour = G.C.ATTENTION
+			}
 		end
 	end
 }
@@ -126,7 +199,7 @@ SMODS.Joker{ -- Pineapple implementation.
 	},
 	atlas = 'Jokers',
 	pos = {x = 4, y = 0},
-	pools = { ["Food"] = true },
+	pools = { ["Food"] = true, ["parajoker"] = true },
 	rarity = 1,
 	cost = 2,
 	blueprint_compat = true,
@@ -155,7 +228,7 @@ SMODS.Joker{ -- Cookie implementation
 		xmult_loss = 0.25
 	}
 	},
-	pools = { ["Food"] = true },
+	pools = { ["Food"] = true, ["parajoker"] = true },
 	rarity = 2,
 	cost = 5,
 	blueprint_compat = true,
@@ -195,7 +268,7 @@ SMODS.Joker{ -- Plantain Chips implementation
 		xchips_loss = 0.1
 	}
 	},
-	pools = { ["Food"] = true },
+	pools = { ["Food"] = true, ["parajoker"] = true },
 	rarity = 1,
 	cost = 3,
 	atlas = 'Jokers',
@@ -237,7 +310,7 @@ SMODS.Joker{ -- Onigiri implementation
 		xmult = 1.6,
 	}
 	},
-	pools = { ["Food"] = true },
+	pools = { ["Food"] = true, ["parajoker"] = true },
 	rarity = 1,
 	cost = 3,
 	atlas = 'Jokers',
@@ -289,7 +362,7 @@ SMODS.Joker{ -- Madeline implementation
 		cards = 100,
 	}
 	},
-	pools = { ["Food"] = true },
+	pools = { ["Food"] = true, ["parajoker"] = true },
 	rarity = 1,
 	cost = 3,
 	atlas = 'Jokers',
@@ -322,7 +395,7 @@ SMODS.Joker{ -- Fish Head implementation
 		threshold = 4,
 	}
 	},
-	pools = { ["Food"] = true },
+	pools = { ["Food"] = true, ["parajoker"] = true },
 	rarity = 3,
 	cost = 9,
 	atlas = 'Jokers',
@@ -362,7 +435,7 @@ SMODS.Joker{ -- Burnt Samosas implementation
 		chip_loss = 2,
 	}
 	},
-	pools = { ["Food"] = true },
+	pools = { ["Food"] = true, ["parajoker"] = true },
 	atlas = 'Jokers',
 	pos = {x = 9, y = 0},
 	rarity = 1,
@@ -402,7 +475,7 @@ SMODS.Joker{ -- Palmier implementation
 		chip_loss = 10,
 	}
 	},
-	pools = { ["Food"] = true },
+	pools = { ["Food"] = true, ["parajoker"] = true },
 	rarity = 2,
 	cost = 7,
 	atlas = 'Jokers',
@@ -439,7 +512,7 @@ SMODS.Joker{ -- Malanga Fritter implementation
 	config = { extra = {
 		hands = 5
 	}},
-	pools = { ["Food"] = true },
+	pools = { ["Food"] = true, ["parajoker"] = true },
 	rarity = 3,
 	cost = 7,
 	atlas = 'Jokers',
@@ -453,7 +526,7 @@ SMODS.Joker{ -- Malanga Fritter implementation
  	calculate = function(self, card, context)
         if context.before and not context.blueprint then
 			if not context.full_hand[1].edition then
-				context.full_hand[1]:set_edition('e_negative')
+				context.full_hand[1]:set_edition('e_polychrome')
 				card.ability.extra.hands = card.ability.extra.hands - 1
           		return {
           		    message = localize('para_k_transformed'),
@@ -469,6 +542,43 @@ SMODS.Joker{ -- Malanga Fritter implementation
 		end
     end
 }
+SMODS.Joker{ -- mmm yummy pancake
+	key = 'pancake',
+	atlas = 'Jokers',
+	pos = {x = 0, y = 2},
+	cost = 3,
+	rarity = 1,
+	config = {extra = {
+		mult = 15,
+		mult_loss = 3
+	}},
+	pools = { ["Food"] = true, ["parajoker"] = true },
+	blueprint_compat = true,
+	loc_vars = function(self, info_queue, card)
+		return {vars = {card.ability.extra.mult, card.ability.extra.mult_loss}}
+	end,
+	calculate = function(self,card,context)
+		if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
+			card.ability.extra.mult = card.ability.extra.mult - card.ability.extra.mult_loss
+			if card.ability.extra.mult <= 0 then
+				para_consumefood(card)
+           		return {
+           		    message = localize('k_eaten_ex'),
+           		    colour = G.C.ATTENTION
+           		}
+			else
+				return {
+					message = localize{type = 'variable', key = 'a_mult_minus', vars = {to_big(card.ability.extra.mult_loss)}},
+					colour = G.C.MULT
+				}
+			end
+		elseif context.other_joker and (context.other_joker.config.center.pools or {}).Food then
+			return {
+				mult = card.ability.extra.mult
+			}
+		end
+	end
+}
 SMODS.Joker{ -- Airplane implementation
 	key = 'airplane',
 	config = { extra = {
@@ -476,6 +586,7 @@ SMODS.Joker{ -- Airplane implementation
 	}},
 	rarity = 2,
 	cost = 9,
+	pools = {["parajoker"] = true},
 	blueprint_compat = true,
 	eternal_compat = true,
 	perishable_compat = true,
@@ -511,9 +622,6 @@ SMODS.Joker{ -- Airplane implementation
                 vouchers = vouchers + 1
             end
         end
-		if next(SMODS.find_card("j_para_tower", false)) then
-			check_for_unlock({type = "nineeleven"})
-		end
         SMODS.change_free_rerolls(card.ability.extra.rerolls * vouchers)
     end,
     remove_from_deck = function(self, card, from_debuff)
@@ -534,6 +642,7 @@ SMODS.Joker{ -- Tower implementation
 	}},
 	rarity = 1,
 	cost = 11,
+	pools = {["parajoker"] = true},
 	blueprint_compat = true,
 	eternal_compat = true,
 	perishable_compat = true,
@@ -577,12 +686,16 @@ SMODS.Joker{ -- NFT Joker implementation
 		min = 0
 	}
 	},
+	pools = {["parajoker"] = true},
 	rarity = "para_nft",
 	atlas = 'Jokers',
 	pos = {x = 3, y = 1},
 	cost = 1000,
 	loc_vars = function(self,info_queue,card)
 		return {vars = {card.ability.extra.scam, card.ability.extra.min}}
+	end,
+	in_pool = function(self, args)
+		return args and args.source == 'sho'
 	end,
 	calculate = function(self, card, context)
 		if context.end_of_round and context.cardarea == G.jokers and card.sell_cost > card.ability.extra.min then
@@ -608,7 +721,8 @@ SMODS.Joker{ -- Jokerrune implementation
 	atlas = 'Jokers',
 	pos = {x = 4, y = 1},
 	cost = 5,
-	rarity = 2,
+	rarity = 3,
+	pools = {["parajoker"] = true},
 	loc_vars = function(self,info_queue,card)
 		return {vars = {card.ability.extra.xmult_gain, card.ability.extra.xmult}}
 	end,
@@ -620,27 +734,45 @@ SMODS.Joker{ -- Jokerrune implementation
 		end
 	end
 }
+SMODS.Joker{ -- Green Credit Card implementation
+    key = "green_credit_card",
+    blueprint_compat = false,
+    rarity = "para_mythic",
+    cost = 10,
+	pools = {["parajoker"] = true},
+	atlas = 'Jokers',
+    pos = { x = 8, y = 1 },
+	in_pool = function(self, args)
+		return next(SMODS.find_card("j_credit_card", false)) and to_big(((G.GAME.dollars + (G.GAME.dollar_buffer or 0))) < to_big(0))
+	end
+}
 if next(SMODS.find_mod("Talisman")) then
 	SMODS.Joker{ -- < • Astro :3c • > implementation
 		key = 'astro',
+		pools = {["parajoker"] = true},
 		config = { extra = {
 			eechips = 1,
-			eechips_gain = 0.1
+			eechips_gain = 0.1,
+			numerator_planet = 1,
+			denominator_planet = 3,
 		}},
-		atlas = 'Jokers',
-		pos = {x = 7, y = 1},
+		atlas = 'Jokers_Soul',
+		pos = {x = 1, y = 0},
+		soul_pos = {x = 1, y = 1},
 		cost = 10,
 		rarity = "para_mythic",
+		blueprint_compat = true,
 		loc_vars = function(self,info_queue,card)
-			return {vars = {card.ability.extra.eechips, card.ability.extra.eechips_gain}}
+			local new_numerator, new_denominator = SMODS.get_probability_vars(card, card.ability.extra.numerator_planet, card.ability.extra.denominator_planet, 'identifier')
+			return {vars = {card.ability.extra.eechips, card.ability.extra.eechips_gain, new_numerator, new_denominator}}
 		end,
 		calculate = function(self, card, context)
-			if context.joker_main and context.scoring_name == "Flush" then
+			if context.joker_main and context.scoring_name == "Flush" then -- Scores the tetrational chips.
 				return {
 					eechips = card.ability.extra.eechips
 				}
-			elseif context.before then
-				local scaled = false
+			elseif context.before and not context.blueprint then -- Checks for spades to scale the tetrational chips.
+				local scaled = false 
 				for _, v in pairs(context.scoring_hand) do
 					if v:is_suit("Spades") then
 						card.ability.extra.eechips = card.ability.extra.eechips + card.ability.extra.eechips_gain
@@ -648,11 +780,20 @@ if next(SMODS.find_mod("Talisman")) then
 						scaled = true
 					end
 				end
-				if scaled then
+				if scaled then -- Shows the scaling message if tetrational chips were scaled
 					return {
 						message = localize({type = "variable", key = "powpow_chips", vars = {number_format(to_big(card.ability.extra.eechips))}}),
 						colour = G.C.DARK_EDITION,
 						message_card = card
+					}
+				end
+			elseif context.using_consumeable and context.consumeable.ability.set == "Planet" then -- Check if a planet is used.
+				if SMODS.pseudorandom_probability(card, 'para_astro_planets', card.ability.extra.numerator_planet, card.ability.extra.denominator_planet, 'para_astro_planets') then -- Check the 1 in 3 chance.
+					return {
+						level_up_hand = context.consumeable.ability.hand_type,
+						level_up = true,
+						message = localize('k_level_up_ex'),
+						colour = G.C.SECONDARY_SET.Planet
 					}
 				end
 			end
@@ -668,37 +809,34 @@ if next(SMODS.find_mod("Talisman")) then
 		end
 	}
 end
-SMODS.Joker{ -- Green Credit Card implementation
-    key = "green_credit_card",
-    blueprint_compat = false,
-    rarity = "para_mythic",
-    cost = 10,
-	atlas = 'Jokers',
-    pos = { x = 8, y = 1 },
-	in_pool = function(self, args)
-		return next(SMODS.find_card("j_credit_card", false)) and ((G.GAME.dollars + (G.GAME.dollar_buffer or 0)) < 0)
-	end
-}
-SMODS.Joker{ -- card implementation
-    key = "card",
-    blueprint_compat = true,
-    rarity = 1,
-    cost = 1,
-	atlas = 'Jokers',
-    pos = { x = 9, y = 1 },
-	calculate = function(self, card, context)
-		local supercard = (#SMODS.find_card("j_para_card", false) >= 5) and next(SMODS.find_card("j_para_astro"))
-		if context.joker_main and not supercard then
-			return {
-				chips = 1
-			}
-		elseif context.joker_main and supercard then
-			return {
-				eeechips = 2
-			}
+SMODS.Joker{ -- no way thats me
+	key = 'paradox',
+	atlas = 'Jokers_Soul',
+	pos = {x = 0, y = 0},
+	soul_pos = {x = 0, y = 1},
+	cost = 10,
+	rarity = "para_mythic",
+	pools = {["parajoker"] = true},
+	blueprint_compat = true,
+	loc_vars = function(self, info_queue, card)
+        return {vars = {colours = {HEX("2dcddd"), HEX("262680")}}}
+	end,
+	calculate = function(self,card,context)
+		if context.ending_shop then
+			SMODS.add_card({set = "parajoker", edition = "e_negative", key_append = "para_paradox_joker"})
 		end
 	end,
 	in_pool = function(self, args)
-		return true, {allow_duplicates = true}
+		local creationcount = 0
+		local ismythic = false
+		for _, v in pairs(G.jokers.cards) do
+			if (v.config.center.pools or {}).parajoker then
+				creationcount = creationcount + 1
+				if v.config.center.rarity == "para_mythic" then
+					ismythic = true
+				end
+			end
+		end
+		return ismythic or (creationcount >= 3)
 	end
 }

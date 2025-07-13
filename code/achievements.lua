@@ -8,15 +8,11 @@ SMODS.Achievement{
     end
 }
 SMODS.Achievement{
-    key = 'nineelevenplus',
+    key = 'cardcollector',
     bypass_all_unlocked = true,
     hidden_name = true,
     hidden_text = false,
-    unlock_condition   = function(self, args)
-        if args.type ~= 'nineeleven' then
-            return false
-        end
-        local today = os.date("%m/%d")
-        return today == "09/11"
+    unlock_condition = function(self, args)
+        return args.type == 'cardcollector'
     end
 }

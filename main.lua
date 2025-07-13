@@ -189,7 +189,14 @@ G.foodjokers = {
 	['j_pl_plantain'] = true,
 	['j_pl_apple_pie'] = true,
 	['j_pl_grape_soda'] = true,
-	['j_pl_raw_meat'] = true, 
+	['j_pl_raw_meat'] = true,
+	-- Grab Bag
+	['j_gb_hot_potato'] = true,
+	['j_gb_double_gulp'] = true,
+	['j_gb_golden_cookie'] = true,
+	-- Lucky Rabbit
+	['j_fmod_blue_angel_mushroom'] = true,
+	['j_fmod_pub_burger'] = true,
 }
 
 local function inject(self)
@@ -221,6 +228,10 @@ else
 		end
 	})
 end
+SMODS.ObjectType{
+	key = "parajoker",
+	default = "j_para_bluecard"
+}
 -- End ObjectType definitions
 -- Defining useful functions:
 para_consumefood = function(card)
@@ -293,6 +304,14 @@ SMODS.Edition:take_ownership('e_negative', {
         return weight
     end
 }, true)
+-- Take ownership of Red Card for the achievement
+SMODS.Joker:take_ownership("red_card", {
+	add_to_deck = function(self, card, from_debuff)
+		if next(SMODS.find_card("j_para_yellowcard", true)) and next(SMODS.find_card("j_para_orangecard", true)) and next(SMODS.find_card("j_para_bluecard", true)) then
+			check_for_unlock({type = 'cardcollector'})
+		end
+	end
+}, true)
 -- Load files
 -- im the woker baby
 assert(SMODS.load_file("code/rarities.lua"))()
@@ -304,8 +323,7 @@ assert(SMODS.load_file("code/boosters.lua"))()
 if next(SMODS.find_mod("ChDp")) then -- all my damn challenges need this thing
 	assert(SMODS.load_file("code/challenges.lua"))()
 end
-print(SMODS.Mods.Talisman.config)
 assert(SMODS.load_file("code/blinds.lua"))()
-assert(SMODS.load_file("code/special/bonnie.lua"))() -- special folder is special cases (ex. bonnie, who has a booster pack and sticker exclusively for them)
+assert(SMODS.load_file("code/tags.lua"))()
 ----------------------------------------------
 ------------MOD CODE END----------------------
