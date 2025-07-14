@@ -407,18 +407,18 @@ SMODS.Joker{ -- Fish Head implementation
 		return {vars = {card.ability.extra.money, card.ability.extra.threshold}}
 	end,
 	calculate = function(self, card, context)
-		if context.ending_shop and not context.blueprint then
-			local money_minus = 0 - math.max(0, (number_format(to_big(G.GAME.dollars)) + (G.GAME.dollar_buffer or 0) - card.ability.extra.threshold))
-			card.ability.extra.money = card.ability.extra.money + money_minus
-			if card.ability.extra.money <= 0 then
+		if context.end_of_round and context.cardarea == G.jokers and not context.blueprint then
+			local money_minus = to_big(0) - math.max(0, (to_big(G.GAME.dollars) + (to_big(G.GAME.dollar_buffer) or to_big(0)) - to_big(card.ability.extra.threshold)))
+			card.ability.extra.money = to_big(card.ability.extra.money) + to_big(money_minus)
+			if to_big(card.ability.extra.money) <= to_big(0) then
 				para_consumefood(card)
                 return {
                     message = localize('k_eaten_ex'),
                     colour = G.C.ATTENTION
                 }
-			elseif money_minus < 0 then
+			elseif to_big(money_minus) < to_big(0) then
 				return {
-					message = SMODS.signed_dollars(money_minus),
+					message = localize({type = "variable", key = "money_loss", vars = {number_format(to_big(0)-to_big(money_minus))}}),
 					colour = G.C.RED
 				}
 			end
@@ -743,7 +743,7 @@ SMODS.Joker{ -- Green Credit Card implementation
 	atlas = 'Jokers',
     pos = { x = 8, y = 1 },
 	in_pool = function(self, args)
-		return next(SMODS.find_card("j_credit_card", false)) and to_big(((G.GAME.dollars + (G.GAME.dollar_buffer or 0))) < to_big(0))
+		return next(SMODS.find_card("j_credit_card", false)) and to_big(((G.GAME.dollars + (G.GAME.dollar_buffer or 0))) < to_big(0)), { allow_duplicates = false }
 	end
 }
 if next(SMODS.find_mod("Talisman")) then
@@ -805,7 +805,7 @@ if next(SMODS.find_mod("Talisman")) then
 					spade_count = spade_count + 1
 				end
 			end
-			return next(SMODS.find_card("j_para_card", true)) and spade_count > 15
+			return next(SMODS.find_card("j_para_card", true)) and spade_count > 15, { allow_duplicates = false }
 		end
 	}
 end
@@ -837,6 +837,6 @@ SMODS.Joker{ -- no way thats me
 				end
 			end
 		end
-		return ismythic or (creationcount >= 3)
+		return ismythic or (creationcount >= 3), { allow_duplicates = false }
 	end
 }

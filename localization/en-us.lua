@@ -224,8 +224,8 @@ return {
                 name = "Fish Head",
                 text = {
                     "Earn {C:money}$#1#{} at the end of the round",
-                    "For each {C:money}$1{} you have over {C:money}$#2#{} when leaving",
-                    "the shop, this Joker permanently earns {C:money}$1{} less",
+                    "For each {C:money}$1{} you have over {C:money}$#2#{} at",
+                    "end of round, this Joker permanently earns {C:money}$1{} less",
                     "{C:inactive,s:0.8}Fish heads are yummy and the",
                     "{C:inactive,s:0.8}textures are different and good!!!"
                 }
@@ -483,6 +483,7 @@ return {
         tutorial = {},
         v_dictionary = {
             powpow_chips = {"^^#1# Chips"},
+            money_loss = {"-$#1#"},
         },
         v_text = {},
     },

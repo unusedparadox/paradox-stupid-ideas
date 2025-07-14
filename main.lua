@@ -304,14 +304,6 @@ SMODS.Edition:take_ownership('e_negative', {
         return weight
     end
 }, true)
--- Take ownership of Red Card for the achievement
-SMODS.Joker:take_ownership("red_card", {
-	add_to_deck = function(self, card, from_debuff)
-		if next(SMODS.find_card("j_para_yellowcard", true)) and next(SMODS.find_card("j_para_orangecard", true)) and next(SMODS.find_card("j_para_bluecard", true)) then
-			check_for_unlock({type = 'cardcollector'})
-		end
-	end
-}, true)
 -- Load files
 -- im the woker baby
 assert(SMODS.load_file("code/rarities.lua"))()
