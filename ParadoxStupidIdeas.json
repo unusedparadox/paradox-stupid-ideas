@@ -10,5 +10,6 @@
   "badge_text_colour": "2dcddd",
   "version": "1.0.0",
   "priority": 1,
-  "dependencies": [ "Steamodded (>=1.*)", "Lovely (>=0.6)" ]
+  "dependencies": [ "Steamodded (>=1.*)", "Lovely (>=0.6)" ],
+  "allow_redistribution": true
 }
