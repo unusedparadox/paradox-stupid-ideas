@@ -21,6 +21,7 @@ SMODS.Joker{ -- Blue Card implementation
 	},
 	rarity = 1,
 	blueprint_compat = true,
+	perishable_compat = false,
 	cost = 4,
 	pools = {["parajoker"] = true},
 	loc_vars = function(self,info_queue,card)
@@ -58,6 +59,7 @@ SMODS.Joker{ -- Orange Card implementation
 	rarity = 2,
 	pools = {["parajoker"] = true},
 	blueprint_compat = true,
+	perishable_compat = false,
 	cost = 6,
 	loc_vars = function(self,info_queue,card)
 		local active_msg = localize("para_k_inactive")
@@ -74,7 +76,7 @@ SMODS.Joker{ -- Orange Card implementation
 				message = localize{type = 'variable', key = 'a_xmult', vars = {to_big(card.ability.extra.xmult)}},
 				colour = G.C.MULT
 			}
-		elseif context.ending_shop then -- Reactivate the Joker
+		elseif context.ending_shop and not context.blueprint then -- Reactivate the Joker
 			if not card.ability.extra.is_active then
 				card.ability.extra.is_active = true
 				return {
@@ -106,6 +108,7 @@ SMODS.Joker{ -- Yellow Card implementation
 	rarity = 2,
 	pools = {["parajoker"] = true},
 	blueprint_compat = false,
+	perishable_compat = false,
 	cost = 6,
 	loc_vars = function(self,info_queue,card)
 		return {vars = {card.ability.extra.money, card.ability.extra.money_gain}}
@@ -737,7 +740,7 @@ SMODS.Joker{ -- Jokerrune implementation
 SMODS.Joker{ -- Green Credit Card implementation
     key = "green_credit_card",
     blueprint_compat = false,
-    rarity = "para_mythic",
+    rarity = "para_prestige",
     cost = 10,
 	pools = {["parajoker"] = true},
 	atlas = 'Jokers',
@@ -755,16 +758,22 @@ if next(SMODS.find_mod("Talisman")) then
 			eechips_gain = 0.1,
 			numerator_planet = 1,
 			denominator_planet = 3,
+			nine_counter = 25,
+			nine_requirement = 25,
+			planet_retrigger = 0,
+			planet_retrigger_growth = 1
 		}},
 		atlas = 'Jokers_Soul',
 		pos = {x = 1, y = 0},
 		soul_pos = {x = 1, y = 1},
 		cost = 10,
-		rarity = "para_mythic",
+		rarity = "para_prestige",
 		blueprint_compat = true,
+		perishable_compat = false,
 		loc_vars = function(self,info_queue,card)
-			local new_numerator, new_denominator = SMODS.get_probability_vars(card, card.ability.extra.numerator_planet, card.ability.extra.denominator_planet, 'identifier')
-			return {vars = {card.ability.extra.eechips, card.ability.extra.eechips_gain, new_numerator, new_denominator}}
+			local new_numerator, new_denominator = SMODS.get_probability_vars(card, card.ability.extra.numerator_planet, card.ability.extra.denominator_planet, 'para_astro_planets')
+			return {vars = {card.ability.extra.eechips, card.ability.extra.eechips_gain, new_numerator, new_denominator, card.ability.extra.planet_retrigger, card.ability.extra.planet_retrigger_growth,
+			card.ability.extra.nine_requirement, card.ability.extra.nine_counter}}
 		end,
 		calculate = function(self, card, context)
 			if context.joker_main and context.scoring_name == "Flush" then -- Scores the tetrational chips.
@@ -789,12 +798,20 @@ if next(SMODS.find_mod("Talisman")) then
 				end
 			elseif context.using_consumeable and context.consumeable.ability.set == "Planet" then -- Check if a planet is used.
 				if SMODS.pseudorandom_probability(card, 'para_astro_planets', card.ability.extra.numerator_planet, card.ability.extra.denominator_planet, 'para_astro_planets') then -- Check the 1 in 3 chance.
-					return {
-						level_up_hand = context.consumeable.ability.hand_type,
-						level_up = true,
-						message = localize('k_level_up_ex'),
-						colour = G.C.SECONDARY_SET.Planet
-					}
+					for i = 1, card.ability.extra.planet_retrigger do
+						context.consumeable:use_consumeable(context.consumeable)
+					end
+				end
+			elseif context.individual and context.cardarea == G.play and (context.other_card:get_id() == 9) and not context.blueprint then -- Check for triggered nines
+				card.ability.extra.nine_counter = card.ability.extra.nine_counter - 1
+				if card.ability.extra.nine_counter == 0 then
+					card.ability.extra.nine_counter = card.ability.extra.nine_requirement
+					card.ability.extra.planet_retrigger = card.ability.extra.planet_retrigger + card.ability.extra.planet_retrigger_growth
+            		return {
+            		    message = localize('k_upgrade_ex'),
+            		    colour = G.C.SECONDARY_SET.PLANET,
+            		    message_card = card
+            		}
 				end
 			end
 		end,
@@ -815,7 +832,7 @@ SMODS.Joker{ -- no way thats me
 	pos = {x = 0, y = 0},
 	soul_pos = {x = 0, y = 1},
 	cost = 10,
-	rarity = "para_mythic",
+	rarity = "para_prestige",
 	pools = {["parajoker"] = true},
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
@@ -828,15 +845,54 @@ SMODS.Joker{ -- no way thats me
 	end,
 	in_pool = function(self, args)
 		local creationcount = 0
-		local ismythic = false
+		local isprestige = false
 		for _, v in pairs(G.jokers.cards) do
 			if (v.config.center.pools or {}).parajoker then
 				creationcount = creationcount + 1
-				if v.config.center.rarity == "para_mythic" then
-					ismythic = true
+				if v.config.center.rarity == "para_prestige" then
+					isprestige = true
 				end
 			end
 		end
-		return ismythic or (creationcount >= 3), { allow_duplicates = false }
+		return isprestige or (creationcount >= 3), { allow_duplicates = false }
 	end
 }
+SMODS.Joker{ -- Ashen Joker
+	key = 'ashjoker',
+	atlas = 'Jokers',
+	pos = {x = 2, y = 2},
+	cost = 6,
+	rarity = 2,
+	pools = {["parajoker"] = true},
+	blueprint_compat = true,
+	config = {extra = {
+		xchips = 1,
+		xchips_gain = 0.1
+	}},
+	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue + 1] = G.P_CENTERS["m_para_ashen"]
+        return {vars = {card.ability.extra.xchips, card.ability.extra.xchips_gain}}
+	end,
+	calculate = function(self,card,context)
+		if context.before and not context.blueprint then
+			local scaled = false 
+			for _, v in ipairs(context.scoring_hand) do
+				if SMODS.has_enhancement(v, "m_para_ashen") then
+					card.ability.extra.xchips = card.ability.extra.xchips + card.ability.extra.xchips_gain
+					scaled = true
+				end
+			end
+			if scaled then
+				return {
+                	message = localize('k_upgrade_ex'),
+                	colour = G.C.CHIPS,
+                	message_card = card
+            	}
+			end
+		elseif context.joker_main then
+			return {
+				xchips = card.ability.extra.xchips
+			}
+		end
+	end
+} 

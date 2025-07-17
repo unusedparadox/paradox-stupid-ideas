@@ -1,7 +1,12 @@
+local prestige_grad = SMODS.Gradient{
+    key = "prestige_grad",
+    colours = {HEX("D9D61C"), HEX("D9A22B")},
+    cycle = 10
+}
 SMODS.Rarity{
-    key = "mythic",
+    key = "prestige",
 	loc_txt = {},
-    badge_colour = HEX("440bea"),
+    badge_colour = prestige_grad,
     pools = {
         ["Joker"] = true
     },

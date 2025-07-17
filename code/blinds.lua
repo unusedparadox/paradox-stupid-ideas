@@ -16,11 +16,26 @@ SMODS.Blind { -- The Plain
     boss_colour = HEX("cca876"),
     calculate = function(self, blind, context)
         if not blind.disabled then
-            if context.debuff_card and context.debuff_card.area ~= G.jokers and next(SMODS.get_enhancements(context.debuff_card)) then
-                return {
-                    debuff = true
-                }
+            if context.before then
+                for _, v in ipairs(context.scoring_hand) do
+                    if next(SMODS.get_enhancements(v)) then
+                        SMODS.debuff_card(v, true, "para_plaindebuff")
+                    end
+                end
             end
+        end
+    end,
+    disable = function(self)
+        for _, v in ipairs(G.playing_cards) do
+            if next(SMODS.get_enhancements(v)) then
+                SMODS.debuff_card(v, false, "para_plaindebuff")
+            end
+        end
+    end,
+    defeat = function(self)
+        for _, joker in ipairs(G.playing_cards) do
+            joker.ability.para_singular = nil
+            SMODS.debuff_card(joker, false, "para_plaindebuff")
         end
     end
 }
@@ -75,3 +90,30 @@ SMODS.Blind { -- The Singular
         end
     end
 }
+-- Getting Matador to work with The Singular. This doesn't work with Cryptid value manipulation but hell if I care
+SMODS.Joker:take_ownership("matador", {
+	calculate = function(self, card, context)
+		local triggered = false
+        for k, v in pairs(G.jokers.cards) do
+            if v.ability and v.ability.para_singular then
+                triggered = true
+            end
+        end
+        if context.debuffed_hand or context.joker_main then
+            if G.GAME.blind.triggered or triggered then
+                G.GAME.dollar_buffer = (G.GAME.dollar_buffer or 0) + 8
+                return {
+                    dollars = 8,
+                    func = function() -- This is for timing purposes, it runs after the dollar manipulation
+                        G.E_MANAGER:add_event(Event({
+                            func = function()
+                                G.GAME.dollar_buffer = 0
+                                return true
+                            end
+                        }))
+                    end
+                }
+            end
+		end
+    end
+}, true)

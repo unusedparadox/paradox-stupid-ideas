@@ -214,6 +214,14 @@ SMODS.Back{
 		G.GAME.starting_params.hands = G.GAME.starting_params.hands + self.config.extra.hands
 	end
 }
+-- Create "fake madness" for the yaoi deck
+SMODS.Joker{
+	key = "fakemadness",
+	no_collection = true,
+	in_pool = function(self, args)
+		return false
+	end
+}
 -- Bad game design but funny as hell
 SMODS.Back{
     key = "artisticdeck",
@@ -304,3 +312,16 @@ SMODS.Back{
         return args.type == 'win_deck' and get_deck_win_stake('b_para_voiddeck') > 7 and get_deck_win_stake('b_para_artisticdeck') > 7
     end
 }
+-- Increase negative chance for Artistic Deck and Chasm Deck
+local oldenegativegetweight = G.P_CENTERS.e_negative.get_weight
+SMODS.Edition:take_ownership('e_negative', {
+    get_weight = function(self)
+        local weight = oldenegativegetweight(self)
+        if G.GAME.selected_back.effect.center.key == "b_para_artisticdeck" then
+			weight = weight * 15
+		elseif G.GAME.selected_back.effect.center.key == "b_para_chasmdeck" then
+			weight = weight * 25
+		end
+        return weight
+    end
+}, true)

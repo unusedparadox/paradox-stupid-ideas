@@ -256,56 +256,7 @@ para_consumefood = function(card)
     }))
 end
 -- End function definitions
--- Create "fake madness" for the yaoi deck
-SMODS.Joker{
-	key = "fakemadness",
-	no_collection = true,
-	in_pool = function(self, args)
-		return false
-	end
-}
--- Getting Matador to work with The Singular
-SMODS.Joker:take_ownership("matador", {
-	calculate = function(self, card, context)
-		local triggered = false
-        for k, v in pairs(G.jokers.cards) do
-            if v.ability and v.ability.para_singular then
-                triggered = true
-            end
-        end
-        if context.debuffed_hand or context.joker_main then
-            if G.GAME.blind.triggered or triggered then
-                G.GAME.dollar_buffer = (G.GAME.dollar_buffer or 0) + 8
-                return {
-                    dollars = 8,
-                    func = function() -- This is for timing purposes, it runs after the dollar manipulation
-                        G.E_MANAGER:add_event(Event({
-                            func = function()
-                                G.GAME.dollar_buffer = 0
-                                return true
-                            end
-                        }))
-                    end
-                }
-            end
-		end
-    end
-}, true)
--- Increase negative chance for Artistic Deck and Chasm Deck
-local oldenegativegetweight = G.P_CENTERS.e_negative.get_weight
-SMODS.Edition:take_ownership('e_negative', {
-    get_weight = function(self)
-        local weight = oldenegativegetweight(self)
-        if G.GAME.selected_back.effect.center.key == "b_para_artisticdeck" then
-			weight = weight * 15
-		elseif G.GAME.selected_back.effect.center.key == "b_para_chasmdeck" then
-			weight = weight * 25
-		end
-        return weight
-    end
-}, true)
 -- Load files
--- im the woker baby
 assert(SMODS.load_file("code/rarities.lua"))()
 assert(SMODS.load_file("code/jokers.lua"))()
 assert(SMODS.load_file("code/backs.lua"))()
@@ -317,5 +268,11 @@ if next(SMODS.find_mod("ChDp")) then -- all my damn challenges need this thing
 end
 assert(SMODS.load_file("code/blinds.lua"))()
 assert(SMODS.load_file("code/tags.lua"))()
+assert(SMODS.load_file("code/enhancements.lua"))()
+assert(SMODS.load_file("code/tarots.lua"))()
+-- Handle crossmod:
+if CardSleeves then
+	assert(SMODS.load_file("code/crossmod/sleeves.lua"))()
+end
 ----------------------------------------------
 ------------MOD CODE END----------------------

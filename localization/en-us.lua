@@ -37,9 +37,11 @@ return {
                     "{C:attention,T:m_eternal}Eternal{} {C:rare,T:j_blueprint}Blueprint{} and",
                     "an {C:attention}Eternal{} {C:rare,T:j_brainstorm}Brainstorm",
                     "{C:red}#1#{} Joker slot",
-                    "{C:red}#2#{} hand",
-                    "{C:inactive,s:0.8}Art credit to",
-                    "{C:inactive,s:0.8}@silly_goober_0nthewall on Discord"
+                    "{C:blue}#2#{} hand",
+                    "{s:0.3} ",
+                    "Art credit to",
+                    "{C:planet}@silly_goober_0nthewall{}",
+                    "on {C:spectral}Discord"
                 }
             },
             b_para_yaoideck = {
@@ -49,9 +51,11 @@ return {
                     "{C:attention,T:m_eternal}Eternal{} {C:rare,T:j_para_fakemadness}Madness{} and",
                     "an {C:attention}Eternal{} {C:rare,T:j_vagabond}Vagabond",
                     "{C:red}#1#{} Joker slot",
-                    "{C:red}#2#{} hand",
-                    "{C:inactive,s:0.8}Art credit to",
-                    "{C:inactive,s:0.8}@mr.cr33ps on Discord"
+                    "{C:blue}#2#{} hand",
+                    "{s:0.3} ",
+                    "Art credit to",
+                    "{C:planet}@mr.cr33ps{}",
+                    "on {C:spectral}Discord"
                 }
             },
             b_para_bonniedeck = {
@@ -77,9 +81,11 @@ return {
                 name = "Void Deck",
                 text = {
                     "{C:attention}+#1#{} Joker slots",
-                    '{C:red}#2#{} hands each round',
-                    "{C:inactive,s:0.8}Art credit to",
-                    "{C:inactive,s:0.8}@silly_goober_0nthewall on Discord"
+                    '{C:blue}#2#{} hands each round',
+                    "{s:0.3} ",
+                    "Art credit to",
+                    "{C:planet}@silly_goober_0nthewall{}",
+                    "on {C:spectral}Discord"
                 },
                 unlock = {
                     'Win with {C:attention}#1#{}',
@@ -91,10 +97,12 @@ return {
                 name = "Chasm Deck",
                 text = {
                     "{C:red}#1#{} Joker slots",
-                    '{C:red}#2#{} hands each round',
+                    '{C:blue}#2#{} hands each round',
                     '{C:attention}+#3#{} hand size',
-                    "{C:inactive,s:0.8}Art credit to",
-                    "{C:inactive,s:0.8}@silly_goober_0nthewall on Discord"
+                    "{s:0.3} ",
+                    "Art credit to",
+                    "{C:planet}@silly_goober_0nthewall{}",
+                    "on {C:spectral}Discord"
                 },
                 unlock = {
                     'Win with {C:attention}#1#{}',
@@ -108,7 +116,7 @@ return {
             bl_para_plain = {
                 name = "The Plain",
                 text = {
-                    "All enhanced cards",
+                    "Scored Enhanced cards",
                     "are debuffed"
                 }
             },
@@ -123,7 +131,23 @@ return {
             }
         },
         Edition = {},
-        Enhanced = {},
+        Enhanced = {
+            m_para_ashen = {
+                name = "Ashen Card",
+                text = {
+                    "When this card",
+                    "is played, all",
+                    "scoring cards gain",
+                    "{C:chips}+#1# {}chips",
+                    "{C:green}#2# in #3#{} chance",
+                    "to destroy card",
+                    "{s:0.3} ",
+                    "Art credit to",
+                    "{C:planet}@silly_goober_0nthewall{}",
+                    "on {C:spectral}Discord"
+                }
+            }
+        },
         Joker = {
             j_para_fakemadness = {
                 name = "Madness",
@@ -340,10 +364,10 @@ return {
                         "Gains {X:dark_edition,C:white}^^#2#{} Chips for each scoring {C:spades}Spade",
                     },
                     {
-                        "Used {C:planet}Planet{} cards have a {C:green}#3# in #4#{} chance",
-                        "to {C:attention}level up{} the card's poker hand",
-                        "{C:attention}1{} additional time",
-                        "(Must be a standard planet card)"
+                        "Used {C:planet}Planet{} cards have a {C:green}#3# in #4#{}",
+                        "chance to trigger {C:attention}#5#{} additional time(s)",
+                        "Increase extra triggers by {C:attention}#6#",
+                        "every #7# {C:inactive}(#8#){} {C:attention}9s{} scored"
                     },
                     {
                         "Art credit to",
@@ -401,6 +425,20 @@ return {
                     }
 		        }
             },
+            j_para_ashjoker = {
+                name = "Ashen Joker",
+                text = {
+                    {
+                        "This Joker gains {X:chips,C:white}X#2#{} Chips",
+                        "when an {C:attention}Ashen Card{} is played",
+                        "{C:inactive}(Currently {X:chips,C:white}X#1#{C:inactive} Chips)"
+                    },
+                    {
+                        "Art credit to",
+                        "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
+                    }
+                }
+            }
         },
         Other = {
             p_para_foodpack = {
@@ -429,7 +467,224 @@ return {
                 }
             }
         },
-        Tarot = {},
+        Tarot = {
+            c_para_arson = {
+                name = "Arson",
+                text = {
+                    {
+                        "Enhances {C:attention}#1#{}",
+                        "selected cards to",
+                        "{C:attention}#2#s",
+                    },
+                    {
+                        "Art credit to",
+                        "{C:planet}@silly_goober_0nthewall{}",
+                        "on {C:spectral}Discord"
+                    }
+                },
+            },
+        },
+        Sleeve = {
+            sleeve_para_yurisleeve = {
+                name = "Yuri Sleeve",
+                text = {
+                    "Start with an",
+                    "{C:attention,T:m_eternal}Eternal{} {C:rare,T:j_blueprint}Blueprint{} and",
+                    "an {C:attention}Eternal{} {C:rare,T:j_brainstorm}Brainstorm",
+                    "{C:red}#1#{} Joker slot",
+                    "{C:blue}#2#{} hand",
+                    "{s:0.3} ",
+                    "Art credit to",
+                    "{C:planet}@silly_goober_0nthewall{}",
+                    "on {C:spectral}Discord"
+                },
+            },
+            sleeve_para_yurisleeve_alt = {
+                name = "{C:edition}Yuri Sleeve",
+                text = {
+                    "Start with an additional",
+                    "{C:dark_edition,T:e_negative}Negative {C:attention,T:m_eternal}Eternal{} {C:rare,T:j_blueprint}Blueprint{} and",
+                    "an {C:dark_edition}Negative {C:attention}Eternal{} {C:rare,T:j_brainstorm}Brainstorm",
+                    "{C:red}#1#{} Joker slot",
+                    "{s:0.3} ",
+                    "Art credit to",
+                    "{C:planet}@silly_goober_0nthewall{}",
+                    "on {C:spectral}Discord"
+                }
+            },
+            sleeve_para_chasmsleeve = {
+                name = "Chasm Sleeve",
+                text = {
+                    "{C:red}#1#{} Joker slots",
+                    '{C:blue}#2#{} hands each round',
+                    '{C:attention}+#3#{} hand size',
+                    "{s:0.3} ",
+                    "Art credit to",
+                    "{C:planet}@silly_goober_0nthewall{}",
+                    "on {C:spectral}Discord"
+                },
+                unlock = {
+                    'Win with {C:attention}#1#{}',
+                    'and {C:attention}#2#',
+                    'on at least',
+                    '{C:gold}Gold Stake{} difficulty'
+                }
+            },
+            sleeve_para_chasmsleeve_alt1 = {
+                name = "{C:edition}Chasm Sleeve",
+                text = {
+                    '{C:red}#1#{} discards each round',
+                    '{C:attention}+#2#{} card selection limit',
+                    "{s:0.3} ",
+                    "Art credit to",
+                    "{C:planet}@silly_goober_0nthewall{}",
+                    "on {C:spectral}Discord"
+                },
+                unlock = {
+                    'Win with {C:attention}#1#{}',
+                    'and {C:attention}#2#',
+                    'on at least',
+                    '{C:gold}Gold Stake{} difficulty'
+                }
+            },
+            sleeve_para_chasmsleeve_alt2 = {
+                name = "{C:edition}Chasm Sleeve",
+                text = {
+                    '{C:red}#1#{} discards each round',
+                    '{C:attention}+#2#{} hand size',
+                    "{s:0.3} ",
+                    "Art credit to",
+                    "{C:planet}@silly_goober_0nthewall{}",
+                    "on {C:spectral}Discord"
+                },
+                unlock = {
+                    'Win with {C:attention}#1#{}',
+                    'and {C:attention}#2#',
+                    'on at least',
+                    '{C:gold}Gold Stake{} difficulty'
+                }
+            },
+            sleeve_para_chasmsleeve_alt3 = {
+                name = "Chasm Sleeve",
+                text = {
+                    "{C:red}#1#{} Joker slots",
+                    '{C:red}#2#{} discards each round',
+                    '{C:attention}+#3#{} hand size',
+                    "{s:0.3} ",
+                    "Art credit to",
+                    "{C:planet}@silly_goober_0nthewall{}",
+                    "on {C:spectral}Discord"
+                },
+                unlock = {
+                    'Win with {C:attention}#1#{}',
+                    'and {C:attention}#2#',
+                    'on at least',
+                    '{C:gold}Gold Stake{} difficulty'
+                }
+            },
+            sleeve_para_chasmsleeve_alt4 = {
+                name = "{C:edition}Chasm Sleeve",
+                text = {
+                    "{C:red}#1#{} Joker slots",
+                    '{C:blue}#2#{} hands each round',
+                    '{C:attention}+#3#{} card selection limit',
+                    "{s:0.3} ",
+                    "Art credit to",
+                    "{C:planet}@silly_goober_0nthewall{}",
+                    "on {C:spectral}Discord"
+                },
+                unlock = {
+                    'Win with {C:attention}#1#{}',
+                    'and {C:attention}#2#',
+                    'on at least',
+                    '{C:gold}Gold Stake{} difficulty'
+                }
+            },
+            sleeve_para_chasmsleeve_alt5 = {
+                name = "{C:edition}Chasm Sleeve",
+                text = {
+                    '{C:blue}#1#{} hands each round',
+                    '{C:attention}+#2#{} card selection limit',
+                    "{s:0.3} ",
+                    "Art credit to",
+                    "{C:planet}@silly_goober_0nthewall{}",
+                    "on {C:spectral}Discord"
+                },
+                unlock = {
+                    'Win with {C:attention}#1#{}',
+                    'and {C:attention}#2#',
+                    'on at least',
+                    '{C:gold}Gold Stake{} difficulty'
+                }
+            },
+            sleeve_para_voidsleeve = {
+                name = "Void Sleeve",
+                text = {
+                    "{C:attention}+#1#{} Joker slots",
+                    '{C:blue}#2#{} hands each round',
+                    "{s:0.3} ",
+                    "Art credit to",
+                    "{C:planet}@silly_goober_0nthewall{}",
+                    "on {C:spectral}Discord"
+                },
+                unlock = {
+                    'Win with {C:attention}#1#{}',
+                    'on at least',
+                    '{C:gold}Gold Stake{} difficulty'
+                }
+            },
+            sleeve_para_voidsleeve_alt = {
+                name = "{C:edition}Void Sleeve",
+                text = {
+                    "{C:attention}+#1#{} Joker slots",
+                    '{C:red}#2#{} discards each round',
+                    "{s:0.3} ",
+                    "Art credit to",
+                    "{C:planet}@silly_goober_0nthewall{}",
+                    "on {C:spectral}Discord"
+                },
+                unlock = {
+                    'Win with {C:attention}#1#{}',
+                    'on at least',
+                    '{C:gold}Gold Stake{} difficulty'
+                }
+            },
+            sleeve_para_artisticsleeve = {
+                name = "Artistic Sleeve",
+                text = {
+                    "{C:red}#1#{} Joker slots",
+                    '{C:attention}+#2#{} hand size'
+                },
+                unlock = {
+                    'Win with {C:attention}#1#{}',
+                    'on at least',
+                    '{C:gold}Gold Stake{} difficulty'
+                }
+            },
+            sleeve_para_artisticsleeve_alt1 = {
+                name = "{C:edition}Artistic Sleeve",
+                text = {
+                    '{C:attention}+#1#{} selection limit'
+                },
+                unlock = {
+                    'Win with {C:attention}#1#{}',
+                    'on at least',
+                    '{C:gold}Gold Stake{} difficulty'
+                }
+            },
+            sleeve_para_artisticsleeve_alt2 = {
+                name = "{C:edition}Artistic Sleeve",
+                text = {
+                    "{C:red}#1#{} Joker slots",
+                    '{C:attention}+#2#{} selection limit'
+                },
+                unlock = {
+                    'Win with {C:attention}#1#{}',
+                    'on at least',
+                    '{C:gold}Gold Stake{} difficulty'
+                }
+            }
+        },
         Voucher = {},
     },
     misc = {
@@ -457,7 +712,7 @@ return {
             para_k_l = "L",
             para_k_snacktime = 'Snacks time!',
             para_k_transformed = "Transformed!",
-            k_para_mythic = "Mythic",
+            k_para_prestige = "Prestigious",
             k_para_nft = "NFT",
             airplane_a1 = "(Currently ",
             airplane_a2 = "(Currently ",
@@ -466,7 +721,7 @@ return {
         },
         high_scores = {},
         labels = {
-            k_para_mythic = "Mythic",
+            k_para_prestige = "Prestigious",
             k_para_nft = "NFT"
         },
         poker_hand_descriptions = {},
