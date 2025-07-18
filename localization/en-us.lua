@@ -4,14 +4,13 @@ return {
             b_para_hundreddeck = {
 		        name = 'Deck of Hundreds',
 		        text = {
-			        '+#1# {C:attention}Joker{} slots',
-			        'Start with an extra {C:money}$#2#{}',
-			        '{C:blue}+#3#{} hands',
-			        '{C:red}+#4#{} discards',
-			        '{C:attention}+#5#{} consumable slots',
-			        '{C:attention}+#6#{} hand size',
-                    'Beat {C:attention}#7#{} more Antes to win',
-			        '{C:inactive,s:0.8}100 times stronger than other decks!{}'
+			        '{s:0.8}+#1# {C:attention,s:0.8}Joker{s:0.8} slots',
+			        '{s:0.8}Start with an extra {C:money,s:0.8}$#2#{}',
+			        '{C:blue,s:0.8}+#3#{s:0.8} hands',
+			        '{C:red,s:0.8}+#4#{s:0.8} discards',
+			        '{C:attention,s:0.8}+#5#{s:0.8} consumable slots',
+			        '{C:attention,s:0.8}+#6#{s:0.8} hand size',
+                    '{s:0.8}Beat {C:attention,s:0.8}#7#{s:0.8} more Antes to win',
                 }
 		    },
             b_para_naneinfdeck = {
@@ -34,10 +33,8 @@ return {
                 name = "Yuri Deck",
                 text = {
                     "Start with an",
-                    "{C:attention,T:m_eternal}Eternal{} {C:rare,T:j_blueprint}Blueprint{} and",
-                    "an {C:attention}Eternal{} {C:rare,T:j_brainstorm}Brainstorm",
-                    "{C:red}#1#{} Joker slot",
-                    "{C:blue}#2#{} hand",
+                    "{C:attention,T:m_eternal}Eternal{} {C:rare,T:j_blueprint}Blueprint{} and an {C:attention}Eternal{} {C:rare,T:j_brainstorm}Brainstorm",
+                    "{C:red}#1#{} Joker slot, {C:blue}#2#{} hand",
                     "{s:0.3} ",
                     "Art credit to",
                     "{C:planet}@silly_goober_0nthewall{}",
@@ -48,10 +45,8 @@ return {
                 name = "Yaoi Deck",
                 text = {
                     "Start with an",
-                    "{C:attention,T:m_eternal}Eternal{} {C:rare,T:j_para_fakemadness}Madness{} and",
-                    "an {C:attention}Eternal{} {C:rare,T:j_vagabond}Vagabond",
-                    "{C:red}#1#{} Joker slot",
-                    "{C:blue}#2#{} hand",
+                    "{C:attention,T:m_eternal}Eternal{} {C:rare,T:j_para_fakemadness}Madness{} and an {C:attention}Eternal{} {C:rare,T:j_vagabond}Vagabond",
+                    "{C:red}#1#{} Joker slot, {C:blue}#2#{} hand",
                     "{s:0.3} ",
                     "Art credit to",
                     "{C:planet}@mr.cr33ps{}",
@@ -62,7 +57,11 @@ return {
                 name = "Bonnie Deck",
                 text = {
                     "Start with an {C:attention,T:m_eternal}Eternal{} {C:uncommon,T:j_para_bonnie}Bonnie{}",
-                    "and #1# random {C:attention}Food Jokers"
+                    "and #1# random {C:attention}Food Jokers",
+                    "{s:0.3} ",
+                    "Art credit to",
+                    "{C:planet}@silly_goober_0nthewall{}",
+                    "on {C:spectral}Discord"
                 }
             },
             b_para_artisticdeck = {
@@ -161,10 +160,16 @@ return {
             j_para_bonnie = {
 		        name = 'Bonnie',
 		        text = {
-			        'When exiting the {C:attention}shop{}',
-			        'after defeating a {C:attention}Boss Blind{},',
-			        'create a {C:enhanced}Safe Room Tag{}',
-			        '{C:inactive,s:0.8}I\'m a chef cooker!!!'
+                    {
+			            'When exiting the {C:attention}shop{}',
+			            'after defeating a {C:attention}Boss Blind{},',
+			            'create a {C:enhanced}Safe Room Tag{}',
+			            '{C:inactive,s:0.8}I\'m a chef cooker!!!'
+                    },
+                    {
+                        "Art credit to",
+                        "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
+                    }
 		        }
             },
             j_para_bluecard = {
@@ -488,11 +493,9 @@ return {
             sleeve_para_yurisleeve = {
                 name = "Yuri Sleeve",
                 text = {
-                    "Start with an",
-                    "{C:attention,T:m_eternal}Eternal{} {C:rare,T:j_blueprint}Blueprint{} and",
-                    "an {C:attention}Eternal{} {C:rare,T:j_brainstorm}Brainstorm",
-                    "{C:red}#1#{} Joker slot",
-                    "{C:blue}#2#{} hand",
+                    "{s:0.8}Start with an",
+                    "{s:0.8,C:attention,T:m_eternal}Eternal{s:0.8} {s:0.8,C:rare,T:j_blueprint}Blueprint{s:0.8} and an {s:0.8,C:attention}Eternal{} {s:0.8,C:rare,T:j_brainstorm}Brainstorm",
+                    "{C:red,s:0.8}#1#{s:0.8} Joker slot, {s:0.8,C:blue}#2#{s:0.8} hand",
                     "{s:0.3} ",
                     "Art credit to",
                     "{C:planet}@silly_goober_0nthewall{}",
@@ -502,10 +505,9 @@ return {
             sleeve_para_yurisleeve_alt = {
                 name = "{C:edition}Yuri Sleeve",
                 text = {
-                    "Start with an additional",
-                    "{C:dark_edition,T:e_negative}Negative {C:attention,T:m_eternal}Eternal{} {C:rare,T:j_blueprint}Blueprint{} and",
-                    "an {C:dark_edition}Negative {C:attention}Eternal{} {C:rare,T:j_brainstorm}Brainstorm",
-                    "{C:red}#1#{} Joker slot",
+                    "{s:0.8}Start with an additional",
+                    "{s:0.8,C:dark_edition,T:e_negative}Negative {s:0.8,C:attention,T:m_eternal}Eternal{s:0.8} {s:0.8,C:rare,T:j_blueprint}Blueprint{s:0.8} and a {s:0.8,C:dark_edition}Negative {s:0.8,C:attention}Eternal{s:0.8} {s:0.8,C:rare,T:j_brainstorm}Brainstorm",
+                    "{s:0.8,C:red}#1#{} Joker slot",
                     "{s:0.3} ",
                     "Art credit to",
                     "{C:planet}@silly_goober_0nthewall{}",
