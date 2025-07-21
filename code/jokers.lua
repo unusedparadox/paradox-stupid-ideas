@@ -974,3 +974,52 @@ SMODS.Sound{
 	 	['en-us'] = 'yourtakingtoolong.ogg',
 	}
 }
+SMODS.Joker{
+	key = "castenstone",
+	atlas = 'Jokers',
+	pos = {x = 5, y = 2},
+	config = { extra = {
+		chips = 0,
+		chip_gain = 20,
+	}},
+	loc_vars = function(self,info_queue,card)
+		return {vars = {card.ability.extra.chips, card.ability.extra.chip_gain}}
+	end,
+	rarity = 3,
+	cost = 8,
+	blueprint_compat = true,
+	eternal_compat = true,
+	perishable_compat = false,
+	calculate = function(self, card, context)
+		if context.evaluate_poker_hand and not context.blueprint then
+			return {
+				replace_scoring_name = "High Card"
+			}
+		elseif context.modify_scoring_hand and not context.blueprint then
+			local highest_card = nil
+			local highest_card_rank = -1
+			for _, v in ipairs(context.full_hand) do
+				local id = SMODS.Ranks[v.base.value].sort_nominal
+				if id > highest_card_rank then
+					highest_card_rank = id
+					highest_card = v
+				end
+			end
+			if context.other_card == highest_card then
+				return {
+					add_to_hand = true
+				}
+			else
+				card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_gain
+				return {
+					message = localize('k_upgrade_ex'),
+					remove_from_hand = true
+				}
+			end
+		elseif context.joker_main then
+			return {
+				chips = card.ability.extra.chips
+			}
+		end
+	end
+}

@@ -460,6 +460,22 @@ return {
                     }
                 }
             },
+            j_para_castenstone = {
+                name = "Casten Stone",
+                text = {
+                    {
+                        "Only the {C:attention}highest-ranked{} playing card",
+                        "in the hand will score",
+                        "Gains {C:chips}+#2#{} Chips per unscoring card",
+                        "(Chooses leftmost if there is a tie)",
+                        "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)",
+                    },
+                    {
+                        "Art credit to",
+                        "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
+                    }
+                }
+            },
         },
         Other = {
             p_para_foodpack = {
