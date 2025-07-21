@@ -1010,10 +1010,16 @@ SMODS.Joker{
 					add_to_hand = true
 				}
 			else
-				card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_gain
 				return {
-					message = localize('k_upgrade_ex'),
 					remove_from_hand = true
+				}
+			end
+		elseif context.before then
+			card.ability.extra.chips = card.ability.extra.chips + (card.ability.extra.chip_gain * (#context.full_hand - 1))
+			if #context.full_hand > 1 then
+				return {
+					message = localize("k_upgrade_ex"),
+					colour = G.C.CHIPS
 				}
 			end
 		elseif context.joker_main then
