@@ -103,8 +103,8 @@ G.foodjokers = {
 	['j_popcorn'] = true,
 	['j_ramen'] = true, 
 	['j_selzer'] = true,
-	['j_diet_cola'] = true, 
-	['j_egg'] = true, 
+	['j_diet_cola'] = true,
+	['j_egg'] = true,
 	-- Cardsauce
 	['j_csau_meat'] = true, 
 	['j_csau_fantabulous'] = true,
@@ -173,7 +173,7 @@ G.foodjokers = {
 	['j_buf_gfondue'] = true,
 	['j_buf_camarosa'] = true,
 	-- Aikoyori's Shenanigans
-	['j_akyrs_eat_pant'] = true, 
+	['j_akyrs_eat_pant'] = true,
 	-- Prism
 	['j_prism_pizza_cap'] = true,
 	['j_prism_pizza_mar'] = true,
@@ -255,6 +255,12 @@ para_consumefood = function(card)
     	end
     }))
 end
+SMODS.Atlas {
+    key = "modicon",
+    path = "modicon.png",
+    px = 256,
+    py = 256
+}
 -- End function definitions
 -- Load files
 assert(SMODS.load_file("code/rarities.lua"))()

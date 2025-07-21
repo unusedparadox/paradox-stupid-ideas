@@ -443,7 +443,23 @@ return {
                         "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
                     }
                 }
-            }
+            },
+            j_para_jackenstein = {
+                name = "Jackenstein",
+                text = {
+                    {
+                        "This Joker loses {X:mult,C:white}X#2#{} Mult",
+                        "prior to every {C:blue}hand{} or {C:red}discard{}",
+                        "Resets to {X:mult,C:white}X#3#{} Mult",
+                        "at the end of the {C:attention}Ante",
+                        "{C:inactive}(Minimum {X:mult,C:white}X#4#{C:inactive} Mult, currently {X:mult,C:white}X#1#{C:inactive} Mult)",
+                    },
+                    {
+                        "Art credit to",
+                        "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
+                    }
+                }
+            },
         },
         Other = {
             p_para_foodpack = {
@@ -719,7 +735,8 @@ return {
             airplane_a1 = "(Currently ",
             airplane_a2 = "(Currently ",
             airplane_b1 = " free reroll)",
-            airplane_b2 = " free rerolls)"
+            airplane_b2 = " free rerolls)",
+            k_para_takingtoolong = "YOUR TAKING TOO LONG"
         },
         high_scores = {},
         labels = {
