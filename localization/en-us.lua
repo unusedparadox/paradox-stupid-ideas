@@ -470,10 +470,10 @@ return {
                 name = "Casten Stone",
                 text = {
                     {
-                        "Only the {C:attention}highest-ranked{} playing card",
-                        "in the hand will score",
-                        "Gains {C:chips}+#2#{} Chips per unscoring card",
-                        "(Chooses leftmost if there is a tie)",
+                        "No played cards will score",
+                        "Gains {C:chips}+#2#{} Chips per played card",
+                        "any copy of {C:attention}Casten Stone{}",
+                        "prevented from scoring",
                         "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)",
                     },
                     {

@@ -4,7 +4,7 @@ SMODS.Atlas{ -- Atlas for Backs
 	px = 71,
 	py = 95
 }
-if next(SMODS.find_mod("Talisman")) and (SMODS.Mods.Talisman.config.break_infinity == "bignumber" or SMODS.Mods.Talisman.config.break_infinity == "omeganum") then
+if next(SMODS.find_mod("Talisman")) and (Talisman.config_file.score_opt_id >= 2) then
 	SMODS.Back{
 	    key = "hundreddeck",
 	    unlocked = true,
@@ -75,7 +75,8 @@ SMODS.Back{
 }
 local unlockednaneinf = true
 local unlock_condition_naneinf = function(self, args) return true end
-if next(SMODS.find_mod("Talisman")) and (SMODS.Mods.Talisman.config.break_infinity == "bignumber" or SMODS.Mods.Talisman.config.break_infinity == "omeganum") then
+print(Talisman.config_file)
+if next(SMODS.find_mod("Talisman")) and (Talisman.config_file.score_opt_id >= 2) then
 	unlockednaneinf = false
 	unlock_condition_naneinf = function(self, args)
 		if args.type == "chip_score" and to_big(args.chips) >= to_big(1.8) * (to_big(10) ^ to_big(308)) then

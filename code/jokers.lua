@@ -980,7 +980,7 @@ SMODS.Joker{
 	pos = {x = 5, y = 2},
 	config = { extra = {
 		chips = 0,
-		chip_gain = 20,
+		chip_gain = 12,
 	}},
 	loc_vars = function(self,info_queue,card)
 		return {vars = {card.ability.extra.chips, card.ability.extra.chip_gain}}
@@ -991,35 +991,39 @@ SMODS.Joker{
 	eternal_compat = true,
 	perishable_compat = false,
 	calculate = function(self, card, context)
-		if context.evaluate_poker_hand and not context.blueprint then
-			return {
-				replace_scoring_name = "High Card"
-			}
-		elseif context.modify_scoring_hand and not context.blueprint then
-			local highest_card = nil
-			local highest_card_rank = -1
-			for _, v in ipairs(context.full_hand) do
-				local id = SMODS.Ranks[v.base.value].sort_nominal
-				if id > highest_card_rank then
-					highest_card_rank = id
-					highest_card = v
+		if context.modify_scoring_hand and not context.blueprint and context.in_scoring then
+			local splash_before, splash_after, s_index, c_index = false, false, nil, nil
+			for i = 1, #G.jokers.cards do
+            	if G.jokers.cards[i].config.center.key == "j_para_castenstone" then c_index = i
+				elseif G.jokers.cards[i].config.center.key == "j_splash" and not s_index then s_index = i end
+        	end
+			if s_index < c_index then splash_before = true end
+			if s_index > c_index then splash_after = true end
+			if splash_before or SMODS.in_scoring(context.other_card, context.scoring_hand) then
+				card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_gain
+				if not splash_after then
+					return {
+						message = localize("k_upgrade_ex"),
+						colour = G.C.CHIPS,
+						remove_from_hand = true
+					}
+				else
+					return {
+						message = localize("k_upgrade_ex"),
+						colour = G.C.CHIPS
+					}	
 				end
 			end
-			if context.other_card == highest_card then
-				return {
-					add_to_hand = true
-				}
-			else
+		elseif context.modify_scoring_hand and not context.blueprint then
+			local splash_after, s_index, c_index = false, nil, nil
+			for i = 1, #G.jokers.cards do
+            	if G.jokers.cards[i].config.center.key == "j_para_castenstone" then c_index = i
+				elseif G.jokers.cards[i].config.center.key == "j_splash" then s_index = i end
+        	end
+			if s_index > c_index then splash_after = true end
+			if not splash_after then
 				return {
 					remove_from_hand = true
-				}
-			end
-		elseif context.before then
-			card.ability.extra.chips = card.ability.extra.chips + (card.ability.extra.chip_gain * (#context.full_hand - 1))
-			if #context.full_hand > 1 then
-				return {
-					message = localize("k_upgrade_ex"),
-					colour = G.C.CHIPS
 				}
 			end
 		elseif context.joker_main then
