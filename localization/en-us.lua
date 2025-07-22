@@ -252,11 +252,17 @@ return {
             j_para_fishhead = {
                 name = "Fish Head",
                 text = {
-                    "Earn {C:money}$#1#{} at the end of the round",
-                    "For each {C:money}$1{} you have over {C:money}$#2#{} at",
-                    "end of round, this Joker permanently earns {C:money}$1{} less",
-                    "{C:inactive,s:0.8}Fish heads are yummy and the",
-                    "{C:inactive,s:0.8}textures are different and good!!!"
+                    {
+                        "Earn {C:money}$#1#{} at the end of the round",
+                        "For each {C:money}$1{} you have over {C:money}$#2#{} at",
+                        "end of round, this Joker permanently earns {C:money}$1{} less",
+                        "{C:inactive,s:0.8}Fish heads are yummy and the",
+                        "{C:inactive,s:0.8}textures are different and good!!!"
+                    },
+                    {
+                        "Art credit to",
+                        "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
+                    }
                 }
             },
             j_para_nft = {
