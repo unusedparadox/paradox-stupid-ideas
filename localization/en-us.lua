@@ -476,6 +476,23 @@ return {
                     }
                 }
             },
+            j_para_brokenphone = {
+                name = "Broken Phone",
+                text = {
+                    {
+                        "Gives half the {C:mult}Mult{} and {C:chips}Chips",
+                        "from {C:attention}most played{} poker hand",
+                        "(Ties are broken by",
+                        "highest ranked poker hand)",
+                        "{C:inactive}(Currently {C:planet}#1#{C:inactive} with",
+                        "{C:chips}+#2#{C:inactive} Chips and {C:mult}+#3#{C:inactive} Mult)",
+                    },
+                    {
+                        "Art credit to",
+                        "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
+                    }
+                }
+            },
         },
         Other = {
             p_para_foodpack = {
