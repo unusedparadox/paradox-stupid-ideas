@@ -985,6 +985,7 @@ SMODS.Joker{
 	loc_vars = function(self,info_queue,card)
 		return {vars = {card.ability.extra.chips, card.ability.extra.chip_gain}}
 	end,
+	pools = { ["parajoker"] = true },
 	rarity = 3,
 	cost = 8,
 	blueprint_compat = true,
@@ -1037,6 +1038,7 @@ SMODS.Joker{
 	key = "brokenphone",
 	atlas = 'Jokers',
 	pos = {x = 4, y = 2},
+	pools = { ["parajoker"] = true },
 	loc_vars = function(self,info_queue,card)
         local _hand, _tally = nil, to_big(0) -- ty vanillaremade for giving me all this code
 		if G.STAGE == G.STAGES.RUN then
