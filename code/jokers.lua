@@ -997,8 +997,8 @@ SMODS.Joker{
             	if G.jokers.cards[i].config.center.key == "j_para_castenstone" then c_index = i
 				elseif G.jokers.cards[i].config.center.key == "j_splash" and not s_index then s_index = i end
         	end
-			if s_index < c_index then splash_before = true end
-			if s_index > c_index then splash_after = true end
+			if s_index and c_index and s_index < c_index then splash_before = true end
+			if s_index and c_index and s_index > c_index then splash_after = true end
 			if splash_before or SMODS.in_scoring(context.other_card, context.scoring_hand) then
 				card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_gain
 				if not splash_after then
@@ -1020,7 +1020,7 @@ SMODS.Joker{
             	if G.jokers.cards[i].config.center.key == "j_para_castenstone" then c_index = i
 				elseif G.jokers.cards[i].config.center.key == "j_splash" then s_index = i end
         	end
-			if s_index > c_index then splash_after = true end
+			if s_index and c_index and s_index > c_index then splash_after = true end
 			if not splash_after then
 				return {
 					remove_from_hand = true
