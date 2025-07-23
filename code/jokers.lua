@@ -808,7 +808,9 @@ if next(SMODS.find_mod("Talisman")) then
 			nine_counter = 25,
 			nine_requirement = 25,
 			planet_retrigger = 0,
-			planet_retrigger_growth = 1
+			planet_retrigger_growth = 1,
+			x_probability = 1,
+			x_probability_growth = 0.5
 		}},
 		atlas = 'Jokers_Soul',
 		pos = {x = 1, y = 0},
@@ -819,8 +821,9 @@ if next(SMODS.find_mod("Talisman")) then
 		perishable_compat = false,
 		loc_vars = function(self,info_queue,card)
 			local new_numerator, new_denominator = SMODS.get_probability_vars(card, card.ability.extra.numerator_planet, card.ability.extra.denominator_planet, 'para_astro_planets')
-			return {vars = {card.ability.extra.eechips, card.ability.extra.eechips_gain, new_numerator, new_denominator, card.ability.extra.planet_retrigger, card.ability.extra.planet_retrigger_growth,
-			card.ability.extra.nine_requirement, card.ability.extra.nine_counter}}
+			return {vars = {card.ability.extra.eechips, card.ability.extra.eechips_gain, new_numerator, new_denominator,
+			card.ability.extra.planet_retrigger, card.ability.extra.planet_retrigger_growth, card.ability.extra.nine_requirement,
+			card.ability.extra.nine_counter, card.ability.extra.x_probability, card.ability.extra.x_probability_growth}}
 		end,
 		calculate = function(self, card, context)
 			if context.joker_main and context.scoring_name == "Flush" then -- Scores the tetrational chips.
@@ -849,17 +852,30 @@ if next(SMODS.find_mod("Talisman")) then
 						context.consumeable:use_consumeable(context.consumeable)
 					end
 				end
-			elseif context.individual and context.cardarea == G.play and (context.other_card:get_id() == 9) and not context.blueprint then -- Check for triggered nines
-				card.ability.extra.nine_counter = card.ability.extra.nine_counter - 1
-				if card.ability.extra.nine_counter == 0 then
-					card.ability.extra.nine_counter = card.ability.extra.nine_requirement
-					card.ability.extra.planet_retrigger = card.ability.extra.planet_retrigger + card.ability.extra.planet_retrigger_growth
-            		return {
-            		    message = localize('k_upgrade_ex'),
-            		    colour = G.C.SECONDARY_SET.PLANET,
-            		    message_card = card
+			elseif context.individual and context.cardarea == G.play and not context.blueprint then
+				if context.other_card:get_id() == 9 then -- Check for triggered nines
+					card.ability.extra.nine_counter = card.ability.extra.nine_counter - 1
+					if card.ability.extra.nine_counter == 0 then
+						card.ability.extra.nine_counter = card.ability.extra.nine_requirement
+						card.ability.extra.planet_retrigger = card.ability.extra.planet_retrigger + card.ability.extra.planet_retrigger_growth
+            			return {
+            			    message = localize('k_upgrade_ex'),
+            			    colour = G.C.SECONDARY_SET.PLANET,
+            		    	message_card = card
+            			}
+					end
+				end
+				if SMODS.has_enhancement(context.other_card, 'm_lucky') then -- Check for Lucky Cards
+					card.ability.extra.x_probability = card.ability.extra.x_probability + card.ability.extra.x_probability_growth
+        			return {
+        			    message = localize('k_upgrade_ex'),
+            		    colour = G.C.GREEN
             		}
 				end
+			elseif context.mod_probability and not context.blueprint then -- apply xprobability
+				return {
+					numerator = context.numerator * card.ability.extra.x_probability
+				}
 			end
 		end,
 		in_pool = function(self, args)

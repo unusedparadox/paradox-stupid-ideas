@@ -381,6 +381,12 @@ return {
                         "every #7# {C:inactive}(#8#){} {C:attention}9s{} scored"
                     },
                     {
+                        "The {C:green}numerators{} of {C:attention}listed probabilities",
+                        "are multiplied by {C:green}#9#",
+                        "Increase {C:attention}probability boost{} by {C:green}#10#",
+                        "when a {C:attention}Lucky Card{} is scored",
+                    },
+                    {
                         "Art credit to",
                         "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
                     }
