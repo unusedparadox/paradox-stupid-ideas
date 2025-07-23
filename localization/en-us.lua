@@ -505,6 +505,22 @@ return {
                     }
                 }
             },
+            j_para_threepartplan = {
+                name = "Three Part Plan",
+                text = {
+                    {
+                        "Scoring cards have a {C:green}#1# in #2#{}",
+                        "chance to become {C:attention}Glass Cards{}",
+                        "Destroyed {C:attention}Glass Cards{} are",
+                        "copied and have their",
+                        "rank and suit {C:attention}randomized",
+                    },
+                    {
+                        "Art credit to",
+                        "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
+                    }
+                }
+            },
         },
         Other = {
             p_para_foodpack = {

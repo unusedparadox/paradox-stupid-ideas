@@ -75,7 +75,6 @@ SMODS.Back{
 }
 local unlockednaneinf = true
 local unlock_condition_naneinf = function(self, args) return true end
-print(Talisman.config_file)
 if next(SMODS.find_mod("Talisman")) and Talisman and (Talisman.config_file.score_opt_id >= 2) then
 	unlockednaneinf = false
 	unlock_condition_naneinf = function(self, args)
