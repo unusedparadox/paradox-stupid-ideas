@@ -1,4 +1,4 @@
-if next(SMODS.find_mod("Talisman")) and (Talisman.config_file.score_opt_id >= 2) then
+if next(SMODS.find_mod("Talisman")) and Talisman and (Talisman.config_file.score_opt_id >= 2) then
     SMODS.Challenge{
         loc_txt = "Endurance Test",
         key = 'endurance',

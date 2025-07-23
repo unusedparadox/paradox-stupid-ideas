@@ -796,7 +796,7 @@ SMODS.Joker{ -- Green Credit Card implementation
 		return next(SMODS.find_card("j_credit_card", false)) and to_big(((G.GAME.dollars + (G.GAME.dollar_buffer or 0))) < to_big(0)), { allow_duplicates = false }
 	end
 }
-if next(SMODS.find_mod("Talisman")) then
+if next(SMODS.find_mod("Talisman")) and Talisman then
 	SMODS.Joker{ -- < • Astro :3c • > implementation
 		key = 'astro',
 		pools = {["parajoker"] = true},
