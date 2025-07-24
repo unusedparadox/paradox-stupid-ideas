@@ -12,6 +12,7 @@ SMODS.Joker{ -- Malanga Fritter implementation
 	eternal_compat = false,
 	perishable_compat = false,
 	loc_vars = function(self,info_queue,card)
+		info_queue[#info_queue + 1] = G.P_CENTERS.e_polychrome
 		return {vars = {card.ability.extra.hands}}
 	end,
  	calculate = function(self, card, context)

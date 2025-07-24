@@ -8,6 +8,7 @@ SMODS.Joker{
 		denominator = 4
 	}},
 	loc_vars = function(self,info_queue,card)
+		info_queue[#info_queue + 1] = G.P_CENTERS["m_glass"]
 		local new_numerator, new_denominator = SMODS.get_probability_vars(card,
 		card.ability.extra.numerator, card.ability.extra.denominator, 'para_threepartplan')
 		return {vars = {new_numerator, new_denominator}}
