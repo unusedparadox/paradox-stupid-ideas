@@ -1,9 +1,3 @@
-SMODS.Atlas{
-	key = "Enhancements",
-	path = "Enhancements.png",
-	px = 71,
-	py = 95,
-}
 SMODS.Enhancement{
     key = "ashen",
     atlas = "Enhancements",
