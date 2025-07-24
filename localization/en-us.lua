@@ -274,7 +274,7 @@ return {
                     "{C:inactive,s:0.8}L"
                 }
             },
-            j_para_deltarunetomorrow = {
+            j_para_jokerrune = {
                 name = "Jokerrune",
                 text = {
                     "{X:mult,C:white}X#1#{} Mult per chapter of",
@@ -442,7 +442,7 @@ return {
                     }
 		        }
             },
-            j_para_ashjoker = {
+            j_para_ashenjoker = {
                 name = "Ashen Joker",
                 text = {
                     {
