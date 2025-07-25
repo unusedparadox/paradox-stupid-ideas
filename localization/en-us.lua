@@ -521,6 +521,57 @@ return {
                     }
                 }
             },
+            j_para_volcaniceruption = {
+                name = "Volcanic Eruption",
+                text = {
+                    {
+                        "No played cards will score",
+                        "{X:chips,C:white}X#2#{} Chips for each unscored card",
+                        "{C:inactive}(Currently {X:chips,C:white}X#1#{C:inactive} Chips)"
+                    },
+                    {
+                        "Art credit to",
+                        "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
+                    }
+                }
+            },
+            j_para_endlessinferno = {
+                name = "Endless Inferno",
+                text = {
+                    {
+                        "All scoring cards become",
+                        "{C:attention}Ashen Cards{} and gain {X:chips,C:white}X#1#{} Chips",
+                        "{C:inactive,s:0.8}Steamodded has a minor bug",
+                        "{C:inactive,s:0.8}such that cards played with this Joker",
+                        "{C:inactive,s:0.8}will display \"{X:chips,C:white,s:0.8}Xnil{C:inactive,s:0.8} chips when held\".",
+                        "{C:inactive,s:0.8}Rest assured, this means nothing."
+                    },
+                    {
+                        "Art credit to",
+                        "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
+                    }
+                }
+            },
+            j_para_supercomputer = {
+                name = "Supercomputer",
+                text = {
+                    {
+                        "Gives the {C:chips}Chips{} and {C:mult}Mult{} of",
+                        "most played poker hand",
+                        "{C:attention}Levels up{} most played",
+                        "poker hand prior to scoring",
+                        "(Ties are broken by",
+                        "highest ranked poker hand)",
+                        "{C:inactive}(Currently {C:planet}#1#{C:inactive} with",
+                        "{C:chips}+#2#{C:inactive} Chips and {C:mult}+#3#{C:inactive} Mult,",
+                        "{C:inactive}gains {C:chips}+#4#{C:inactive} Chips and {C:mult}+#5#{C:inactive} Mult)"
+                    },
+                    {
+                        "Art credit to",
+                        "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
+                    }
+                }
+            },
         },
         Other = {
             p_para_foodpack = {

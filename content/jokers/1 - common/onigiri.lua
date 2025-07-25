@@ -38,7 +38,7 @@ SMODS.Joker{ -- Onigiri implementation
 		elseif context.after and not context.blueprint then
 			card.ability.extra.hands_left = card.ability.extra.hands_left - 1
 			if card.ability.extra.hands_left <= 0 then
-				para_consumefood(card)
+				PSI.consumefood(card)
                 return {
                     message = localize('k_eaten_ex'),
                     colour = G.C.ATTENTION

@@ -25,7 +25,7 @@ SMODS.Joker{ -- Palmier implementation
                 colour = G.C.CHIPS
             }
 		elseif context.after and card.ability.extra.chips <= 0 and not context.blueprint then
-			para_consumefood(card)
+			PSI.consumefood(card)
             return {
                 message = localize('k_eaten_ex'),
                 colour = G.C.ATTENTION

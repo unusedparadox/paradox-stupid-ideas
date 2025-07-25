@@ -3,6 +3,8 @@
 ------------MOD CODE -------------------------
 to_big = to_big or function(x) return x end -- Talisman compat
 
+PSI = {}
+
 PARA_ASPL = {}
 PARA_ASPL.FUNC = {}
 PARA_ASPL.G = {}
@@ -48,6 +50,9 @@ PARA_ASPL.FUNC.RequireFolderRecursive("lib")
 PARA_ASPL.FUNC.RequireFolderRecursive("content")
 if CardSleeves then
 	PARA_ASPL.FUNC.RequireFolderRecursive("crossmod/CardSleeves")
+end
+if GB then
+	PARA_ASPL.FUNC.RequireFolderRecursive("crossmod/GrabBag")
 end
 ----------------------------------------------
 ------------MOD CODE END----------------------

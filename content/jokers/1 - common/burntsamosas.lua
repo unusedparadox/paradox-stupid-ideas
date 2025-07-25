@@ -24,7 +24,7 @@ SMODS.Joker{ -- Burnt Samosas implementation
 		elseif context.end_of_round and context.cardarea == G.jokers then
 			card.ability.extra.chips = card.ability.extra.chips - card.ability.extra.chip_loss
 			if card.ability.extra.chips <= 0 then
-				para_consumefood(card)
+				PSI.consumefood(card)
         	    return {
         	        message = localize('k_eaten_ex'),
         	        colour = G.C.ATTENTION

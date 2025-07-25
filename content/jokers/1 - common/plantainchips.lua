@@ -24,7 +24,7 @@ SMODS.Joker{ -- Plantain Chips implementation
 		elseif context.end_of_round and context.cardarea == G.jokers then
 			card.ability.extra.xchips = card.ability.extra.xchips - card.ability.extra.xchips_loss
 			if card.ability.extra.xchips <= 1 then
-				para_consumefood(card)
+				PSI.consumefood(card)
                 return {
                     message = localize('k_eaten_ex'),
                     colour = G.C.ATTENTION

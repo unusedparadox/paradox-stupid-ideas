@@ -17,7 +17,7 @@ SMODS.Joker{ -- mmm yummy pancake
 		if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
 			card.ability.extra.mult = card.ability.extra.mult - card.ability.extra.mult_loss
 			if card.ability.extra.mult <= 0 then
-				para_consumefood(card)
+				PSI.consumefood(card)
            		return {
            		    message = localize('k_eaten_ex'),
            		    colour = G.C.ATTENTION

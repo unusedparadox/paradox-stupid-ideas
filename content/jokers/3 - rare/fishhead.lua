@@ -21,7 +21,7 @@ SMODS.Joker{ -- Fish Head implementation
 			local money_minus = to_big(0) - math.max(0, (to_big(G.GAME.dollars) + (to_big(G.GAME.dollar_buffer) or to_big(0)) - to_big(card.ability.extra.threshold)))
 			card.ability.extra.money = to_big(card.ability.extra.money) + to_big(money_minus)
 			if to_big(card.ability.extra.money) <= to_big(0) then
-				para_consumefood(card)
+				PSI.consumefood(card)
                 return {
                     message = localize('k_eaten_ex'),
                     colour = G.C.ATTENTION

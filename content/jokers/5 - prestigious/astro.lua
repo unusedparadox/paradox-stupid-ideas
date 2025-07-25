@@ -12,7 +12,8 @@ SMODS.Joker{ -- < • Astro :3c • > implementation
 		planet_retrigger = 0,
 		planet_retrigger_growth = 1,
 		x_probability = 1,
-		x_probability_growth = 0.5
+		x_probability_growth = 0.5,
+		odds = true -- grab bag compat
 	}},
 	atlas = 'Jokers_Soul',
 	pos = {x = 1, y = 0},

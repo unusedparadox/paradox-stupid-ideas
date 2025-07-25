@@ -5,7 +5,8 @@ SMODS.Joker{
 	pools = { ["parajoker"] = true },
 	config = { extra = {
 		numerator = 1,
-		denominator = 4
+		denominator = 4,
+		odds = true -- hiya grab bag nice to see you
 	}},
 	loc_vars = function(self,info_queue,card)
 		info_queue[#info_queue + 1] = G.P_CENTERS["m_glass"]

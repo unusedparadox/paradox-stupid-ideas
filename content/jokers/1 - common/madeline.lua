@@ -23,7 +23,7 @@ SMODS.Joker{ -- Madeline implementation
 				mult = card.ability.extra.mult
 			}
 		elseif context.after and card.ability.extra.cards <= 0 and not context.blueprint then
-			para_consumefood(card)
+			PSI.consumefood(card)
             return {
                 message = localize('k_eaten_ex'),
                 colour = G.C.ATTENTION
