@@ -37,7 +37,7 @@ return {
                     "{C:red}#1#{} Joker slot, {C:blue}#2#{} hand",
                     "{s:0.3} ",
                     "Art credit to",
-                    "{C:planet}@silly_goober_0nthewall{}",
+                    "{C:planet}silly_goober_0nthewall{}",
                     "on {C:spectral}Discord"
                 }
             },
@@ -49,7 +49,7 @@ return {
                     "{C:red}#1#{} Joker slot, {C:blue}#2#{} hand",
                     "{s:0.3} ",
                     "Art credit to",
-                    "{C:planet}@mr.cr33ps{}",
+                    "{C:planet}mr.cr33ps{}",
                     "on {C:spectral}Discord"
                 }
             },
@@ -60,7 +60,7 @@ return {
                     "and #1# random {C:attention}Food Jokers",
                     "{s:0.3} ",
                     "Art credit to",
-                    "{C:planet}@silly_goober_0nthewall{}",
+                    "{C:planet}silly_goober_0nthewall{}",
                     "on {C:spectral}Discord"
                 }
             },
@@ -83,7 +83,7 @@ return {
                     '{C:blue}#2#{} hands each round',
                     "{s:0.3} ",
                     "Art credit to",
-                    "{C:planet}@silly_goober_0nthewall{}",
+                    "{C:planet}silly_goober_0nthewall{}",
                     "on {C:spectral}Discord"
                 },
                 unlock = {
@@ -100,7 +100,7 @@ return {
                     '{C:attention}+#3#{} hand size',
                     "{s:0.3} ",
                     "Art credit to",
-                    "{C:planet}@silly_goober_0nthewall{}",
+                    "{C:planet}silly_goober_0nthewall{}",
                     "on {C:spectral}Discord"
                 },
                 unlock = {
@@ -142,7 +142,7 @@ return {
                     "to destroy card",
                     "{s:0.3} ",
                     "Art credit to",
-                    "{C:planet}@silly_goober_0nthewall{}",
+                    "{C:planet}silly_goober_0nthewall{}",
                     "on {C:spectral}Discord"
                 }
             }
@@ -168,7 +168,7 @@ return {
                     },
                     {
                         "Art credit to",
-                        "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
+                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
                     }
 		        }
             },
@@ -184,7 +184,7 @@ return {
                     },
                     {
                         "Art credit to",
-                        "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
+                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
                     }
 		        }
             },
@@ -232,7 +232,7 @@ return {
                     },
                     {
                         "Art credit to",
-                        "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
+                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
                     }
                 }
             },
@@ -245,7 +245,7 @@ return {
                     },
                     {
                         "Art credit to",
-                        "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
+                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
                     }
                 }
             },
@@ -261,7 +261,7 @@ return {
                     },
                     {
                         "Art credit to",
-                        "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
+                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
                     }
                 }
             },
@@ -293,7 +293,7 @@ return {
                     },
                     {
                         "Art credit to",
-                        "{C:planet}@secun{} on {C:spectral}Discord"
+                        "{C:planet}secun{} on {C:spectral}Discord"
                     }
                 }
             },
@@ -321,7 +321,7 @@ return {
                     },
                     {
                         "Art credit to",
-                        "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
+                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
                     }
                 }
             },
@@ -346,7 +346,7 @@ return {
                     },
                     {
                         "Art credit to",
-                        "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
+                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
                     }
                 }
             },
@@ -363,7 +363,7 @@ return {
                     },
                     {
                         "Art credit to",
-                        "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
+                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
                     }
                 }
             },
@@ -388,7 +388,7 @@ return {
                     },
                     {
                         "Art credit to",
-                        "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
+                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
                     }
                 }
             },
@@ -408,7 +408,7 @@ return {
                     },
                     {
                         "Art credit to",
-                        "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
+                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
                     }
                 }
             },
@@ -423,7 +423,7 @@ return {
                     },
                     {
                         "Art credit to",
-                        "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
+                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
                     }
 		        }
             },
@@ -438,7 +438,7 @@ return {
                     },
                     {
                         "Art credit to",
-                        "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
+                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
                     }
 		        }
             },
@@ -452,7 +452,7 @@ return {
                     },
                     {
                         "Art credit to",
-                        "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
+                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
                     }
                 }
             },
@@ -468,7 +468,7 @@ return {
                     },
                     {
                         "Art credit to",
-                        "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
+                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
                     }
                 }
             },
@@ -484,7 +484,7 @@ return {
                     },
                     {
                         "Art credit to",
-                        "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
+                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
                     }
                 }
             },
@@ -501,7 +501,7 @@ return {
                     },
                     {
                         "Art credit to",
-                        "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
+                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
                     }
                 }
             },
@@ -517,7 +517,7 @@ return {
                     },
                     {
                         "Art credit to",
-                        "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
+                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
                     }
                 }
             },
@@ -531,7 +531,7 @@ return {
                     },
                     {
                         "Art credit to",
-                        "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
+                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
                     }
                 }
             },
@@ -548,7 +548,7 @@ return {
                     },
                     {
                         "Art credit to",
-                        "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
+                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
                     }
                 }
             },
@@ -568,9 +568,26 @@ return {
                     },
                     {
                         "Art credit to",
-                        "{C:planet}@silly_goober_0nthewall{} on {C:spectral}Discord"
+                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
                     }
-                }
+                }, 
+            },
+            j_para_garagefork = {
+                name = "Fork Found In Garage",
+                text = {
+                    {
+                        "Cards in {C:tarot}Arcana{} and {C:planet}Celestial{}",
+                        "packs have a {C:green}#1# in #2#{} chance",
+                        "to be {C:spectral}Spectral{} cards",
+                        "{C:inactive}(Does not override Telescope)",
+                        "{C:inactive,s:0.8}\"fork found in garage\"",
+                        "{C:inactive,s:0.8}-nxkoo_, 7/16/2025"
+                    },
+                    {
+                        "Art credit to",
+                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
+                    }
+                }, 
             },
         },
         Other = {
@@ -611,7 +628,7 @@ return {
                     },
                     {
                         "Art credit to",
-                        "{C:planet}@silly_goober_0nthewall{}",
+                        "{C:planet}silly_goober_0nthewall{}",
                         "on {C:spectral}Discord"
                     }
                 },
@@ -626,7 +643,7 @@ return {
                     "{C:red,s:0.8}#1#{s:0.8} Joker slot, {s:0.8,C:blue}#2#{s:0.8} hand",
                     "{s:0.3} ",
                     "Art credit to",
-                    "{C:planet}@silly_goober_0nthewall{}",
+                    "{C:planet}silly_goober_0nthewall{}",
                     "on {C:spectral}Discord"
                 },
             },
@@ -638,7 +655,7 @@ return {
                     "{s:0.8,C:red}#1#{} Joker slot",
                     "{s:0.3} ",
                     "Art credit to",
-                    "{C:planet}@silly_goober_0nthewall{}",
+                    "{C:planet}silly_goober_0nthewall{}",
                     "on {C:spectral}Discord"
                 }
             },
@@ -650,7 +667,7 @@ return {
                     '{C:attention}+#3#{} hand size',
                     "{s:0.3} ",
                     "Art credit to",
-                    "{C:planet}@silly_goober_0nthewall{}",
+                    "{C:planet}silly_goober_0nthewall{}",
                     "on {C:spectral}Discord"
                 },
                 unlock = {
@@ -667,7 +684,7 @@ return {
                     '{C:attention}+#2#{} card selection limit',
                     "{s:0.3} ",
                     "Art credit to",
-                    "{C:planet}@silly_goober_0nthewall{}",
+                    "{C:planet}silly_goober_0nthewall{}",
                     "on {C:spectral}Discord"
                 },
                 unlock = {
@@ -684,7 +701,7 @@ return {
                     '{C:attention}+#2#{} hand size',
                     "{s:0.3} ",
                     "Art credit to",
-                    "{C:planet}@silly_goober_0nthewall{}",
+                    "{C:planet}silly_goober_0nthewall{}",
                     "on {C:spectral}Discord"
                 },
                 unlock = {
@@ -702,7 +719,7 @@ return {
                     '{C:attention}+#3#{} hand size',
                     "{s:0.3} ",
                     "Art credit to",
-                    "{C:planet}@silly_goober_0nthewall{}",
+                    "{C:planet}silly_goober_0nthewall{}",
                     "on {C:spectral}Discord"
                 },
                 unlock = {
@@ -720,7 +737,7 @@ return {
                     '{C:attention}+#3#{} card selection limit',
                     "{s:0.3} ",
                     "Art credit to",
-                    "{C:planet}@silly_goober_0nthewall{}",
+                    "{C:planet}silly_goober_0nthewall{}",
                     "on {C:spectral}Discord"
                 },
                 unlock = {
@@ -737,7 +754,7 @@ return {
                     '{C:attention}+#2#{} card selection limit',
                     "{s:0.3} ",
                     "Art credit to",
-                    "{C:planet}@silly_goober_0nthewall{}",
+                    "{C:planet}silly_goober_0nthewall{}",
                     "on {C:spectral}Discord"
                 },
                 unlock = {
@@ -754,7 +771,7 @@ return {
                     '{C:blue}#2#{} hands each round',
                     "{s:0.3} ",
                     "Art credit to",
-                    "{C:planet}@silly_goober_0nthewall{}",
+                    "{C:planet}silly_goober_0nthewall{}",
                     "on {C:spectral}Discord"
                 },
                 unlock = {
@@ -770,7 +787,7 @@ return {
                     '{C:red}#2#{} discards each round',
                     "{s:0.3} ",
                     "Art credit to",
-                    "{C:planet}@silly_goober_0nthewall{}",
+                    "{C:planet}silly_goober_0nthewall{}",
                     "on {C:spectral}Discord"
                 },
                 unlock = {
