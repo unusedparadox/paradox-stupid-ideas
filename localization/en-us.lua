@@ -605,6 +605,13 @@ return {
 			        'Choose 1 {C:attention}Credit Card'
 		        },
 	        	group_name = 'Credit Card'
+            },
+            para_to_big_goldseal = {
+                name = "Gold Seal",
+                text = {
+                    "Earn {C:money}$to_big(3){} dollars",
+                    "when this card is scored"
+                }
             }
         },
         Planet = {},
@@ -613,7 +620,7 @@ return {
                 name = "Talisman",
                 text = {
                     "Oops! The game crashed:",
-                    "attempt to compare number with table"
+                    "attempt to {C:gold}compare number{} with table"
                 }
             }
         },
