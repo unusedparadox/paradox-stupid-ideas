@@ -47,3 +47,12 @@ PSI.mostplayedhand = function(format)
         }
     end
 end
+-- For boss blind effects Matador wouldn't normally detect (Does not modify vanilla blinds). Hook into this for your own boss blinds.
+PSI.blindtriggered = function()
+    for k, v in pairs(G.jokers.cards) do
+        if v.ability and v.ability.para_singular then
+            return true
+        end
+    end
+    return false
+end

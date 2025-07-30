@@ -49,20 +49,15 @@ SMODS.Blind { -- The Singular
         end
     end
 }
--- Getting Matador to work with The Singular. This doesn't work with Cryptid value manipulation but hell if I care
+-- Getting Matador to work with The Singular
 SMODS.Joker:take_ownership("matador", {
+    config = { extra = { dollars = 8 } },
 	calculate = function(self, card, context)
-		local triggered = false
-        for k, v in pairs(G.jokers.cards) do
-            if v.ability and v.ability.para_singular then
-                triggered = true
-            end
-        end
         if context.debuffed_hand or context.joker_main then
-            if G.GAME.blind.triggered or triggered then
-                G.GAME.dollar_buffer = (G.GAME.dollar_buffer or 0) + 8
+            if G.GAME.blind.triggered or PSI.blindtriggered() then
+                G.GAME.dollar_buffer = (G.GAME.dollar_buffer or 0) + card.ability.extra.dollars
                 return {
-                    dollars = 8,
+                    dollars = card.ability.extra.dollars,
                     func = function() -- This is for timing purposes, it runs after the dollar manipulation
                         G.E_MANAGER:add_event(Event({
                             func = function()

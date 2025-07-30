@@ -59,7 +59,7 @@ SMODS.Joker{ -- < • Astro :3c • > implementation
 		elseif context.individual and context.cardarea == G.play and not context.blueprint then
 			if context.other_card:get_id() == 9 then -- Check for triggered nines
 				card.ability.extra.nine_counter = card.ability.extra.nine_counter - 1
-				if card.ability.extra.nine_counter == 0 then
+				if card.ability.extra.nine_counter <= 0 then
 					card.ability.extra.nine_counter = card.ability.extra.nine_requirement
 					card.ability.extra.planet_retrigger = card.ability.extra.planet_retrigger + card.ability.extra.planet_retrigger_growth
         			return {

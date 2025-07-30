@@ -1,3 +1,4 @@
+
 return {
     descriptions = {
         Back = {
@@ -607,7 +608,15 @@ return {
             }
         },
         Planet = {},
-        Spectral = {},
+        Spectral = {
+            c_para_Talisman = {
+                name = "Talisman",
+                text = {
+                    "Oops! The game crashed:",
+                    "attempt to compare number with table"
+                }
+            }
+        },
         Stake = {},
         Tag = {
             tag_para_foodtag = {
