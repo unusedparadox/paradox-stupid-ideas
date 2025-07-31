@@ -25,7 +25,7 @@ create_card = function(_type, area, legendary, _rarity, skip_materialize, soulab
     local spect_fork
     if key_append == "ar1" or key_append == "pl1" then
         for _, v in ipairs(SMODS.find_card("j_para_garagefork", false)) do
-            if SMODS.pseudorandom_probability(card, 'para_garagefork', v.ability.extra.numerator,
+            if SMODS.pseudorandom_probability(v, 'para_garagefork', v.ability.extra.numerator,
             v.ability.extra.denominator, 'para_garagefork') then
                 spect_fork = true
                 break

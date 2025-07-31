@@ -16,7 +16,7 @@ SMODS.Back{
 					set = 'Joker',
 					area = G.jokers,
 					key = 'j_para_bonnie',
-					edition = e_base,
+					edition = "e_base",
 					no_edition = true,
 					stickers = {"eternal"}
 				})

@@ -17,7 +17,7 @@ SMODS.Back{
 					set = 'Joker',
 					area = G.jokers,
 					key = 'j_blueprint',
-					edition = e_base,
+					edition = "e_base",
 					stickers = {"eternal"}
 				})
                 card:add_to_deck()
@@ -27,7 +27,7 @@ SMODS.Back{
 					set = 'Joker',
 					area = G.jokers,
 					key = 'j_brainstorm',
-					edition = e_base,
+					edition = "e_base",
 					stickers = {"eternal"}
 				})
                 card2:add_to_deck()

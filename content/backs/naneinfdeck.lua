@@ -26,7 +26,7 @@ SMODS.Back{
 					set = 'Joker',
 					area = G.jokers,
 					key = 'j_baron',
-					edition = e_negative,
+					edition = "e_negative",
 					stickers = {"eternal"}
 				})
                 card:add_to_deck()
@@ -36,7 +36,7 @@ SMODS.Back{
 					set = 'Joker',
 					area = G.jokers,
 					key = 'j_mime',
-					edition = e_negative,
+					edition = "e_negative",
 					stickers = {"eternal"}
 				})
                 card2:add_to_deck()
