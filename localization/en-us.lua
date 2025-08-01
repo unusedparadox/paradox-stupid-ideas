@@ -588,8 +588,26 @@ return {
                         "Art credit to",
                         "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
                     }
-                }, 
+                },
             },
+            j_para_the_plain = {
+                name = "The Plain",
+                text = {
+                    "Played {C:attention}unenhanced{} cards",
+                    "gain {C:mult}+#2#{} Mult and {C:chips}+#1#{} Chips",
+                    "Played {C:attention}enhanced{} cards",
+                    "have their bonus {C:mult}Mult{}",
+                    "and {C:chips}Chips{} {C:red}removed"
+                }
+            },
+            j_para_the_singular = {
+                name = "The Singular",
+                text = {
+                    "{X:mult,C:white}X#1#{} Mult if you",
+                    "have no {C:attention}duplicate jokers{}",
+                    "{C:inactive}(Currently #2#)"
+                }
+            }
         },
         Other = {
             p_para_foodpack = {
@@ -881,7 +899,8 @@ return {
             airplane_a2 = "(Currently ",
             airplane_b1 = " free reroll)",
             airplane_b2 = " free rerolls)",
-            k_para_takingtoolong = "YOUR TAKING TOO LONG"
+            k_para_takingtoolong = "YOUR TAKING TOO LONG",
+            k_para_cleared = "Bonus cleared!"
         },
         high_scores = {},
         labels = {

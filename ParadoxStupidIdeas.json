@@ -1,7 +1,7 @@
 {
   "id": "paradox_ideas",
   "name": "Paradox's Stupid Ideas",
-  "display_name": "Paradox's Ideas",
+  "display_name": "PSI",
   "author": [ "UnusedParadox" ],
   "description": "Adds various different things with varying degrees of balance. Talisman with BigNum score limit or higher and Challenger Deep is recommended for the full experience, though not required.",
   "prefix": "para",

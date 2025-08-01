@@ -14,6 +14,7 @@ SMODS.Joker{
 	blueprint_compat = true,
 	eternal_compat = true,
 	perishable_compat = false,
+	dependencies = { "GrabBag" },
 	calculate = function(self, card, context)
 		if context.before then
             for _, v in ipairs(context.scoring_hand) do

@@ -12,6 +12,7 @@ SMODS.Joker{
 	pools = { ["parajoker"] = true },
 	rarity = "gb_shattered",
 	cost = 8,
+	dependencies = { "GrabBag" },
 	blueprint_compat = true,
 	eternal_compat = true,
 	perishable_compat = false,
