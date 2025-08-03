@@ -580,6 +580,9 @@ return {
                         "Cards in {C:tarot}Arcana{} and {C:planet}Celestial{}",
                         "packs have a {C:green}#1# in #2#{} chance",
                         "to be {C:spectral}Spectral{} cards",
+                        "When opening a {C:planet}Celestial{} pack,",
+                        "draw {C:attention}1{} playing card",
+                        "to hand per {C:attention}1{} hand size",
                         "{C:inactive}(Does not override Telescope)",
                         "{C:inactive,s:0.8}\"fork found in garage\"",
                         "{C:inactive,s:0.8}-nxkoo_, 7/16/2025"

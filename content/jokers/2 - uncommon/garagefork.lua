@@ -18,8 +18,14 @@ SMODS.Joker{
         local new_numerator, new_denominator = SMODS.get_probability_vars(card,
 		card.ability.extra.numerator, card.ability.extra.denominator, 'para_garagefork')
 		return {vars = {new_numerator, new_denominator}}
+	end,
+	calculate = function(self, card, context)
+		if context.open_booster and context.card.config.center.kind == "Celestial" then
+			G.FUNCS.draw_from_deck_to_hand()
+		end
 	end
 }
+-- Hook card creation to check for Arcana or Celestial packs
 local createcardold = create_card
 create_card = function(_type, area, legendary, _rarity, skip_materialize, soulable, forced_key, key_append)
     local spect_fork
