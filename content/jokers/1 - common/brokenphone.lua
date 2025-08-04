@@ -20,8 +20,8 @@ SMODS.Joker{
 		if context.joker_main then
 			local handinfo = PSI.mostplayedhand(false)
 			return {
-				handinfo[2] / to_big(2),
-				handinfo[3] / to_big(2)
+				chips = handinfo[2] / to_big(2),
+				mult = handinfo[3] / to_big(2)
 			}
 		end
 	end
