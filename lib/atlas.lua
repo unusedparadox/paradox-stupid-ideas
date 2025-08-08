@@ -55,6 +55,13 @@ SMODS.Atlas {
     px = 256,
     py = 256
 }
+-- Gameset config intro
+SMODS.Atlas {
+    key = 'paradox_intro',
+    path = 'paraintro.png',
+    px = 49,
+    py = 89
+}
 -- Crossmod atlases down here
 SMODS.Atlas{
     key = "Sleeves",

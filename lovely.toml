@@ -9,3 +9,13 @@ pattern = "if amt > 0 or amt < 0 then"
 position = 'at'
 payload = "if to_big(amt) > to_big(0) or to_big(amt) < to_big(0) then"
 match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '''engine/event.lua'''
+pattern = '''        other = {}'''
+position = "after"
+payload = ''',
+para_desc = {}
+'''
+match_indent = true

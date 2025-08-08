@@ -8,5 +8,8 @@ SMODS.Booster{
 	end,
 	weight = 1,
 	cost = 1,
-	group_key = 'groupcreditpack'
+	group_key = 'groupcreditpack',
+	in_pool = function(self, args)
+		return PSI.gameset.unfiltered, { allow_duplicates = false }
+	end
 }

@@ -18,5 +18,8 @@ SMODS.Joker{ -- Jokerrune implementation
 				xmult = card.ability.extra.xmult
 			}
 		end
+	end,
+	in_pool = function(self, args)
+		return PSI.gameset.unfiltered, {allow_duplicates = false}
 	end
 }

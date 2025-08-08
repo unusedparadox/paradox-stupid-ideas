@@ -1,5 +1,6 @@
 local unlockednaneinf = true
 local unlock_condition_naneinf = function(self, args) return true end
+local win_ante = 38
 if next(SMODS.find_mod("Talisman")) and Talisman and (Talisman.config_file.score_opt_id >= 2) then
 	unlockednaneinf = false
 	unlock_condition_naneinf = function(self, args)
@@ -7,6 +8,7 @@ if next(SMODS.find_mod("Talisman")) and Talisman and (Talisman.config_file.score
 			return true
 		end
 	end
+	win_ante = 39
 end
 SMODS.Back{
     key = "naneinfdeck",
@@ -14,7 +16,7 @@ SMODS.Back{
 	atlas = 'Backs',
 	pos = {x = 2, y = 0},
 	config = {extra = {
-		winning_ante = 39
+		winning_ante = win_ante
 	}},
 	loc_vars = function(self,info_queue,card)
 		return {vars = {self.config.extra.winning_ante}}
@@ -53,5 +55,6 @@ SMODS.Back{
         })
 		)
     end,
+	no_collection = not PSI.gameset.unfiltered,
 	check_for_unlock = unlock_condition_naneinf
 }

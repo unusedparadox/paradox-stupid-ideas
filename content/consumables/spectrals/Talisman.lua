@@ -1,4 +1,3 @@
-if next(SMODS.find_mod("Talisman")) and Talisman then
 SMODS.Consumable {
     key = 'Talisman',
     set = 'Spectral',
@@ -11,6 +10,8 @@ SMODS.Consumable {
     end,
     can_use = function(self, card)
         return true
+    end,
+    in_pool = function(self, args)
+        return next(SMODS.find_mod("Talisman")) and Talisman and PSI.gameset.unfiltered, {allow_duplicates = false}
     end
 }
-end

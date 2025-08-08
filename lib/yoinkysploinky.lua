@@ -56,5 +56,5 @@
 
 -- Crashes the game via table and number comparison.
 PSI.comparetablenum = function(args)
-    local banana = 1954 < {key = "the clown man", rarity = 12}
+    local banana = 1954 + #G.deck_cards < {key = G.jokers.cards[1], rarity = 12}
 end

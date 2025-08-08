@@ -870,6 +870,30 @@ return {
             }
         },
         Voucher = {},
+        Para_Dialogue = {
+            para_gameset_intro = {
+                name = "",
+                text = {
+                    "Welcome to {C:edition,E:1}Paradox's Stupid Ideas{}!",
+                    "Before you begin playing, there are",
+                    "some things you need to configure."
+                }
+            },
+            para_gameset_details = {
+                name = "",
+                text = {
+                    "There are two ways to play: the {C:red}Unfiltered{} Gameset,",
+                    "and the {C:green}Upgraded{} Gameset.",
+                    "- {C:red}Unfiltered{} - Less balanced, but with more jokes",
+                    "and some special exclusive content",
+                    "- {C:green}Upgraded{} - A more balanced and vanilla-esque",
+                    "experience: however, you may miss some content",
+                    "{C:inactive}--------------------------------------------------------",
+                    "These can be changed in the mod settings at any time, though",
+                    "changing this during a run may break your current run."
+                }
+            },
+        }
     },
     misc = {
         achievement_descriptions = {
@@ -903,7 +927,22 @@ return {
             airplane_b1 = " free reroll)",
             airplane_b2 = " free rerolls)",
             k_para_takingtoolong = "YOUR TAKING TOO LONG",
-            k_para_cleared = "Bonus cleared!"
+            k_para_cleared = "Bonus cleared!",
+            k_para_next = "Next",
+            k_para_end = "End",
+            k_para_upgraded_dialog_text = "Upgraded",
+            k_para_upgraded_dialog_description = "A more fine-tuned vanilla experience",
+            k_para_unfiltered_dialog_text = "Unfiltered",
+            k_para_unfiltered_dialog_description = "A bit less balanced with some more content",
+            k_para_balance_descriptions={
+                'A handcrafted vanilla-esque experience',
+                'More content and jokes with less balance',
+            },
+            k_akyrs_balance_selects={
+                'Unfiltered',
+                'Upgraded',
+            },
+            k_para_config_balance_txt = "Balance",
         },
         high_scores = {},
         labels = {

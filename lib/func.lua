@@ -20,9 +20,9 @@ PSI.consumefood = function(card)
     	end
     }))
 end
--- Finds most played hand and returns a table of information about it: name, chips, mult, level chips, level mult. Takes argument of whether to number_format the info.
+-- Finds most played hand and returns a table of information about it: name, chips, mult, level chips, level mult, key. Takes argument of whether to number_format the info.
 PSI.mostplayedhand = function(format)
-    local _hand, _tally = "Straight Flush", to_big(0) -- ty vanillaremade for giving me all this code
+    local _hand, _tally = nil, to_big(-1) -- ty vanillaremade for giving me all this code
     for _, handname in ipairs(G.handlist) do
         if SMODS.is_poker_hand_visible(handname) and to_big(G.GAME.hands[handname].played) > to_big(_tally) then
             _hand = handname
@@ -31,19 +31,21 @@ PSI.mostplayedhand = function(format)
 	end
     if format then
         return {
-            _hand,
+            localize(_hand, 'poker_hands'),
             number_format(to_big(G.GAME.hands[_hand].chips)),
             number_format(to_big(G.GAME.hands[_hand].mult)),
             number_format(to_big(G.GAME.hands[_hand].l_chips)),
-            number_format(to_big(G.GAME.hands[_hand].l_mult))
+            number_format(to_big(G.GAME.hands[_hand].l_mult)),
+            _hand
         }
     else
         return {
-            _hand,
+            localize(_hand, 'poker_hands'),
             to_big(G.GAME.hands[_hand].chips),
             to_big(G.GAME.hands[_hand].mult),
             to_big(G.GAME.hands[_hand].l_chips),
-            to_big(G.GAME.hands[_hand].l_mult)
+            to_big(G.GAME.hands[_hand].l_mult),
+            _hand
         }
     end
 end
