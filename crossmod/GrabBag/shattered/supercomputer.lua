@@ -21,7 +21,7 @@ SMODS.Joker{
             local handinfo = PSI.mostplayedhand(false)
             return {
                 level_up = true,
-                level_up_hand = handinfo[1],
+                level_up_hand = handinfo[6],
                 message = localize('k_level_up_ex')
             }
         elseif context.joker_main then

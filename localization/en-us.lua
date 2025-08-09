@@ -12,7 +12,12 @@ return {
 			        '{C:attention,s:0.8}+#5#{s:0.8} consumable slots',
 			        '{C:attention,s:0.8}+#6#{s:0.8} hand size',
                     '{s:0.8}Beat {C:attention,s:0.8}#7#{s:0.8} more Antes to win',
-                }
+                },
+                unlock = {
+                    "In one hand,",
+                    "earn at least",
+                    "{E:1,C:attention}#1#{} chips",
+                },
 		    },
             b_para_naneinfdeck = {
                 name = "Naneinf Deck",
