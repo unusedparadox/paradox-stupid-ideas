@@ -129,7 +129,7 @@ PSI.UIBox_gameset_config = function(page)
             }},
             { n = G.UIT.R, config = { h = 0.5, w = 0.1 }, nodes = {{ n = G.UIT.B, config = { h = 0.5, w = 0.1 } },}},
             { n = G.UIT.R, config = { padding = 0.1, align = "cl" }, nodes = {
-                { n = G.UIT.C, config = { padding = 0.1, align = "cl" }, nodes = Talisman and {
+                { n = G.UIT.C, config = { padding = 0.1, align = "cl" }, nodes = {
                     create_toggle({w = 0, label = '', scale = 1, ref_table = PSI.gameset, ref_value = 'upgraded', callback = G.FUNCS.para_select_gameset_checkbox}),
                 } or {
                     {
