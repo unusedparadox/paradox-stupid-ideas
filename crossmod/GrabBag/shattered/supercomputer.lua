@@ -33,4 +33,4 @@ SMODS.Joker{
         end
 	end
 }
-GB.G.SHATTERED_TABLE[#GB.G.SHATTERED_TABLE + 1] = {"j_para_brokenphone", "j_para_supercomputer"}
+GB_SHATTERED_TABLE[#GB_SHATTERED_TABLE + 1] = {"j_para_brokenphone", "j_para_supercomputer"}
