@@ -939,13 +939,13 @@ return {
             k_para_upgraded_dialog_description = "A more fine-tuned vanilla experience",
             k_para_unfiltered_dialog_text = "Unfiltered",
             k_para_unfiltered_dialog_description = "A bit less balanced with some more content",
-            k_para_balance_descriptions={
+            k_para_balance_descriptions = {
                 'A handcrafted vanilla-esque experience',
                 'More content and jokes with less balance',
             },
-            k_akyrs_balance_selects={
-                'Unfiltered',
+            k_para_balance_selects = {
                 'Upgraded',
+                'Unfiltered'
             },
             k_para_config_balance_txt = "Balance",
         },

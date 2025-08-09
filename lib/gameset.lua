@@ -39,7 +39,7 @@ G.FUNCS.para_advance_config = function(e)
         if picked then
             G.PROFILES[G.SETTINGS.profile].para_gameset = picked
             G:save_settings()
-            G.akyrs_current_balancing_page = nil
+            G.para_current_page = nil
             G.FUNCS.exit_overlay_menu()
             if G.PARA_PARADOX then
                 G.para_paradox_y = 20
@@ -118,7 +118,7 @@ PSI.UIBox_gameset_config = function(page)
         child_elements = {
             { n = G.UIT.R, config = { padding = 0.1, align = "cl" }, nodes = {
                 { n = G.UIT.C, config = { padding = 0.1, align = "cl" }, nodes = {
-                    create_toggle({w = 0, label = '', scale = 1, ref_table = AKYRS.akyrs_selection, ref_value = 'unfiltered', callback = G.FUNCS.para_select_gameset_checkbox}),
+                    create_toggle({w = 0, label = '', scale = 1, ref_table = PSI.gameset, ref_value = 'unfiltered', callback = G.FUNCS.para_select_gameset_checkbox}),
                 }},
                 { n = G.UIT.C, config = { padding = 0.1, align = "cl" }, nodes = {
                     { n = G.UIT.T, config = { colour = G.C.WHITE, text = localize('k_para_unfiltered_dialog_text'), scale = 0.8}}
@@ -130,7 +130,7 @@ PSI.UIBox_gameset_config = function(page)
             { n = G.UIT.R, config = { h = 0.5, w = 0.1 }, nodes = {{ n = G.UIT.B, config = { h = 0.5, w = 0.1 } },}},
             { n = G.UIT.R, config = { padding = 0.1, align = "cl" }, nodes = {
                 { n = G.UIT.C, config = { padding = 0.1, align = "cl" }, nodes = Talisman and {
-                    create_toggle({w = 0, label = '', scale = 1, ref_table = AKYRS.akyrs_selection, ref_value = 'upgraded', callback = G.FUNCS.para_select_gameset_checkbox}),
+                    create_toggle({w = 0, label = '', scale = 1, ref_table = PSI.gameset, ref_value = 'upgraded', callback = G.FUNCS.para_select_gameset_checkbox}),
                 } or {
                     {
                     n = G.UIT.R, config = { align = "cm", minw = 0.5, minh = 0.5, padding = 0.2, colour = G.C.UI.TEXT_INACTIVE, outline = 1.5, outline_colour = G.C.WHITE, r = 0.2, emboss = 0.1 },
