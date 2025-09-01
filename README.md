@@ -8,4 +8,4 @@ Mods that are guaranteed to be compatible:
 - Grab Bag
 - CardSleeves
 - Talisman
-= Funny Cats
+- Funny Cats
