@@ -10,5 +10,12 @@ SMODS.Rarity{
     pools = {
         ["Joker"] = true
     },
-    default_weight = 0.0005
+    default_weight = 0.0005,
+	get_weight = function(self, weight, object_type)
+		if PSI.get_gameset().unfiltered then
+			return 0.0005
+		else
+			return 0
+		end
+	end
 }

@@ -43,5 +43,9 @@ SMODS.Joker{ -- Ashen Joker
             end
         end
         return false
-    end
+    end,
+	para_credits = {
+		["art"] = "Astro",
+		["code"] = "UnusedParadox"
+	}
 }

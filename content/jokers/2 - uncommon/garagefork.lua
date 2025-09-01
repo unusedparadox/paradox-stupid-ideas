@@ -21,9 +21,17 @@ SMODS.Joker{
 	end,
 	calculate = function(self, card, context)
 		if context.open_booster and context.card.config.center.kind == "Celestial" then
+            for i = 1, #G.jokers.cards do
+                if G.jokers.cards[i] == card then break
+				elseif G.jokers.cards[i].config.center.key == "j_para_garagefork" then return end
+            end
 			G.FUNCS.draw_from_deck_to_hand()
 		end
-	end
+	end,
+	para_credits = {
+		["art"] = "Astro",
+		["code"] = "UnusedParadox"
+	}
 }
 -- Hook card creation to check for Arcana or Celestial packs
 local createcardold = create_card

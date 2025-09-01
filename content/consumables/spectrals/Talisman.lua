@@ -12,6 +12,10 @@ SMODS.Consumable {
         return true
     end,
     in_pool = function(self, args)
-        return next(SMODS.find_mod("Talisman")) and Talisman and PSI.gameset.unfiltered, {allow_duplicates = false}
-    end
+        return next(SMODS.find_mod("Talisman")) and Talisman and PSI.get_gameset().unfiltered, {allow_duplicates = false}
+    end,
+	para_credits = {
+		["art"] = "localthunk",
+		["code"] = "UnusedParadox"
+	}
 }

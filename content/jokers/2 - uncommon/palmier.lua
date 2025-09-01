@@ -35,5 +35,9 @@ SMODS.Joker{ -- Palmier implementation
                 chips = card.ability.extra.chips
             }
 		end
-    end
+    end,
+	para_credits = {
+		["art"] = "Astro",
+		["code"] = "UnusedParadox"
+	}
 }

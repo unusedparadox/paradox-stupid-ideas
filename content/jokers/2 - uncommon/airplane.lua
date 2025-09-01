@@ -51,5 +51,9 @@ SMODS.Joker{ -- Airplane implementation
             end
         end
         SMODS.change_free_rerolls(-card.ability.extra.rerolls * vouchers)
-    end
+    end,
+	para_credits = {
+		["art"] = "Astro",
+		["code"] = "UnusedParadox"
+	}
 }

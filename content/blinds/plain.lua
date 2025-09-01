@@ -8,26 +8,15 @@ SMODS.Blind { -- The Plain
     boss_colour = HEX("cca876"),
     calculate = function(self, blind, context)
         if not blind.disabled then
-            if context.before then
-                for _, v in ipairs(context.scoring_hand) do
-                    if next(SMODS.get_enhancements(v)) then
-                        SMODS.debuff_card(v, true, "para_plaindebuff")
-                    end
-                end
+            if context.debuff_card and context.debuff_card.area ~= G.jokers and next(SMODS.get_enhancements(context.debuff_card)) then
+                return {
+                    debuff = true
+                }
             end
         end
-    end,
-    disable = function(self)
-        for _, v in ipairs(G.playing_cards) do
-            if next(SMODS.get_enhancements(v)) then
-                SMODS.debuff_card(v, false, "para_plaindebuff")
-            end
-        end
-    end,
-    defeat = function(self)
-        for _, joker in ipairs(G.playing_cards) do
-            joker.ability.para_singular = nil
-            SMODS.debuff_card(joker, false, "para_plaindebuff")
-        end
-    end
+    end,    
+	para_credits = {
+		["art"] = "UnusedParadox",
+		["code"] = "UnusedParadox"
+	}
 }

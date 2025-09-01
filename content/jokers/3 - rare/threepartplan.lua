@@ -72,5 +72,9 @@ SMODS.Joker{
         		}
 			end
 		end
-	end
+	end,
+	para_credits = {
+		["art"] = "Astro",
+		["code"] = "UnusedParadox"
+	}
 }

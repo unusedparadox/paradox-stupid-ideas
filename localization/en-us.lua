@@ -41,10 +41,6 @@ return {
                     "Start with an",
                     "{C:attention,T:m_eternal}Eternal{} {C:rare,T:j_blueprint}Blueprint{} and an {C:attention}Eternal{} {C:rare,T:j_brainstorm}Brainstorm",
                     "{C:red}#1#{} Joker slot, {C:blue}#2#{} hand",
-                    "{s:0.3} ",
-                    "Art credit to",
-                    "{C:planet}silly_goober_0nthewall{}",
-                    "on {C:spectral}Discord"
                 }
             },
             b_para_yaoideck = {
@@ -53,10 +49,6 @@ return {
                     "Start with an",
                     "{C:attention,T:m_eternal}Eternal{} {C:rare,T:j_para_fakemadness}Madness{} and an {C:attention}Eternal{} {C:rare,T:j_vagabond}Vagabond",
                     "{C:red}#1#{} Joker slot, {C:blue}#2#{} hand",
-                    "{s:0.3} ",
-                    "Art credit to",
-                    "{C:planet}mr.cr33ps{}",
-                    "on {C:spectral}Discord"
                 }
             },
             b_para_bonniedeck = {
@@ -64,10 +56,6 @@ return {
                 text = {
                     "Start with an {C:attention,T:m_eternal}Eternal{} {C:uncommon,T:j_para_bonnie}Bonnie{}",
                     "and #1# random {C:attention}Food Jokers",
-                    "{s:0.3} ",
-                    "Art credit to",
-                    "{C:planet}silly_goober_0nthewall{}",
-                    "on {C:spectral}Discord"
                 }
             },
             b_para_artisticdeck = {
@@ -82,15 +70,65 @@ return {
                     '{C:gold}Gold Stake{} difficulty'
                 }
             },
+            b_para_artisticdeck_unfiltered = {
+                name = "Artistic Deck",
+                text = {
+                    "{C:red}#1#{} Joker slots",
+                    '{C:attention}+#2#{} hand size'
+                },
+                unlock = {
+                    'Win with {C:attention}#1#{}',
+                    'on at least',
+                    '{C:gold}Gold Stake{} difficulty'
+                }
+            },
+            b_para_artisticdeck_upgraded = {
+                name = "Artistic Deck",
+                text = {
+                    "{C:red}#1#{} Joker slots",
+                    '{C:red}#2#{} hand size',
+                    "{C:attention}+#3#{} hand size when",
+                    "Boss Blind is defeated",
+                    "Jokers are {C:attention}5x{} more",
+                    "likely to be {C:dark_edition}Negative{}"
+                },
+                unlock = {
+                    'Win with {C:attention}#1#{}',
+                    'on at least',
+                    '{C:gold}Gold Stake{} difficulty'
+                }
+            },
             b_para_voiddeck = {
                 name = "Void Deck",
                 text = {
                     "{C:attention}+#1#{} Joker slots",
                     '{C:blue}#2#{} hands each round',
-                    "{s:0.3} ",
-                    "Art credit to",
-                    "{C:planet}silly_goober_0nthewall{}",
-                    "on {C:spectral}Discord"
+                },
+                unlock = {
+                    'Win with {C:attention}#1#{}',
+                    'on at least',
+                    '{C:gold}Gold Stake{} difficulty'
+                }
+            },
+            b_para_voiddeck_unfiltered = {
+                name = "Void Deck",
+                text = {
+                    "{C:attention}+#1#{} Joker slots",
+                    '{C:blue}#2#{} hands each round',
+                },
+                unlock = {
+                    'Win with {C:attention}#1#{}',
+                    'on at least',
+                    '{C:gold}Gold Stake{} difficulty'
+                }
+            },
+            b_para_voiddeck_upgraded = {
+                name = "Void Deck",
+                text = {
+                    "{s:0.8}When the Boss Blind on",
+                    "{s:0.8}an even Ante is defeated,",
+                    'gain {C:attention}+#1#{} Joker slot and lose {C:blue}#2#{} hand',
+                    "{C:inactive}Effect will not trigger if you have 1 hand",
                 },
                 unlock = {
                     'Win with {C:attention}#1#{}',
@@ -104,10 +142,6 @@ return {
                     "{C:red}#1#{} Joker slots",
                     '{C:blue}#2#{} hands each round',
                     '{C:attention}+#3#{} hand size',
-                    "{s:0.3} ",
-                    "Art credit to",
-                    "{C:planet}silly_goober_0nthewall{}",
-                    "on {C:spectral}Discord"
                 },
                 unlock = {
                     'Win with {C:attention}#1#{}',
@@ -121,35 +155,32 @@ return {
             bl_para_plain = {
                 name = "The Plain",
                 text = {
-                    "Scored Enhanced cards",
+                    "Enhanced cards",
                     "are debuffed"
                 }
             },
             bl_para_singular = {
                 name = "The Singular",
                 text = {
-                    "Non-unique Jokers,",
-                    "Blueprint, and",
-                    "Brainstorm, are",
-                    "debuffed"
+                    "Cards with the same",
+                    "rank, suit and",
+                    "enhancement as",
+                    "another card in your",
+                    "full deck are debuffed"
                 }
             }
         },
         Edition = {},
         Enhanced = {
             m_para_ashen = {
-                name = "Ashen Card",
+                name = "Charred Card",
                 text = {
                     "When this card",
                     "is played, all",
                     "scoring cards gain",
                     "{C:chips}+#1# {}chips",
                     "{C:green}#2# in #3#{} chance",
-                    "to destroy card",
-                    "{s:0.3} ",
-                    "Art credit to",
-                    "{C:planet}silly_goober_0nthewall{}",
-                    "on {C:spectral}Discord"
+                    "to destroy card"
                 }
             }
         },
@@ -166,32 +197,20 @@ return {
             j_para_bonnie = {
 		        name = 'Bonnie',
 		        text = {
-                    {
-			            'When exiting the {C:attention}shop{}',
-			            'after defeating a {C:attention}Boss Blind{},',
-			            'create a {C:enhanced}Safe Room Tag{}',
-			            '{C:inactive,s:0.8}I\'m a chef cooker!!!'
-                    },
-                    {
-                        "Art credit to",
-                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
-                    }
+			        'When exiting the {C:attention}shop{}',
+			        'after defeating a {C:attention}Boss Blind{},',
+			        'create a {C:enhanced}Safe Room Tag{}',
+			        '{C:inactive,s:0.8}I\'m a chef cooker!!!'
 		        }
             },
             j_para_bluecard = {
                 name = 'Blue Card',
 		        text = {
-                    {
-			            'This Joker gains {C:chips}+#1#{} Chips',
-			            'when any {C:attention}Booster Pack{} is opened.',
-			            '{C:inactive}(Currently {}{C:chips}+#2#{} {C:inactive}Chips){}',
-                        '{C:inactive,s:0.8}I\'m blue, da ba dee da ba die,',
-                        '{C:inactive,s:0.8}da ba dee da ba die, da ba dee da ba die.'
-                    },
-                    {
-                        "Art credit to",
-                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
-                    }
+			        'This Joker gains {C:chips}+#1#{} Chips',
+			        'when any {C:attention}Booster Pack{} is opened.',
+			        '{C:inactive}(Currently {}{C:chips}+#2#{} {C:inactive}Chips){}',
+                    '{C:inactive,s:0.8}I\'m blue, da ba dee da ba die,',
+                    '{C:inactive,s:0.8}da ba dee da ba die, da ba dee da ba die.'
 		        }
             },
             j_para_orangecard = {
@@ -214,7 +233,27 @@ return {
             j_para_pineapple = {
                 name = 'Pineapple',
                 text = {
+                    '{C:mult}+#1#{} Mult',
+                    '{C:mult}-#2#{} Mult at end of round',
+                    '{X:mult,C:white}XMult{} effects will not trigger',
+                    '{C:inactive,s:0.8}Don\'t eat pineapples!',
+                    '{C:inactive,s:0.8}You\'re allergic.'
+                }
+            },
+            j_para_pineapple_unfiltered = {
+                name = 'Pineapple',
+                text = {
                     '{X:mult,C:white}X#1#{} Mult',
+                    '{C:inactive,s:0.8}Don\'t eat pineapples!',
+                    '{C:inactive,s:0.8}You\'re allergic.'
+                }
+            },
+            j_para_pineapple_upgraded = {
+                name = 'Pineapple',
+                text = {
+                    '{C:mult}+#1#{} Mult',
+                    '{C:mult}-#2#{} Mult at end of round',
+                    '{X:mult,C:white}XMult{} effects will not trigger',
                     '{C:inactive,s:0.8}Don\'t eat pineapples!',
                     '{C:inactive,s:0.8}You\'re allergic.'
                 }
@@ -230,45 +269,28 @@ return {
             j_para_plantainchips = {
                 name = 'Plantain Chips',
                 text = {
-                    {
-                        '{X:chips,C:white}X#1#{} Chips',
-                        'For each round played, lose {X:chips,C:white}X#2#{} Chips',
-                        '{C:inactive,s:0.8}Crunchy. Delicious. And full of potassium.',
-                        '{C:inactive,s:0.8}That\'s plantain chips!!!'
-                    },
-                    {
-                        "Art credit to",
-                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
-                    }
+                    '{C:chips}+#1#{} Chips',
+                    'At the end of the round,',
+                    '{C:green}#3# in #4#{} chance to lose {C:chips}-#2#{} Chips',
+                    '{C:inactive,s:0.8}Crunchy. Delicious. And full of potassium.',
+                    '{C:inactive,s:0.8}That\'s plantain chips!!!'
                 }
             },
             j_para_onigiri = {
                 name = 'Onigiri',
                 text = {
-                    {
-                        'Gives either {C:chips}+#1#{} Chips, {C:mult}+#2#{} Mult, or {X:mult,C:white}X#3#{} Mult',
-                        'Disappears in {C:attention}#4#{} hands',
-                    },
-                    {
-                        "Art credit to",
-                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
-                    }
+                    'Gives either {C:chips}+#1#{} Chips, {C:mult}+#2#{} Mult, or {X:mult,C:white}X#3#{} Mult',
+                    'Disappears in {C:attention}#4#{} hands',
                 }
             },
             j_para_fishhead = {
                 name = "Fish Head",
                 text = {
-                    {
-                        "Earn {C:money}$#1#{} at the end of the round",
-                        "For each {C:money}$1{} you have over {C:money}$#2#{} at",
-                        "end of round, this Joker permanently earns {C:money}$1{} less",
-                        "{C:inactive,s:0.8}Fish heads are yummy and the",
-                        "{C:inactive,s:0.8}textures are different and good!!!"
-                    },
-                    {
-                        "Art credit to",
-                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
-                    }
+                    "Earn {C:money}$#1#{} at the end of the round",
+                    "For each {C:money}$1{} you have over {C:money}$#2#{} at",
+                    "end of round, this Joker permanently earns {C:money}$1{} less",
+                    "{C:inactive,s:0.8}Fish heads are yummy and the",
+                    "{C:inactive,s:0.8}textures are different and good!!!"
                 }
             },
             j_para_nft = {
@@ -293,14 +315,8 @@ return {
             j_para_madeline = {
                 name = "Madeline",
                 text = {
-                    {
-                        "On the next {C:attention}#2#{} cards",
-                        "triggered, {C:mult}+#1#{} Mult",
-                    },
-                    {
-                        "Art credit to",
-                        "{C:planet}secun{} on {C:spectral}Discord"
-                    }
+                    "On the next {C:attention}#2#{} cards",
+                    "triggered, {C:mult}+#1#{} Mult"
                 }
             },
             j_para_burntsamosas = {
@@ -315,20 +331,14 @@ return {
             j_para_palmier = {
                 name = "Palmiers",
                 text = {
-                    {
-                        "{C:chips}+#1#{} Chips",
-                        "Every time a playing card is",
-                        "triggered, this Joker loses",
-                        "{C:chips}-#2#{} Chips and that card",
-                        "gains {C:chips}+#2#{} Chips",
-                        "{C:inactive,s:0.8}They're yummy, they're{}",
-                        "{C:inactive,s:0.8}crunchy, they get crumbs{}",
-                        "{C:inactive,s:0.8}everywhere, MOVING ON!{}"
-                    },
-                    {
-                        "Art credit to",
-                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
-                    }
+                    "{C:chips}+#1#{} Chips",
+                    "Every time a playing card is",
+                    "triggered, this Joker loses",
+                    "{C:chips}-#2#{} Chips and that card",
+                    "gains {C:chips}+#2#{} Chips",
+                    "{C:inactive,s:0.8}They're yummy, they're{}",
+                    "{C:inactive,s:0.8}crunchy, they get crumbs{}",
+                    "{C:inactive,s:0.8}everywhere, MOVING ON!{}"
                 }
             },
             j_para_malangafritter = {
@@ -342,38 +352,52 @@ return {
                     "{C:inactive,s:0.8}some spicy peppers for some reason.{}",
                 }
             },
+            j_para_malangafritter_upgraded = {
+                name = "Malanga Fritters",
+                text = {
+                    "For the next {C:attention}#1#{} hands,",
+                    "first played card becomes {C:dark_edition}Polychrome{}.",
+                    "{C:inactive}(First played card must have no{}",
+                    "{C:inactive}edition for Joker to trigger){}",
+                    "{C:inactive,s:0.8}You just feel like they're missing{}",
+                    "{C:inactive,s:0.8}some spicy peppers for some reason.{}",
+                }
+            },
+            j_para_malangafritter_unfiltered = {
+                name = "Malanga Fritters",
+                text = {
+                    "For the next {C:attention}#1#{} hands,",
+                    "first played card becomes {C:dark_edition}Polychrome{}.",
+                    "{C:inactive}(First played card must have no{}",
+                    "{C:inactive}edition for Joker to trigger){}",
+                    "{C:inactive,s:0.8}You just feel like they're missing{}",
+                    "{C:inactive,s:0.8}some spicy peppers for some reason.{}",
+                }
+            },
             j_para_airplane = {
                 name = "Airplane",
                 text = {
-                    {
-                        "For each purchased {C:attention}Tier 1{} Voucher,",
-                        "gain {C:attention}#1#{} free {C:green}reroll{} per shop",
-                        "{C:inactive}#3#{C:attention}#2#{C:inactive}#4#",
-                    },
-                    {
-                        "Art credit to",
-                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
-                    }
+                    "For each purchased {C:attention}Tier 1{} Voucher,",
+                    "gain {C:attention}#1#{} free {C:green}reroll{} per shop",
+                    "{C:inactive}#3#{C:attention}#2#{C:inactive}#4#",
                 }
             },
             j_para_tower = {
                 name = "Tower",
                 text = {
-                    {
-                        "Earn {C:money}$#1#{} at end of round",
-                        "if you have at least two {C:attention}Towers",
-                        "Duplicate {C:attention}Towers{} can appear",
-                        "without {C:attention}Showman",
-                        "{C:inactive,s:0.8}oh boy i sure hope nobody",
-                        "{C:inactive,s:0.8}crashes an airplane into me"
-                    },
-                    {
-                        "Art credit to",
-                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
-                    }
+                    "Earn {C:money}$#1#{} at end of round",
+                    "for each {C:money}$#2#{} you have",
+                    "{C:inactive}(It's not capped.)"
                 }
             },
             j_para_astro = {
+                name = "< Astro >w< >", -- < • Astro >⩊< • >, balala cant render the dot or the omega
+                text = {
+                    "If played hand is a {C:attention}Flush{},",
+                    "all scoring cards become {C:spades}Spades",
+                }
+            },
+            j_para_astro_unfiltered = {
                 name = "< Astro >w< >", -- < • Astro >⩊< • >, balala cant render the dot or the omega
                 text = {
                     {
@@ -391,211 +415,175 @@ return {
                         "are multiplied by {C:green}#9#",
                         "Increase {C:attention}probability boost{} by {C:green}#10#",
                         "when a {C:attention}Lucky Card{} is scored",
-                    },
-                    {
-                        "Art credit to",
-                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
                     }
                 }
             },
+            j_para_astro_upgraded = {
+                name = "< Astro >w< >", -- < • Astro >⩊< • >, balala cant render the dot or the omega
+                text = {
+                    "If played hand is a {C:attention}Flush{},",
+                    "all scoring cards become {C:spades}Spades",
+                }
+            },
             j_para_green_credit_card = {
+                name = "Credit Card",
+                text = {
+                    "Go up to",
+                    "{C:red}-$#1#{} in debt",
+                },
+            },
+            j_para_green_credit_card_unfiltered = {
                 name = 'Green Credit Card',
                 text = {
                     "Go {C:attention}as much{} in debt {C:attention}as you want",
                     "{C:inactive,s:0.8}This will have no unforseen consequences."
                 }
             },
+            j_para_green_credit_card_upgraded = {
+                name = "Credit Card",
+                text = {
+                    "Go up to",
+                    "{C:red}-$#1#{} in debt",
+                },
+            },
             j_para_card = {
                 name = 'card',
                 text = {
-                    {
-                        "{C:chips}+#1#{} chip",
-                        "{C:inactive,s:0.8}Cards together strong"
-                    },
-                    {
-                        "Art credit to",
-                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
-                    }
+                    "{C:chips}+#1#{} chip",
+                    "{C:inactive,s:0.8}Cards together strong"
                 }
             },
             j_para_pancake = {
 		        name = 'Pancakes',
 		        text = {
-                    {
-			            'Scored {C:attention}Food Jokers{} give {C:mult}+#1#{} Mult',
-			            'Lose {C:mult}-#2#{} Mult at end of round',
-                        '{C:inactive,s:0.8}"So you hate waffles?" No bitch. Dats a',
-                        '{C:inactive,s:0.8}whole new sentence. Wtf is you talkin about.'
-                    },
-                    {
-                        "Art credit to",
-                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
-                    }
+			        'Scored {C:attention}Food Jokers{} give {C:mult}+#1#{} Mult',
+			        'Lose {C:mult}-#2#{} Mult at end of round',
+                    '{C:inactive,s:0.8}"So you hate waffles?" No bitch. Dats a',
+                    '{C:inactive,s:0.8}whole new sentence. Wtf is you talkin about.'
 		        }
             },
             j_para_paradox = {
 		        name = 'UnusedParadox',
 		        text = {
-                    {
-			            'When leaving shop, create a random',
-			            '{C:attention}Joker{} from {B:2,V:1}Paradox\'s Stupid Ideas{}',
-                        "with the {C:dark_edition}Negative{} edition",
-                        '{C:inactive,s:0.8}no way thats me. woag',
-                    },
-                    {
-                        "Art credit to",
-                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
-                    }
+			        'When a {C:tarot}Tarot{} card is',
+			        'used, convert leftmost card',
+                    'held in hand to {C:hearts}Hearts{}',
+                    '{C:inactive}(Cards must be in hand to activate)',
+                    '{C:inactive,s:0.8}no way thats me. woag',
+		        }
+            },
+            j_para_paradox_unfiltered = {
+		        name = 'UnusedParadox',
+		        text = {
+			        'When leaving shop, create a random',
+			        '{C:attention}Joker{} from {B:2,V:1}Paradox\'s Stupid Ideas{}',
+                    "with the {C:dark_edition}Negative{} edition",
+                    '{C:inactive,s:0.8}no way thats me. woag',
+		        }
+            },
+            j_para_paradox_upgraded = {
+		        name = 'UnusedParadox',
+		        text = {
+			        'When a {C:tarot}Tarot{} card is',
+			        'used, convert leftmost card',
+                    'held in hand to {C:hearts}Hearts{}',
+                    '{C:inactive}(Cards must be in hand to activate)',
+                    '{C:inactive,s:0.8}no way thats me. woag',
 		        }
             },
             j_para_ashenjoker = {
-                name = "Ashen Joker",
+                name = "Charred Joker",
                 text = {
-                    {
-                        "This Joker gains {X:chips,C:white}X#2#{} Chips",
-                        "when an {C:attention}Ashen Card{} is played",
-                        "{C:inactive}(Currently {X:chips,C:white}X#1#{C:inactive} Chips)"
-                    },
-                    {
-                        "Art credit to",
-                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
-                    }
+                    "This Joker gains {X:chips,C:white}X#2#{} Chips",
+                    "when a {C:attention}Charred Card{} is played",
+                    "{C:inactive}(Currently {X:chips,C:white}X#1#{C:inactive} Chips)"
                 }
             },
             j_para_jackenstein = {
                 name = "Jackenstein",
                 text = {
-                    {
-                        "This Joker loses {X:mult,C:white}X#2#{} Mult",
-                        "prior to every {C:blue}hand{} or {C:red}discard{}",
-                        "Resets to {X:mult,C:white}X#3#{} Mult",
-                        "at the end of the {C:attention}Ante",
-                        "{C:inactive}(Minimum {X:mult,C:white}X#4#{C:inactive} Mult, currently {X:mult,C:white}X#1#{C:inactive} Mult)",
-                    },
-                    {
-                        "Art credit to",
-                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
-                    }
+                    "This Joker loses {X:mult,C:white}X#2#{} Mult",
+                    "prior to every {C:blue}hand{} or {C:red}discard{}",
+                    "Resets to {X:mult,C:white}X#3#{} Mult",
+                    "at the end of the {C:attention}Ante",
+                    "{C:inactive}(Minimum {X:mult,C:white}X#4#{C:inactive} Mult, currently {X:mult,C:white}X#1#{C:inactive} Mult)",
                 }
             },
             j_para_castenstone = {
                 name = "Casten Stone",
                 text = {
-                    {
-                        "No played cards will score",
-                        "Gains {C:chips}+#2#{} Chips per played card",
-                        "any copy of {C:attention}Casten Stone{}",
-                        "prevented from scoring",
-                        "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)",
-                    },
-                    {
-                        "Art credit to",
-                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
-                    }
+                    "No played cards will score",
+                    "Gains {C:chips}+#2#{} Chips per played card",
+                    "any copy of {C:attention}Casten Stone{}",
+                    "prevented from scoring",
+                    "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)",
                 }
             },
             j_para_brokenphone = {
                 name = "Broken Phone",
                 text = {
-                    {
-                        "Gives half the {C:mult}Mult{} and {C:chips}Chips",
-                        "from {C:attention}most played{} poker hand",
-                        "(Ties are broken by",
-                        "highest ranked poker hand)",
-                        "{C:inactive}(Currently {C:planet}#1#{C:inactive} with",
-                        "{C:chips}+#2#{C:inactive} Chips and {C:mult}+#3#{C:inactive} Mult)",
-                    },
-                    {
-                        "Art credit to",
-                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
-                    }
+                    "Gives half the {C:mult}Mult{} and {C:chips}Chips",
+                    "from {C:attention}most played{} poker hand",
+                    "(Ties are broken by",
+                    "highest ranked poker hand)",
+                    "{C:inactive}(Currently {C:planet}#1#{C:inactive} with",
+                    "{C:chips}+#2#{C:inactive} Chips and {C:mult}+#3#{C:inactive} Mult)",
                 }
             },
             j_para_threepartplan = {
                 name = "Three Part Plan",
                 text = {
-                    {
-                        "Scoring cards have a {C:green}#1# in #2#{}",
-                        "chance to become {C:attention}Glass Cards{}",
-                        "Destroyed {C:attention}Glass Cards{} are",
-                        "copied and have their",
-                        "rank and suit {C:attention}randomized",
-                    },
-                    {
-                        "Art credit to",
-                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
-                    }
+                    "Scoring cards have a {C:green}#1# in #2#{}",
+                    "chance to become {C:attention}Glass Cards{}",
+                    "Destroyed {C:attention}Glass Cards{} are",
+                    "copied and have their",
+                    "rank and suit {C:attention}randomized",
                 }
             },
             j_para_volcaniceruption = {
                 name = "Volcanic Eruption",
                 text = {
-                    {
-                        "No played cards will score",
-                        "{X:chips,C:white}X#2#{} Chips for each unscored card",
-                        "{C:inactive}(Currently {X:chips,C:white}X#1#{C:inactive} Chips)"
-                    },
-                    {
-                        "Art credit to",
-                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
-                    }
+                    "No played cards will score",
+                    "{X:chips,C:white}X#2#{} Chips for each unscored card",
+                    "{C:inactive}(Currently {X:chips,C:white}X#1#{C:inactive} Chips)"
                 }
             },
             j_para_endlessinferno = {
                 name = "Endless Inferno",
                 text = {
-                    {
-                        "All scoring cards become",
-                        "{C:attention}Ashen Cards{} and gain {X:chips,C:white}X#1#{} Chips",
-                        "{C:inactive,s:0.8}Steamodded has a minor bug",
-                        "{C:inactive,s:0.8}such that cards played with this Joker",
-                        "{C:inactive,s:0.8}will display \"{X:chips,C:white,s:0.8}Xnil{C:inactive,s:0.8} chips when held\".",
-                        "{C:inactive,s:0.8}Rest assured, this means nothing."
-                    },
-                    {
-                        "Art credit to",
-                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
-                    }
+                    "All scoring cards become",
+                    "{C:attention}Charred Cards{} and gain {X:chips,C:white}X#1#{} Chips",
+                    "{C:inactive,s:0.8}Steamodded has a minor bug",
+                    "{C:inactive,s:0.8}such that cards played with this Joker",
+                    "{C:inactive,s:0.8}will display \"{X:chips,C:white,s:0.8}Xnil{C:inactive,s:0.8} chips when held\".",
+                    "{C:inactive,s:0.8}Rest assured, this means nothing."
                 }
             },
             j_para_supercomputer = {
                 name = "Supercomputer",
                 text = {
-                    {
-                        "Gives the {C:chips}Chips{} and {C:mult}Mult{} of",
-                        "most played poker hand",
-                        "{C:attention}Levels up{} most played",
-                        "poker hand prior to scoring",
-                        "(Ties are broken by",
-                        "highest ranked poker hand)",
-                        "{C:inactive}(Currently {C:planet}#1#{C:inactive} with",
-                        "{C:chips}+#2#{C:inactive} Chips and {C:mult}+#3#{C:inactive} Mult,",
-                        "{C:inactive}gains {C:chips}+#4#{C:inactive} Chips and {C:mult}+#5#{C:inactive} Mult)"
-                    },
-                    {
-                        "Art credit to",
-                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
-                    }
-                }, 
+                    "Gives the {C:chips}Chips{} and {C:mult}Mult{} of",
+                    "most played poker hand",
+                    "{C:attention}Levels up{} most played",
+                    "poker hand prior to scoring",
+                    "(Ties are broken by",
+                    "highest ranked poker hand)",
+                    "{C:inactive}(Currently {C:planet}#1#{C:inactive} with",
+                    "{C:chips}+#2#{C:inactive} Chips and {C:mult}+#3#{C:inactive} Mult,",
+                    "{C:inactive}gains {C:chips}+#4#{C:inactive} Chips and {C:mult}+#5#{C:inactive} Mult)"
+                },
             },
             j_para_garagefork = {
                 name = "Fork Found In Garage",
                 text = {
-                    {
-                        "Cards in {C:tarot}Arcana{} and {C:planet}Celestial{}",
-                        "packs have a {C:green}#1# in #2#{} chance",
-                        "to be {C:spectral}Spectral{} cards",
-                        "When opening a {C:planet}Celestial{} pack,",
-                        "draw {C:attention}1{} playing card",
-                        "to hand per {C:attention}1{} hand size",
-                        "{C:inactive}(Does not override Telescope)",
-                        "{C:inactive,s:0.8}\"fork found in garage\"",
-                        "{C:inactive,s:0.8}-nxkoo_, 7/16/2025"
-                    },
-                    {
-                        "Art credit to",
-                        "{C:planet}silly_goober_0nthewall{} on {C:spectral}Discord"
-                    }
+                    "Cards in {C:tarot}Arcana{} and {C:planet}Celestial{}",
+                    "packs have a {C:green}#1# in #2#{} chance",
+                    "to be {C:spectral}Spectral{} cards",
+                    "When opening a {C:planet}Celestial{} pack,",
+                    "draw {C:attention}playing cards{} to hand",
+                    "{C:inactive}(Does not override Telescope)",
+                    "{C:inactive,s:0.8}\"fork found in garage\"",
+                    "{C:inactive,s:0.8}-nxkoo_, 7/16/2025"
                 },
             },
             j_para_the_plain = {
@@ -611,9 +599,10 @@ return {
             j_para_the_singular = {
                 name = "The Singular",
                 text = {
-                    "{X:mult,C:white}X#1#{} Mult if you",
-                    "have no {C:attention}duplicate jokers{}",
-                    "{C:inactive}(Currently #2#)"
+                    "{X:mult,C:white}X#1#{} Mult if scoring hand",
+                    "contains no cards with the",
+                    "same {C:attention}rank, suit,{} and {C:attention}enhancement",
+                    "as another scoring card"
                 }
             }
         },
@@ -663,17 +652,10 @@ return {
             c_para_arson = {
                 name = "Arson",
                 text = {
-                    {
-                        "Enhances {C:attention}#1#{}",
-                        "selected cards to",
-                        "{C:attention}#2#s",
-                    },
-                    {
-                        "Art credit to",
-                        "{C:planet}silly_goober_0nthewall{}",
-                        "on {C:spectral}Discord"
-                    }
-                },
+                    "Enhances {C:attention}#1#{}",
+                    "selected cards to",
+                    "{C:attention}#2#s",
+                }
             },
         },
         Sleeve = {
@@ -683,10 +665,6 @@ return {
                     "{s:0.8}Start with an",
                     "{s:0.8,C:attention,T:m_eternal}Eternal{s:0.8} {s:0.8,C:rare,T:j_blueprint}Blueprint{s:0.8} and an {s:0.8,C:attention}Eternal{} {s:0.8,C:rare,T:j_brainstorm}Brainstorm",
                     "{C:red,s:0.8}#1#{s:0.8} Joker slot, {s:0.8,C:blue}#2#{s:0.8} hand",
-                    "{s:0.3} ",
-                    "Art credit to",
-                    "{C:planet}silly_goober_0nthewall{}",
-                    "on {C:spectral}Discord"
                 },
             },
             sleeve_para_yurisleeve_alt = {
@@ -695,10 +673,6 @@ return {
                     "{s:0.8}Start with an additional",
                     "{s:0.8,C:dark_edition,T:e_negative}Negative {s:0.8,C:attention,T:m_eternal}Eternal{s:0.8} {s:0.8,C:rare,T:j_blueprint}Blueprint{s:0.8} and a {s:0.8,C:dark_edition}Negative {s:0.8,C:attention}Eternal{s:0.8} {s:0.8,C:rare,T:j_brainstorm}Brainstorm",
                     "{s:0.8,C:red}#1#{} Joker slot",
-                    "{s:0.3} ",
-                    "Art credit to",
-                    "{C:planet}silly_goober_0nthewall{}",
-                    "on {C:spectral}Discord"
                 }
             },
             sleeve_para_chasmsleeve = {
@@ -707,10 +681,6 @@ return {
                     "{C:red}#1#{} Joker slots",
                     '{C:blue}#2#{} hands each round',
                     '{C:attention}+#3#{} hand size',
-                    "{s:0.3} ",
-                    "Art credit to",
-                    "{C:planet}silly_goober_0nthewall{}",
-                    "on {C:spectral}Discord"
                 },
                 unlock = {
                     'Win with {C:attention}#1#{}',
@@ -725,9 +695,6 @@ return {
                     '{C:red}#1#{} discards each round',
                     '{C:attention}+#2#{} card selection limit',
                     "{s:0.3} ",
-                    "Art credit to",
-                    "{C:planet}silly_goober_0nthewall{}",
-                    "on {C:spectral}Discord"
                 },
                 unlock = {
                     'Win with {C:attention}#1#{}',
@@ -741,10 +708,6 @@ return {
                 text = {
                     '{C:red}#1#{} discards each round',
                     '{C:attention}+#2#{} hand size',
-                    "{s:0.3} ",
-                    "Art credit to",
-                    "{C:planet}silly_goober_0nthewall{}",
-                    "on {C:spectral}Discord"
                 },
                 unlock = {
                     'Win with {C:attention}#1#{}',
@@ -759,10 +722,6 @@ return {
                     "{C:red}#1#{} Joker slots",
                     '{C:red}#2#{} discards each round',
                     '{C:attention}+#3#{} hand size',
-                    "{s:0.3} ",
-                    "Art credit to",
-                    "{C:planet}silly_goober_0nthewall{}",
-                    "on {C:spectral}Discord"
                 },
                 unlock = {
                     'Win with {C:attention}#1#{}',
@@ -777,10 +736,6 @@ return {
                     "{C:red}#1#{} Joker slots",
                     '{C:blue}#2#{} hands each round',
                     '{C:attention}+#3#{} card selection limit',
-                    "{s:0.3} ",
-                    "Art credit to",
-                    "{C:planet}silly_goober_0nthewall{}",
-                    "on {C:spectral}Discord"
                 },
                 unlock = {
                     'Win with {C:attention}#1#{}',
@@ -794,10 +749,6 @@ return {
                 text = {
                     '{C:blue}#1#{} hands each round',
                     '{C:attention}+#2#{} card selection limit',
-                    "{s:0.3} ",
-                    "Art credit to",
-                    "{C:planet}silly_goober_0nthewall{}",
-                    "on {C:spectral}Discord"
                 },
                 unlock = {
                     'Win with {C:attention}#1#{}',
@@ -811,10 +762,6 @@ return {
                 text = {
                     "{C:attention}+#1#{} Joker slots",
                     '{C:blue}#2#{} hands each round',
-                    "{s:0.3} ",
-                    "Art credit to",
-                    "{C:planet}silly_goober_0nthewall{}",
-                    "on {C:spectral}Discord"
                 },
                 unlock = {
                     'Win with {C:attention}#1#{}',
@@ -822,15 +769,51 @@ return {
                     '{C:gold}Gold Stake{} difficulty'
                 }
             },
-            sleeve_para_voidsleeve_alt = {
+            sleeve_para_voidsleeve_unfiltered = {
+                name = "Void Sleeve",
+                text = {
+                    "{C:attention}+#1#{} Joker slots",
+                    '{C:blue}#2#{} hands each round',
+                },
+                unlock = {
+                    'Win with {C:attention}#1#{}',
+                    'on at least',
+                    '{C:gold}Gold Stake{} difficulty'
+                }
+            },
+            sleeve_para_voidsleeve_unfiltered_alt = {
                 name = "{C:edition}Void Sleeve",
                 text = {
                     "{C:attention}+#1#{} Joker slots",
                     '{C:red}#2#{} discards each round',
-                    "{s:0.3} ",
-                    "Art credit to",
-                    "{C:planet}silly_goober_0nthewall{}",
-                    "on {C:spectral}Discord"
+                },
+                unlock = {
+                    'Win with {C:attention}#1#{}',
+                    'on at least',
+                    '{C:gold}Gold Stake{} difficulty'
+                }
+            },
+            sleeve_para_voidsleeve_upgraded = {
+                name = "Void Sleeve",
+                text = {
+                    "{s:0.8}When the Boss Blind on",
+                    "{s:0.8}an even Ante is defeated,",
+                    'gain {C:attention}+#1#{} Joker slot and lose {C:blue}#2#{} hand',
+                    "{C:inactive,s:0.8}Effect will not trigger if you have 1 hand",
+                },
+                unlock = {
+                    'Win with {C:attention}#1#{}',
+                    'on at least',
+                    '{C:gold}Gold Stake{} difficulty'
+                }
+            },
+            sleeve_para_voidsleeve_upgraded_alt = {
+                name = "{C:edition}Void Sleeve",
+                text = {
+                    "{s:0.8}When the Boss Blind on",
+                    "{s:0.8}an even Ante is defeated,",
+                    'gain {C:attention}+#1#{} Joker slot and lose {C:red}#2#{} discard',
+                    "{C:inactive,s:0.8}Effect will not trigger if you have 1 discard",
                 },
                 unlock = {
                     'Win with {C:attention}#1#{}',
@@ -850,7 +833,19 @@ return {
                     '{C:gold}Gold Stake{} difficulty'
                 }
             },
-            sleeve_para_artisticsleeve_alt1 = {
+            sleeve_para_artisticsleeve_unfiltered = {
+                name = "Artistic Sleeve",
+                text = {
+                    "{C:red}#1#{} Joker slots",
+                    '{C:attention}+#2#{} hand size'
+                },
+                unlock = {
+                    'Win with {C:attention}#1#{}',
+                    'on at least',
+                    '{C:gold}Gold Stake{} difficulty'
+                }
+            },
+            sleeve_para_artisticsleeve_unfiltered_alt1 = {
                 name = "{C:edition}Artistic Sleeve",
                 text = {
                     '{C:attention}+#1#{} selection limit'
@@ -861,11 +856,39 @@ return {
                     '{C:gold}Gold Stake{} difficulty'
                 }
             },
-            sleeve_para_artisticsleeve_alt2 = {
+            sleeve_para_artisticsleeve_unfiltered_alt2 = {
                 name = "{C:edition}Artistic Sleeve",
                 text = {
                     "{C:red}#1#{} Joker slots",
                     '{C:attention}+#2#{} selection limit'
+                },
+                unlock = {
+                    'Win with {C:attention}#1#{}',
+                    'on at least',
+                    '{C:gold}Gold Stake{} difficulty'
+                }
+            },
+            sleeve_para_artisticsleeve_upgraded_alt = {
+                name = "{C:edition}Artistic Sleeve",
+                text = {
+                    '{C:attention}+#1#{} selection limit',
+                    "when Boss Blind is defeated",
+                    "Does not trigger on the",
+                    "Ante 1 boss"
+                },
+                unlock = {
+                    'Win with {C:attention}#1#{}',
+                    'on at least',
+                    '{C:gold}Gold Stake{} difficulty'
+                }
+            },
+            sleeve_para_artisticsleeve_upgraded = {
+                name = "Artistic Sleeve",
+                text = {
+                    "{C:red}#1#{} Joker slots",
+                    '{C:red}#2#{} hand size',
+                    "{C:attention}+#3#{} hand size when",
+                    "Boss Blind is defeated",
                 },
                 unlock = {
                     'Win with {C:attention}#1#{}',
@@ -881,7 +904,8 @@ return {
                 text = {
                     "Welcome to {C:edition,E:1}Paradox's Stupid Ideas{}!",
                     "Before you begin playing, there are",
-                    "some things you need to configure."
+                    "some things you need to configure.",
+                    "{C:inactive,s:0.8}thanks aikoyori for letting me take all of their ui code"
                 }
             },
             para_gameset_details = {
@@ -894,8 +918,11 @@ return {
                     "- {C:green}Upgraded{} - A more balanced and vanilla-esque",
                     "experience: however, you may miss some content",
                     "{C:inactive}--------------------------------------------------------",
-                    "These can be changed in the mod settings at any time, though",
-                    "changing this during a run may break your current run."
+                    "{s:0.8}These can be changed in the mod settings at any time, though",
+                    "{s:0.8}changing this during a run may break your current run.",
+                    "{s:0.8}It's recommended to restart the game and your run",
+                    "{s:0.8}when changing these settings, and bugs arising from not doing",
+                    "{s:0.8}this will likely not be handled"
                 }
             },
         }
@@ -940,12 +967,12 @@ return {
             k_para_unfiltered_dialog_text = "Unfiltered",
             k_para_unfiltered_dialog_description = "A bit less balanced with some more content",
             k_para_balance_descriptions = {
-                'A handcrafted vanilla-esque experience',
                 'More content and jokes with less balance',
+                'A handcrafted vanilla-esque experience',
             },
             k_para_balance_selects = {
+                'Unfiltered',
                 'Upgraded',
-                'Unfiltered'
             },
             k_para_config_balance_txt = "Balance",
         },
@@ -969,6 +996,9 @@ return {
         v_dictionary = {
             powpow_chips = {"^^#1# Chips"},
             money_loss = {"-$#1#"},
+            para_art = { "Art: #1#" },
+            para_code = { "Code: #1#" },
+            para_idea = { "Idea: #1#" },
         },
         v_text = {},
     },

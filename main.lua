@@ -4,7 +4,7 @@
 to_big = to_big or function(x) return x end -- Talisman compat
 
 PSI = {}
-
+PSI.self = SMODS.current_mod
 PSI.gameset = {}
 
 if G.PROFILES[G.SETTINGS.profile].para_gameset == "unfiltered" then

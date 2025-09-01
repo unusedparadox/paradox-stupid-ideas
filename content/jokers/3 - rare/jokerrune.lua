@@ -20,6 +20,10 @@ SMODS.Joker{ -- Jokerrune implementation
 		end
 	end,
 	in_pool = function(self, args)
-		return PSI.gameset.unfiltered, {allow_duplicates = false}
-	end
+		return PSI.get_gameset().unfiltered, {allow_duplicates = false}
+	end,
+	para_credits = {
+		["art"] = "UnusedParadox",
+		["code"] = "UnusedParadox"
+	}
 }

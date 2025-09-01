@@ -1,14 +1,3 @@
-local is_dupes = function()
-    if G.jokers and G.jokers.cards then
-        for _, card in ipairs(G.jokers.cards) do
-            local jimbos = SMODS.find_card(card.config.center.key, true)
-            if #jimbos > 1 then
-                return true
-            end
-        end
-    end
-    return false
-end
 SMODS.Joker{
     key = "the_singular",
     blueprint_compat = true,
@@ -23,16 +12,27 @@ SMODS.Joker{
         xmult = 3
     }},
     loc_vars = function(self, info_queue, card)
-        local message = localize("para_k_active")
-        if is_dupes() then message = localize("para_k_inactive") end
-		return {vars = {card.ability.extra.xmult, message}}
+		return {vars = {card.ability.extra.xmult}}
 	end,
     calculate = function(self, card, context)
-        if context.joker_main and not is_dupes() then
+        if context.joker_main then
+            local unique_cards = {}
+            for _, v in ipairs(context.scoring_hand) do
+                for _, vv in ipairs(unique_cards) do
+                    if PSI.compare_singular(v, vv) then
+                        return nil, true
+                    end
+                end
+                unique_cards[#unique_cards+1] = v
+            end
             return { xmult = card.ability.extra.xmult }
         end
     end,
     in_pool = function(self, args)
         return gb_is_blind_defeated("bl_para_singular")
-    end
+    end,
+	para_credits = {
+		["art"] = "UnusedParadox",
+		["code"] = "UnusedParadox"
+	}
 }

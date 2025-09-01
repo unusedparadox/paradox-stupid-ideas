@@ -36,5 +36,9 @@ SMODS.Joker{ -- Fish Head implementation
 	end,
 	calc_dollar_bonus = function(self, card)
 		return card.ability.extra.money
-	end
+	end,
+	para_credits = {
+		["art"] = "Astro",
+		["code"] = "UnusedParadox"
+	}
 }

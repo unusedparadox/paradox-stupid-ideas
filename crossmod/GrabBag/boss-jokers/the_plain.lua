@@ -54,5 +54,9 @@ SMODS.Joker{
     end,
     in_pool = function(self, args)
         return gb_is_blind_defeated("bl_para_plain")
-    end
+    end,
+	para_credits = {
+		["art"] = "UnusedParadox",
+		["code"] = "UnusedParadox"
+	}
 }

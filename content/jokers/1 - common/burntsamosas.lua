@@ -36,5 +36,9 @@ SMODS.Joker{ -- Burnt Samosas implementation
 				}
 			end
 		end
-	end
+	end,
+	para_credits = {
+		["art"] = "UnusedParadox",
+		["code"] = "UnusedParadox"
+	}
 }

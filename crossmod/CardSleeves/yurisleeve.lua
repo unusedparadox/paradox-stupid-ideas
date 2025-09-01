@@ -50,5 +50,9 @@ CardSleeves.Sleeve {
 		if self.get_current_deck_key() ~= "b_para_yurideck" then
 			G.GAME.starting_params.hands = G.GAME.starting_params.hands + self.config.extra.hands
 		end
-	end
+	end,
+	para_credits = {
+		["art"] = "Astro",
+		["code"] = "UnusedParadox"
+	}
 }

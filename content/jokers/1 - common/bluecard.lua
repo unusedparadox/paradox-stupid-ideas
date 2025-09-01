@@ -32,5 +32,9 @@ SMODS.Joker{ -- Blue Card implementation
 		if next(SMODS.find_card("j_red_card", true)) and next(SMODS.find_card("j_para_orangecard", true)) and next(SMODS.find_card("j_para_yellowcard", true)) then
 			check_for_unlock({type = 'cardcollector'})
 		end
-	end
+	end,
+	para_credits = {
+		["art"] = "Astro",
+		["code"] = "UnusedParadox"
+	}
 }

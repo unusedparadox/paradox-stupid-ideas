@@ -1,9 +1,10 @@
 SMODS.Joker{ -- Pineapple implementation.
 	key = 'pineapple',
 	config = { extra = {
-		xmult = 3
-	}
-	},
+		xmult = 3,
+		mult = 30,
+		mult_loss = 5
+	}},
 	atlas = 'Jokers',
 	pos = {x = 4, y = 0},
 	pools = { ["Food"] = true, ["parajoker"] = true },
@@ -13,20 +14,45 @@ SMODS.Joker{ -- Pineapple implementation.
 	eternal_compat = false,
 	perishable_compat = false,
 	loc_vars = function(self,info_queue,card)
-		return {vars = {card.ability.extra.xmult}}
+		if PSI.get_gameset().unfiltered then
+			return {key = self.key .. "_unfiltered", vars = {card.ability.extra.xmult}}
+		else
+			return {key = self.key .. "_upgraded", vars = {card.ability.extra.mult, card.ability.extra.mult_loss}}
+		end
 	end,
 	calculate = function(self, card, context)
 		if context.joker_main then
-			return {
-				xmult = card.ability.extra.xmult
-			}
-        elseif context.end_of_round and not context.game_over then
-			G.PROFILES[G.SETTINGS.profile].pineappledeath = true
-			check_for_unlock({type = 'deathbypineapple'})
-            G.STATE = G.STATES.GAME_OVER
-            G.STATE_COMPLETE = false
+			if PSI.get_gameset().unfiltered then
+				return {
+					xmult = card.ability.extra.xmult
+				}
+			else
+				return {
+					mult = card.ability.extra.mult
+				}
+			end
+        elseif context.end_of_round then
+			if PSI.get_gameset().unfiltered and not context.game_over then
+				G.PROFILES[G.SETTINGS.profile].pineappledeath = true
+				check_for_unlock({type = 'deathbypineapple'})
+            	G.STATE = G.STATES.GAME_OVER
+            	G.STATE_COMPLETE = false
+			elseif context.cardarea == G.jokers then
+				card.ability.extra.mult = card.ability.extra.mult - card.ability.extra.mult_loss
+				if card.ability.extra.mult <= 0 then
+					PSI.consumefood(card)
+        	   		return {
+        	   		    message = localize('k_eaten_ex'),
+        	   		    colour = G.C.ATTENTION
+        	   		}
+				end
+        	end
         end
-	end
+	end,
+	para_credits = {
+		["art"] = "UnusedParadox",
+		["code"] = "UnusedParadox"
+	}
 }
 local para_jimbotalk_old = Card_Character.add_speech_bubble
 Card_Character.add_speech_bubble = function(self, arg1, arg2, arg3)
@@ -69,4 +95,11 @@ Game.update_game_over = function(self, dt)
 		end
 		G.STATE_COMPLETE = true
 	end
+end
+local effectcalc = SMODS.calculate_individual_effect
+SMODS.calculate_individual_effect = function(effect, scored_card, key, amount, from_edition)
+	if (key == 'x_mult' or key == 'xmult' or key == 'Xmult' or key == 'x_mult_mod' or key == 'Xmult_mod') and amount ~= 1 and next(SMODS.find_card("j_para_pineapple")) and PSI.get_gameset().upgraded then
+		return true
+	end
+	return effectcalc(effect, scored_card, key, amount, from_edition)
 end

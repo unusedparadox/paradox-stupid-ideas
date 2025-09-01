@@ -206,7 +206,7 @@ end
 local mainmenu_old = Game.main_menu
 function Game:main_menu(ctx)
     local ret = mainmenu_old(self,ctx)
-    PSI.start_onboarding()
+    if not PSI.gameset_choice_disabled then PSI.start_onboarding() end
     return ret
 end
 PSI.balance_map = {
@@ -240,48 +240,61 @@ SMODS.current_mod.config_tab = function ()
         string = {{ref_table = PSI ,ref_value = "config_balance_text_txt"}},
         shadow = true, float = false, silent = true
     }
-    return {
-        n = G.UIT.ROOT, config = { minw = 18, minh = 8 ,align = "tm",colour = G.C.UI.TRANSPARENT_DARK, r = 0.1 },
-        nodes = {
-            {n = G.UIT.R, config = {align = "tm"}, nodes = {
-                { n = G.UIT.C, config = {
-                    align = "cm", padding = 0.2,
-                    }, nodes = {
-                        {n = G.UIT.T, config = {
-                            text = localize("k_para_config_balance_txt"),
-                            scale = 0.5,
-                            colour = G.C.UI.TEXT_LIGHT
-                        }}
-                    }
-                },
-                { n = G.UIT.C, config = {
-                    align = "cm", padding = 0.2,
-                    id = "para_gameset_config_desc_dyna"
-                    }, nodes = {
-                        create_option_cycle({
-                            options = localize('k_para_balance_selects'),
-                            scale = 0.7,
-                            w = 4.5,
-                            current_option = PSI.balance_map[G.PROFILES[G.SETTINGS.profile].para_gameset],
-                            opt_callback = "para_change_balance_toggle",
-                            ref_table = G.PROFILES[G.SETTINGS.profile],
-                            ref_value = "para_gameset"
-                        })
-                    }
-                },
-            }},
-            {n = G.UIT.R,{
-                align = "cm", padding = 0.2,
-            },
+    if not PSI.gameset_choice_disabled then
+        return {
+            n = G.UIT.ROOT, config = { minw = 18, minh = 8 ,align = "tm",colour = G.C.UI.TRANSPARENT_DARK, r = 0.1 },
             nodes = {
-                {
-                    n = G.UIT.O,
-                    config = {
-                        align = "cm",
-                        object = PSI.config_balance_text
+                {n = G.UIT.R, config = {align = "tm"}, nodes = {
+                    { n = G.UIT.C, config = {
+                        align = "cm", padding = 0.2,
+                        }, nodes = {
+                            {n = G.UIT.T, config = {
+                                text = localize("k_para_config_balance_txt"),
+                                scale = 0.5,
+                                colour = G.C.UI.TEXT_LIGHT
+                            }}
+                        }
+                    },
+                    { n = G.UIT.C, config = {
+                        align = "cm", padding = 0.2,
+                        id = "para_gameset_config_desc_dyna"
+                        }, nodes = {
+                            create_option_cycle({
+                                options = localize('k_para_balance_selects'),
+                                scale = 0.7,
+                                w = 4.5,
+                                current_option = PSI.balance_map[G.PROFILES[G.SETTINGS.profile].para_gameset],
+                                opt_callback = "para_change_balance_toggle",
+                                ref_table = G.PROFILES[G.SETTINGS.profile],
+                                ref_value = "para_gameset"
+                            })
+                        }
+                    },
+                }},
+                {n = G.UIT.R,{
+                    align = "cm", padding = 0.2,
+                },
+                nodes = {
+                    {
+                        n = G.UIT.O,
+                        config = {
+                            align = "cm",
+                            object = PSI.config_balance_text
+                        }
                     }
-                }
-            }}
+                }}
+            }
         }
-    }
+    end
+end
+PSI.get_gameset = function()
+    if PSI.forced_gameset then
+        if PSI.forced_gameset == "unfiltered" then return {unfiltered = true, upgraded = false}
+        elseif PSI.forced_gameset == "upgraded" then return {unfiltered = false, upgraded = true} end
+    end
+    if not PSI.gameset_choice_disabled then
+        if G.PROFILES[G.SETTINGS.profile].para_gameset == "unfiltered" then return {unfiltered = true, upgraded = false}
+        elseif G.PROFILES[G.SETTINGS.profile].para_gameset == "upgraded" then return {unfiltered = false, upgraded = true} end
+    end
+    return {unfiltered = false, upgraded = true}
 end

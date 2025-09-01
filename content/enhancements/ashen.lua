@@ -20,5 +20,9 @@ SMODS.Enhancement{
         elseif context.destroy_card and context.cardarea == G.play and context.destroy_card == card and SMODS.pseudorandom_probability(card, 'para_ashen_enhance', card.ability.extra.numerator, card.ability.extra.denominator) then
             return { remove = true }
         end
-    end
+    end,
+	para_credits = {
+		["art"] = "Astro",
+		["code"] = "UnusedParadox"
+	}
 }

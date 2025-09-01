@@ -33,5 +33,9 @@ SMODS.Joker{ -- mmm yummy pancake
 				mult = card.ability.extra.mult
 			}
 		end
-	end
+	end,
+	para_credits = {
+		["art"] = "Astro",
+		["code"] = "UnusedParadox"
+	}
 }

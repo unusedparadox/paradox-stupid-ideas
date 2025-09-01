@@ -54,6 +54,10 @@ SMODS.Joker{
 				xchips = card.ability.extra.xchips
 			}
 		end
-	end
+	end,
+	para_credits = {
+		["art"] = "Astro",
+		["code"] = "UnusedParadox"
+	}
 }
 GB_SHATTERED_TABLE["j_para_castenstone"] = "j_para_volcaniceruption"

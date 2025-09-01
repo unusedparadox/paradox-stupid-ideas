@@ -31,6 +31,10 @@ SMODS.Joker{
                 mult = handinfo[3]
             }
         end
-	end
+	end,
+	para_credits = {
+		["art"] = "Astro",
+		["code"] = "UnusedParadox"
+	}
 }
 GB_SHATTERED_TABLE["j_para_brokenphone"] = "j_para_supercomputer"

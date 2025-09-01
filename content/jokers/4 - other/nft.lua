@@ -1,4 +1,3 @@
-local nft_weight = 0.025
 SMODS.Rarity{
     key = "nft",
 	loc_txt = {},
@@ -6,10 +5,10 @@ SMODS.Rarity{
     pools = {
         ["Joker"] = true
     },
-    default_weight = nft_weight,
+    default_weight = 0.025,
 	get_weight = function(self, weight, object_type)
-		if PSI.gameset.unfiltered then
-			return nft_weight
+		if PSI.get_gameset().unfiltered then
+			return 0.025
 		else
 			return 0
 		end
@@ -31,7 +30,7 @@ SMODS.Joker{ -- NFT Joker implementation
 		return {vars = {card.ability.extra.scam, card.ability.extra.min}}
 	end,
 	in_pool = function(self, args)
-		return args and args.source == 'sho' and PSI.gameset.unfiltered
+		return args and args.source == 'sho' and PSI.get_gameset().unfiltered
 	end,
 	calculate = function(self, card, context)
 		if context.end_of_round and context.cardarea == G.jokers and card.sell_cost > card.ability.extra.min then
@@ -47,5 +46,9 @@ SMODS.Joker{ -- NFT Joker implementation
             }
 		end
 	end,
-	no_collection = not PSI.gameset.unfiltered
+	no_collection = PSI.get_gameset().upgraded,
+	para_credits = {
+		["art"] = "UnusedParadox",
+		["code"] = "UnusedParadox"
+	}
 }

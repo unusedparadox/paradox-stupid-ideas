@@ -27,6 +27,10 @@ SMODS.Joker{ -- card implementation
 		end
 	end,
 	in_pool = function(self, args)
-		return true, {allow_duplicates = true}
-	end
+		return PSI.get_gameset().unfiltered, {allow_duplicates = true}
+	end,
+	para_credits = {
+		["art"] = "Astro",
+		["code"] = "UnusedParadox"
+	}
 }

@@ -36,5 +36,9 @@ SMODS.Back{
                 end
             })
 		)
-    end
+    end,
+	para_credits = {
+		["art"] = "Astro",
+		["code"] = "UnusedParadox"
+	}
 }

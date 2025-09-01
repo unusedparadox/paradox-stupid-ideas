@@ -29,5 +29,9 @@ SMODS.Joker{ -- Madeline implementation
                 colour = G.C.ATTENTION
             }
 		end
-	end
+	end,
+	para_credits = {
+		["art"] = "secun",
+		["code"] = "UnusedParadox"
+	}
 }

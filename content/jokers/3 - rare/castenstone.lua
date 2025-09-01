@@ -36,7 +36,7 @@ SMODS.Joker{
 					return {
 						message = localize("k_upgrade_ex"),
 						colour = G.C.CHIPS
-					}	
+					}
 				end
 			end
 		elseif context.modify_scoring_hand and not context.blueprint then
@@ -56,5 +56,9 @@ SMODS.Joker{
 				chips = card.ability.extra.chips
 			}
 		end
-	end
+	end,
+	para_credits = {
+		["art"] = "Astro",
+		["code"] = "UnusedParadox"
+	}
 }

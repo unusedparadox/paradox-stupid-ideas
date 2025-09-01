@@ -49,11 +49,27 @@ PSI.mostplayedhand = function(format)
         }
     end
 end
--- For boss blind effects Matador wouldn't normally detect (Does not modify vanilla blinds). Hook into this for your own boss blinds.
-PSI.blindtriggered = function()
-    for k, v in pairs(G.jokers.cards) do
-        if v.ability and v.ability.para_singular then
+PSI.changeselectlimit = function(x)
+        G.E_MANAGER:add_event(Event({
+        trigger = "after",
+        func = (function()
+            G.hand.config.highlighted_limit = G.hand.config.highlighted_limit + x
+            if SMODS.change_play_limit and SMODS.change_discard_limit then
+                -- future proofing?
+                SMODS.change_play_limit(x)
+                SMODS.change_discard_limit(x)
+            end
             return true
+        end)
+    }))
+end
+-- Return true if two cards have the same base rank, suit, and enhancement.
+PSI.compare_singular = function(a, b)
+    if a.base.id == b.base.id then
+        if a.base.suit == b.base.suit then
+            if a.config.center.key == b.config.center.key then
+                return true
+            end
         end
     end
     return false

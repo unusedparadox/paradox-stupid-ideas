@@ -23,6 +23,10 @@ SMODS.Joker{
                 v:juice_up()
             end
         end
-	end
+	end,
+	para_credits = {
+		["art"] = "Astro",
+		["code"] = "UnusedParadox"
+	}
 }
 GB_SHATTERED_TABLE["j_para_ashenjoker"] = "j_para_endlessinferno"

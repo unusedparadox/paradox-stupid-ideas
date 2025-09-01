@@ -24,5 +24,9 @@ SMODS.Joker{
 				mult = handinfo[3] / to_big(2)
 			}
 		end
-	end
+	end,
+	para_credits = {
+		["art"] = "Astro",
+		["code"] = "UnusedParadox"
+	}
 }
