@@ -367,7 +367,7 @@ return {
                 name = "Malanga Fritters",
                 text = {
                     "For the next {C:attention}#1#{} hands,",
-                    "first played card becomes {C:dark_edition}Polychrome{}.",
+                    "first played card becomes {C:dark_edition}Negative{}.",
                     "{C:inactive}(First played card must have no{}",
                     "{C:inactive}edition for Joker to trigger){}",
                     "{C:inactive,s:0.8}You just feel like they're missing{}",
@@ -905,7 +905,7 @@ return {
                     "Welcome to {C:edition,E:1}Paradox's Stupid Ideas{}!",
                     "Before you begin playing, there are",
                     "some things you need to configure.",
-                    "{C:inactive,s:0.8}thanks aikoyori for letting me take all of their ui code"
+                    "{C:inactive,s:1.6}thanks aikoyori for letting me take all of their ui code"
                 }
             },
             para_gameset_details = {
@@ -918,11 +918,11 @@ return {
                     "- {C:green}Upgraded{} - A more balanced and vanilla-esque",
                     "experience: however, you may miss some content",
                     "{C:inactive}--------------------------------------------------------",
-                    "{s:0.8}These can be changed in the mod settings at any time, though",
-                    "{s:0.8}changing this during a run may break your current run.",
-                    "{s:0.8}It's recommended to restart the game and your run",
-                    "{s:0.8}when changing these settings, and bugs arising from not doing",
-                    "{s:0.8}this will likely not be handled"
+                    "{s:1.6}These can be changed in the mod settings at any time, though",
+                    "{s:1.6}changing this during a run may break your current run.",
+                    "{s:1.6}It's recommended to restart the game and your run",
+                    "{s:1.6}when changing these settings, and bugs arising from not doing",
+                    "{s:1.6}this will likely not be handled"
                 }
             },
         }
@@ -969,6 +969,13 @@ return {
             k_para_balance_descriptions = {
                 'More content and jokes with less balance',
                 'A handcrafted vanilla-esque experience',
+            },
+            para_info_balance_text = {
+                "   ",
+                "   ",
+                "It's recommended to restart your run and",
+                "the game (in that order) when changing these settings.",
+                "Bugs arising from not doing this will not be handled."
             },
             k_para_balance_selects = {
                 'Unfiltered',

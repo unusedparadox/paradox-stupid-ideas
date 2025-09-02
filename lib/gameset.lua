@@ -76,6 +76,7 @@ PSI.wrap_in_col = function(table_ui)
     return x
 end
 G.FUNCS.para_select_gameset_checkbox = function(val, e)
+    print(val, e)
     if e.config.ref_table.ref_value == "unfiltered" then
         PSI.gameset.unfiltered = true
         PSI.gameset.upgraded = false
@@ -206,7 +207,12 @@ end
 local mainmenu_old = Game.main_menu
 function Game:main_menu(ctx)
     local ret = mainmenu_old(self,ctx)
-    if not PSI.gameset_choice_disabled then PSI.start_onboarding() end
+    if not PSI.gameset_choice_disabled and PSI.gameset_startup_screen_enabled then
+        PSI.start_onboarding()
+    end
+    if not G.PROFILES[G.SETTINGS.profile].para_gameset then
+        G.PROFILES[G.SETTINGS.profile].para_gameset = "upgraded"
+    end
     return ret
 end
 PSI.balance_map = {
@@ -240,9 +246,17 @@ SMODS.current_mod.config_tab = function ()
         string = {{ref_table = PSI ,ref_value = "config_balance_text_txt"}},
         shadow = true, float = false, silent = true
     }
+    PSI.info_balance_text = {}
+    for k, v in ipairs(localize("para_info_balance_text")) do
+        PSI.info_balance_text[k] = DynaText{
+            scale = 0.4,
+            colours = {G.C.UI.TEXT_LIGHT},
+            string = v,
+            shadow = true, float = false, silent = true
+        }
+    end
     if not PSI.gameset_choice_disabled then
-        return {
-            n = G.UIT.ROOT, config = { minw = 18, minh = 8 ,align = "tm",colour = G.C.UI.TRANSPARENT_DARK, r = 0.1 },
+        local ret = {n = G.UIT.ROOT, config = { minw = 18, minh = 8 ,align = "tm",colour = G.C.UI.TRANSPARENT_DARK, r = 0.1 },
             nodes = {
                 {n = G.UIT.R, config = {align = "tm"}, nodes = {
                     { n = G.UIT.C, config = {
@@ -271,20 +285,35 @@ SMODS.current_mod.config_tab = function ()
                         }
                     },
                 }},
-                {n = G.UIT.R,{
-                    align = "cm", padding = 0.2,
+                {n = G.UIT.R, config = {
+                    align = "bm"
                 },
                 nodes = {
                     {
                         n = G.UIT.O,
                         config = {
-                            align = "cm",
+                            align = "bm",
                             object = PSI.config_balance_text
                         }
                     }
                 }}
             }
         }
+        for k, _ in ipairs(PSI.info_balance_text) do
+            ret.nodes[#ret.nodes+1] = {n = G.UIT.R, config = {
+                    align = "bm"
+                },
+                nodes = {
+                    {
+                        n = G.UIT.O,
+                        config = {
+                            align = "bm",
+                            object = PSI.info_balance_text[k]
+                        }
+                    }
+                }}
+        end
+        return ret
     end
 end
 PSI.get_gameset = function()
