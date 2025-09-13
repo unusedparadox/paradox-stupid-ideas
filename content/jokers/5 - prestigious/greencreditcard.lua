@@ -22,7 +22,7 @@ SMODS.Joker{ -- Green Credit Card implementation
 		if PSI.get_gameset().unfiltered then
 			return next(SMODS.find_card("j_credit_card", false)) and to_big(((G.GAME.dollars + (G.GAME.dollar_buffer or 0))) < to_big(0)), { allow_duplicates = false }
 		else
-			return not next(SMODS.find_card("j_credit_card", true)), {allow_duplicates = false}
+			return SMODS.showman("j_para_green_credit_card") and SMODS.showman("j_credit_card"), {allow_duplicates = false}
 		end
 	end,
 	loc_vars = function(self,info_queue,card)

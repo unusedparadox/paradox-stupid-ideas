@@ -12,6 +12,7 @@ if G.PROFILES[G.SETTINGS.profile].para_gameset == "unfiltered" then
 elseif G.PROFILES[G.SETTINGS.profile].para_gameset == "upgraded" then
 	PSI.gameset.upgraded = true
 end
+-- wow a bunch of 0% original code. why is it PARA_ASPL? in case something else needs aspl table and this breaks weirdly. idk
 PARA_ASPL = {}
 PARA_ASPL.FUNC = {}
 PARA_ASPL.G = {}
@@ -60,6 +61,9 @@ if CardSleeves then
 end
 if GB then
 	PARA_ASPL.FUNC.RequireFolderRecursive("crossmod/GrabBag")
+end
+if CardPronouns then
+	PARA_ASPL.FUNC.RequireFolderRecursive("crossmod/CardPronouns")
 end
 ----------------------------------------------
 ------------MOD CODE END----------------------

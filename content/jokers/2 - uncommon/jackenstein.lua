@@ -63,7 +63,8 @@ SMODS.Joker{ -- Jackenstein
 	para_credits = {
 		["art"] = "Astro",
 		["code"] = "UnusedParadox"
-	}
+	},
+	pronouns = "he_him"
 }
 SMODS.Sound{
 	key = "yourtakingtoolong",

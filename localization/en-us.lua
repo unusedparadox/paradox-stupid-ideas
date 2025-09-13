@@ -391,38 +391,38 @@ return {
                 }
             },
             j_para_astro = {
-                name = "< Astro >w< >", -- < • Astro >⩊< • >, balala cant render the dot or the omega
+                name = "Astro",
                 text = {
                     "If played hand is a {C:attention}Flush{},",
                     "all scoring cards become {C:spades}Spades",
+                    "{C:inactive}(Cards are transformed prior to scoring)"
                 }
             },
             j_para_astro_unfiltered = {
                 name = "< Astro >w< >", -- < • Astro >⩊< • >, balala cant render the dot or the omega
                 text = {
                     {
-                        "{X:dark_edition,C:white}^^#1#{} Chips if played hand is a {C:attention}Flush",
-                        "Gains {X:dark_edition,C:white}^^#2#{} Chips for each scoring {C:spades}Spade",
+                        "{X:dark_edition,C:white}^#1#{} Chips if played hand is a {C:attention}Flush",
+                        "Gains {X:dark_edition,C:white}^#2#{} Chips for each scoring {C:spades}Spade",
                     },
                     {
                         "Used {C:planet}Planet{} cards have a {C:green}#3# in #4#{}",
-                        "chance to trigger {C:attention}#5#{} additional time(s)",
-                        "Increase extra triggers by {C:attention}#6#",
-                        "every #7# {C:inactive}(#8#){} {C:attention}9s{} scored"
+                        "chance to trigger {C:attention}#5#{} additional #6#",
+                        "Increase extra triggers by {C:attention}#7#",
+                        "every #8# {C:inactive}(#9#){} {C:attention}9s{} scored"
                     },
                     {
                         "The {C:green}numerators{} of {C:attention}listed probabilities",
-                        "are multiplied by {C:green}#9#",
-                        "Increase {C:attention}probability boost{} by {C:green}#10#",
+                        "are multiplied by {C:green}#10#",
+                        "Increase {C:attention}probability boost{} by {C:green}#11#",
                         "when a {C:attention}Lucky Card{} is scored",
+                    },
+                    {
+                        "{C:planet}Astro{} Jokers each give {C:white,X:chips}X#12#{} Chips",
+                        "Increase {C:white,X:chips}XChips{} by {C:white,X:chips}X#13#{} if",
+                        "played hand contains a {C:attention}Flush{} of {V:1}#14#",
+                        "{s:0.8}Suit changes each round unrelated to deck",
                     }
-                }
-            },
-            j_para_astro_upgraded = {
-                name = "< Astro >w< >", -- < • Astro >⩊< • >, balala cant render the dot or the omega
-                text = {
-                    "If played hand is a {C:attention}Flush{},",
-                    "all scoring cards become {C:spades}Spades",
                 }
             },
             j_para_green_credit_card = {
@@ -473,22 +473,13 @@ return {
 		        }
             },
             j_para_paradox_unfiltered = {
-		        name = 'UnusedParadox',
+		        name = 'UnusedParadox\'s OP self insert',
 		        text = {
 			        'When leaving shop, create a random',
 			        '{C:attention}Joker{} from {B:2,V:1}Paradox\'s Stupid Ideas{}',
                     "with the {C:dark_edition}Negative{} edition",
-                    '{C:inactive,s:0.8}no way thats me. woag',
-		        }
-            },
-            j_para_paradox_upgraded = {
-		        name = 'UnusedParadox',
-		        text = {
-			        'When a {C:tarot}Tarot{} card is',
-			        'used, convert leftmost card',
-                    'held in hand to {C:hearts}Hearts{}',
-                    '{C:inactive}(Cards must be in hand to activate)',
-                    '{C:inactive,s:0.8}no way thats me. woag',
+                    '{C:inactive,s:0.8}"joker poker: balala"',
+                    '{C:inactive,s:0.8}-UnusedParadox, 2025',
 		        }
             },
             j_para_ashenjoker = {
@@ -538,6 +529,7 @@ return {
                     "Destroyed {C:attention}Glass Cards{} are",
                     "copied and have their",
                     "rank and suit {C:attention}randomized",
+                    "(All ranks and suits have equal odds)"
                 }
             },
             j_para_volcaniceruption = {
@@ -604,6 +596,22 @@ return {
                     "same {C:attention}rank, suit,{} and {C:attention}enhancement",
                     "as another scoring card"
                 }
+            },
+            j_para_pokeren = {
+                name = "diagonal ren",
+                text = {
+                    "For every {C:money}$#1#{C:inactive} ($#2#){} earned,",
+                    "convert a random non-{C:diamonds}Diamond",
+                    "in {C:attention}full deck{} to {C:diamonds}Diamonds"
+                }
+            },
+            j_para_eris = {
+                name = "Eris",
+                text = {
+                    "Convert a random non-{C:club}Club{} remaining in {C:attention}deck",
+                    "to {C:clubs}Clubs{} for each {C:attention}Stone Card{} played",
+                    "{C:attention}Stone Cards{} are considered {C:clubs}Clubs"
+                }
             }
         },
         Other = {
@@ -626,6 +634,106 @@ return {
                 text = {
                     "Earn {C:money}$to_big(3){} dollars",
                     "when this card is scored"
+                }
+            },
+            para_astro_joker_classify = {
+                name = "Astro Jokers",
+                text = {
+                    "{C:planet}Astro{} Jokers are classified",
+                    "as any Joker depicting",
+                    "{C:planet}Astro,{} {C:red}Scrap,{}",
+                    "or {C:green}Glorp/Glorpsto.{}",
+                }
+            },
+            para_explain_suit_Spades = {
+                name = "Spades",
+                text = {
+                    "{C:spades}Spades{} are a {C:attention}\"suit\"{}",
+                    "in the game of {C:tarot}Poker,",
+                    "{C:dark_edition}Blackjack,{} and any",
+                    "{C:enhanced}card games{} using the normal",
+                    "{C:spectral}Solitaire{} deck for their",
+                    "{C:gold}gameplay,{} including {C:attention}Balatro.{}",
+                    "{C:spades}Spades{} are a {C:spades}dark suit{},",
+                    "based off of {C:attention}shovels.",
+                    "{C:attention}Suits{} are archetypes of",
+                    "{C:enhanced}cards{}, like {C:green}Ranks,{}",
+                    "but mostly just the {C:enhanced}card's{}",
+                    "{C:blue}\"Color\".{} If a hand contains",
+                    "5 of the same {C:attention}Suit,{} the",
+                    "hand has {C:attention}\"Flush\"{} tacked onto it."
+                }
+            },
+            para_explain_suit_Hearts = {
+                name = "Hearts",
+                text = {
+                    "{C:hearts}Hearts{} are a {C:attention}\"suit\"{}",
+                    "in the game of {C:red}Crazy Eights,",
+                    "{C:blue}Go Fish,{} and any",
+                    "{C:enhanced}card games{} using the normal",
+                    "{C:spectral}Solitaire{} deck for their",
+                    "{C:gold}gameplay,{} including {C:attention}Balatro.{}",
+                    "{C:hearts}Hearts{} are a {C:spades}light suit{},",
+                    "based off of {C:attention}hearts.",
+                    "{C:attention}Suits{} are archetypes of",
+                    "{C:enhanced}cards{}, like {C:green}Ranks,{}",
+                    "but mostly just the {C:enhanced}card's{}",
+                    "{C:blue}\"Color\".{} If a hand contains",
+                    "5 of the same {C:attention}Suit,{} the",
+                    "hand has {C:attention}\"Flush\"{} tacked onto it."
+                }
+            },
+            para_explain_suit_Diamonds = {
+                name = "Diamonds",
+                text = {
+                    "{C:diamonds}Diamonds{} are a {C:attention}\"suit\"{}",
+                    "in the game of {C:gold}Gin Rummy,",
+                    "{C:green}War,{} and any",
+                    "{C:enhanced}card games{} using the normal",
+                    "{C:spectral}Solitaire{} deck for their",
+                    "{C:gold}gameplay,{} including {C:attention}Balatro.{}",
+                    "{C:diamonds}Hearts{} are a {C:diamonds}light suit{},",
+                    "based off of {C:attention}jewels.",
+                    "{C:attention}Suits{} are archetypes of",
+                    "{C:enhanced}cards{}, like {C:green}Ranks,{}",
+                    "but mostly just the {C:enhanced}card's{}",
+                    "{C:blue}\"Color\".{} If a hand contains",
+                    "5 of the same {C:attention}Suit,{} the",
+                    "hand has {C:attention}\"Flush\"{} tacked onto it."
+                }
+            },
+            para_explain_suit_Clubs = {
+                name = "Clubs",
+                text = {
+                    "{C:clubs}Clubs{} are a {C:attention}\"suit\"{}",
+                    "in the game of {C:legendary}Euchre,",
+                    "{C:planet}Old Maid,{} and any",
+                    "{C:enhanced}card games{} using the normal",
+                    "{C:spectral}Solitaire{} deck for their",
+                    "{C:gold}gameplay,{} including {C:attention}Balatro.{}",
+                    "{C:clubs}Clubs{} are a {C:clubs}dark suit{},",
+                    "based off of {C:attention}clovers.",
+                    "{C:attention}Suits{} are archetypes of",
+                    "{C:enhanced}cards{}, like {C:green}Ranks,{}",
+                    "but mostly just the {C:enhanced}card's{}",
+                    "{C:blue}\"Color\".{} If a hand contains",
+                    "5 of the same {C:attention}Suit,{} the",
+                    "hand has {C:attention}\"Flush\"{} tacked onto it."
+                }
+            },
+            para_planets_explain = {
+                name = "Planet Cards",
+                text = {
+                    "{C:planet}Planet Cards{} can be {C:attention}used{}",
+                    "to {C:attention}level up{} the listed {C:enhanced}poker hand,",
+                    "much like how {C:tarot}Tarot{} and",
+                    "{C:spectral}Spectral{} cards can be used. {C:planet}Planet",
+                    "{C:planet}Cards{} are based off of {C:planet}planets{} or",
+                    "{C:planet,s:0.8}dwarf planets{} that are in",
+                    "or near our {C:gold}solar system{}, but the",
+                    "{C:enhanced}hand{} that a {C:planet}Planet Card",
+                    "{C:attention}levels up{} has {C:dark_edition}no correlation{}",
+                    "to its {C:attention}distance{} from the {C:gold}Sun.",
                 }
             }
         },
@@ -962,6 +1070,9 @@ return {
             k_para_cleared = "Bonus cleared!",
             k_para_next = "Next",
             k_para_end = "End",
+            para_time = "time",
+            para_times = "times",
+            k_para_optimize = "Removed for optimization",
             k_para_upgraded_dialog_text = "Upgraded",
             k_para_upgraded_dialog_description = "A more fine-tuned vanilla experience",
             k_para_unfiltered_dialog_text = "Unfiltered",
@@ -974,7 +1085,7 @@ return {
                 "   ",
                 "   ",
                 "It's recommended to restart your run and",
-                "the game (in that order) when changing these settings.",
+                "the game (in that order) when changing balance settings.",
                 "Bugs arising from not doing this will not be handled."
             },
             k_para_balance_selects = {
@@ -982,6 +1093,17 @@ return {
                 'Upgraded',
             },
             k_para_config_balance_txt = "Balance",
+            k_para_infobox_descriptions = {
+                'No infoboxes. Increases performance.',
+                'The standard amount of infoboxes.',
+                "Some extra infoboxes for extra clarity. May reduce performance.",
+            },
+            k_para_infobox_selects = {
+                'None',
+                'Standard',
+                "Extra"
+            },
+            k_para_config_infobox_txt = "Infoboxes",
         },
         high_scores = {},
         labels = {
@@ -1001,7 +1123,7 @@ return {
         suits_singular = {},
         tutorial = {},
         v_dictionary = {
-            powpow_chips = {"^^#1# Chips"},
+            pow_chips = {"^#1#"},
             money_loss = {"-$#1#"},
             para_art = { "Art: #1#" },
             para_code = { "Code: #1#" },

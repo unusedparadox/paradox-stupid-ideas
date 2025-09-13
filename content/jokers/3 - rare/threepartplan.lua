@@ -76,5 +76,6 @@ SMODS.Joker{
 	para_credits = {
 		["art"] = "Astro",
 		["code"] = "UnusedParadox"
-	}
+	},
+	pronouns = "he_him"
 }

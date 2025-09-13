@@ -1,3 +1,9 @@
+local c_collection
+if PSI.get_gameset().unfiltered then
+	c_collection = true
+else
+	c_collection = false
+end
 SMODS.Joker{ -- card implementation
     key = "card",
     blueprint_compat = true,
@@ -11,6 +17,7 @@ SMODS.Joker{ -- card implementation
 		eeechips = 2,
 		requirement = 5
 	}},
+	no_collection = not c_collection,
 	loc_vars = function(self,info_queue,card)
 		return {vars = {card.ability.extra.chips}}
 	end,

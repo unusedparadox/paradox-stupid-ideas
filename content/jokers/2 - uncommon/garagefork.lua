@@ -15,6 +15,9 @@ SMODS.Joker{
 	atlas = 'Jokers',
 	pos = {x = 1, y = 2},
 	loc_vars = function(self,info_queue,card)
+		if PSI.get_infobox_settings().extra then
+			info_queue[#info_queue + 1] = { set = "Other", key = "para_planets_explain"}
+		end
         local new_numerator, new_denominator = SMODS.get_probability_vars(card,
 		card.ability.extra.numerator, card.ability.extra.denominator, 'para_garagefork')
 		return {vars = {new_numerator, new_denominator}}

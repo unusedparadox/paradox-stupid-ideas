@@ -23,7 +23,8 @@ SMODS.Joker{ -- Why is steammodded so hard I spent so much crabbing time on them
 				colour = G.C.ATTENTION
 			}
 		end
-	end
+	end,
+	pronouns = "they_them"
 }
 SMODS.Booster{
 	key = 'foodpack',
