@@ -2,6 +2,7 @@ A Balatro mod that adds various different things that strive to not be TOO unbal
 Additional mods that I have crossmod with:
 - CardSleeves
 - Grab Bag
+- CardPronouns
 
 Mods that are guaranteed to be compatible:
 - Lucky Rabbit
@@ -9,3 +10,4 @@ Mods that are guaranteed to be compatible:
 - CardSleeves
 - Talisman
 - Funny Cats
+- CardPronouns
