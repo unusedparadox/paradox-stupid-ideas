@@ -16,18 +16,22 @@ SMODS.Joker{ -- Ashen Joker
 	end,
 	calculate = function(self,card,context)
 		if context.before and not context.blueprint then
-			local scaled = false 
+			local scaled = false
 			for _, v in ipairs(context.scoring_hand) do
 				if SMODS.has_enhancement(v, "m_para_ashen") then
-					card.ability.extra.xchips = card.ability.extra.xchips + card.ability.extra.xchips_gain
 					scaled = true
+					SMODS.scale_card(card, {
+						ref_table = card.ability.extra,
+						ref_value = "xchips",
+						scalar_value = "xchips_gain",
+						no_message = true
+					})
 				end
 			end
 			if scaled then
 				return {
-                	message = localize('k_upgrade_ex'),
-                	colour = G.C.CHIPS,
-                	message_card = card
+                	message = localize{type = 'variable', key = 'a_xchips', vars = {to_big(card.ability.extra.xchips)}},
+                	colour = G.C.CHIPS
             	}
 			end
 		elseif context.joker_main then

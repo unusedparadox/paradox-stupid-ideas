@@ -17,11 +17,16 @@ SMODS.Joker{ -- Blue Card implementation
 	end,
 	calculate = function(self,card,context)
 		if context.open_booster and not context.blueprint then 
-			card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_gain
-			return {
-				message = localize{type = 'variable', key = 'a_chips', vars = {to_big(card.ability.extra.chip_gain)}},
-				colour = G.C.CHIPS
-			}
+			SMODS.scale_card(card, {
+				ref_table = card.ability.extra,
+				ref_value = "chips",
+				scalar_value = "chip_gain",
+				scaling_message = {
+					message = localize{type = 'variable', key = 'a_chips', vars = {to_big(card.ability.extra.chip_gain)}},
+					colour = G.C.CHIPS
+				}
+			})
+			return nil, true
 		elseif context.joker_main then
 			return {
 				chips = card.ability.extra.chips

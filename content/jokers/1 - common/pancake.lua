@@ -15,18 +15,24 @@ SMODS.Joker{ -- mmm yummy pancake
 	end,
 	calculate = function(self,card,context)
 		if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
-			card.ability.extra.mult = card.ability.extra.mult - card.ability.extra.mult_loss
-			if card.ability.extra.mult <= 0 then
+			if card.ability.extra.mult <= 0 + card.ability.extra.mult_loss then
 				PSI.consumefood(card)
            		return {
            		    message = localize('k_eaten_ex'),
            		    colour = G.C.ATTENTION
            		}
 			else
-				return {
-					message = localize{type = 'variable', key = 'a_mult_minus', vars = {to_big(card.ability.extra.mult_loss)}},
-					colour = G.C.MULT
-				}
+				SMODS.scale_card(card, {
+					ref_table = card.ability.extra,
+					ref_value = "mult",
+					scalar_value = "mult_loss",
+					operation = "-",
+					scaling_message = {
+						message = localize{type = 'variable', key = 'a_mult_minus', vars = {to_big(card.ability.extra.mult_loss)}},
+						colour = G.C.MULT
+					}
+				})
+				return nil, true
 			end
 		elseif context.other_joker and (context.other_joker.config.center.pools or {}).Food then
 			return {

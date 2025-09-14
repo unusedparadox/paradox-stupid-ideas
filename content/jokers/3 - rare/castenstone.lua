@@ -25,19 +25,21 @@ SMODS.Joker{
 			if s_index and c_index and s_index < c_index then splash_before = true end
 			if s_index and c_index and s_index > c_index then splash_after = true end
 			if splash_before or SMODS.in_scoring(context.other_card, context.scoring_hand) then
-				card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_gain
-				if not splash_after then
-					return {
-						message = localize("k_upgrade_ex"),
-						colour = G.C.CHIPS,
-						remove_from_hand = true
-					}
-				else
-					return {
+				SMODS.scale_card(context.other_card, {
+					ref_table = card.ability.extra,
+					ref_value = "chips",
+					scalar_value = "chip_gain",
+					scaling_message = {
 						message = localize("k_upgrade_ex"),
 						colour = G.C.CHIPS
 					}
+				})
+				if not splash_after then
+					return {
+						remove_from_hand = true
+					}
 				end
+				return nil, true
 			end
 		elseif context.modify_scoring_hand and not context.blueprint then
 			local splash_after, s_index, c_index = false, nil, nil
@@ -51,6 +53,7 @@ SMODS.Joker{
 					remove_from_hand = true
 				}
 			end
+			return nil, true
 		elseif context.joker_main then
 			return {
 				chips = card.ability.extra.chips

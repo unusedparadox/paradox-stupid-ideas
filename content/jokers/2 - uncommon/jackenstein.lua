@@ -20,11 +20,17 @@ SMODS.Joker{ -- Jackenstein
  	calculate = function(self, card, context)
         if context.before and not context.blueprint then
 			if card.ability.extra.xmult > card.ability.extra.min then
-				card.ability.extra.xmult = card.ability.extra.xmult - card.ability.extra.xmult_loss
-	      		return {
-    	  		    message = localize{type = 'variable', key = 'a_xmult_minus', vars = {to_big(card.ability.extra.xmult_loss)}},
-        		    colour = G.C.MULT
-          		}
+				SMODS.scale_card(card, {
+					ref_table = card.ability.extra,
+					ref_value = "xmult",
+					scalar_value = "xmult_loss",
+					operation = "-",
+					scaling_message = {
+    	  		    	message = localize{type = 'variable', key = 'a_xmult_minus', vars = {to_big(card.ability.extra.xmult_loss)}},
+        		    	colour = G.C.MULT
+					}
+				})
+				return nil, true
 			else
 				play_sound("para_yourtakingtoolong", 1, 1)
 				return {
@@ -34,11 +40,17 @@ SMODS.Joker{ -- Jackenstein
 			end
 		elseif context.pre_discard and not context.blueprint then
 			if card.ability.extra.xmult > card.ability.extra.min then
-				card.ability.extra.xmult = card.ability.extra.xmult - card.ability.extra.xmult_loss
-	      		return {
-    	  		    message = localize{type = 'variable', key = 'a_xmult_minus', vars = {to_big(card.ability.extra.xmult_loss)}},
-        		    colour = G.C.MULT
-          		}
+				SMODS.scale_card(card, {
+					ref_table = card.ability.extra,
+					ref_value = "xmult",
+					scalar_value = "xmult_loss",
+					operation = "-",
+					scaling_message = {
+    	  		    	message = localize{type = 'variable', key = 'a_xmult_minus', vars = {to_big(card.ability.extra.xmult_loss)}},
+        		    	colour = G.C.MULT
+					}
+				})
+				return nil, true
 			else
 				play_sound("para_yourtakingtoolong", 1, 1)
 				return {

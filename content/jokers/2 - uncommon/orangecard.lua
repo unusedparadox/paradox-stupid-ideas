@@ -23,11 +23,16 @@ SMODS.Joker{ -- Orange Card implementation
 	calculate = function(self,card,context)
 		if context.skipping_booster and not context.blueprint and card.ability.extra.is_active then -- Booster Pack is skipped, deactivate the Joker and increase the XMult
 			card.ability.extra.is_active = false
-			card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
-			return {
-				message = localize{type = 'variable', key = 'a_xmult', vars = {to_big(card.ability.extra.xmult)}},
-				colour = G.C.MULT
-			}
+			SMODS.scale_card(card, {
+				ref_table = card.ability.extra,
+				ref_value = "xmult",
+				scalar_value = "xmult_gain",
+				scaling_message = {
+					message = localize{type = 'variable', key = 'a_xmult', vars = {to_big(card.ability.extra.xmult)}},
+					colour = G.C.MULT
+				}
+			})
+			return nil, true
 		elseif context.ending_shop and not context.blueprint then -- Reactivate the Joker
 			if not card.ability.extra.is_active then
 				card.ability.extra.is_active = true

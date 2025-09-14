@@ -17,11 +17,16 @@ SMODS.Joker{ -- Yellow Card implementation
 	end,
 	calculate = function(self,card,context)
 		if context.skipping_booster and not context.blueprint then
-			card.ability.extra.money = card.ability.extra.money + card.ability.extra.money_gain
-			return {
-				message = "+" .. SMODS.signed_dollars(card.ability.extra.money_gain),
-				colour = G.C.MONEY
-			}
+			SMODS.scale_card(card, {
+				ref_table = card.ability.extra,
+				ref_value = "money",
+				scalar_value = "money_gain",
+				scaling_message = {
+					message = "+" .. SMODS.signed_dollars(card.ability.extra.money_gain),
+					colour = G.C.MONEY
+				}
+			})
+			return nil, true
 		end
 	end,
 	calc_dollar_bonus = function(self, card) -- Apparently money isn't in the calculate function. Who knew?

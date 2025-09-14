@@ -27,3 +27,11 @@ pattern = "if  SMODS.calculate_round_score()  > 0 then"
 position = 'at'
 payload = "if to_big(SMODS.calculate_round_score()) > to_big(0) then"
 match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+pattern = "if args.operation == '-' and scalar_value < 0 then scalar_value = scalar_value * -1 end"
+position = 'at'
+payload = "if args.operation == '-' and to_big(scalar_value) < to_big(0) then scalar_value = scalar_value * -1 end"
+match_indent = true

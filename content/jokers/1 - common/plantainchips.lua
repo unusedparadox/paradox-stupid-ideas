@@ -27,18 +27,24 @@ SMODS.Joker{ -- Plantain Chips implementation
 			}
 		elseif context.end_of_round and context.cardarea == G.jokers then
 			if SMODS.pseudorandom_probability(card, 'para_plantain', card.ability.extra.numerator, card.ability.extra.denominator) then
-				card.ability.extra.chips = card.ability.extra.chips - card.ability.extra.chips_loss
-				if card.ability.extra.chips <= 0 then
+				if card.ability.extra.chips <= (0 + card.ability.extra.chips_loss) then
 					PSI.consumefood(card)
             	    return {
             	        message = localize('k_eaten_ex'),
             	        colour = G.C.ATTENTION
             	    }
 				else
-            	    return {
-            	        message = localize { type = 'variable', key = 'a_chips_minus', vars = { card.ability.extra.chips_loss } },
-            	        colour = G.C.CHIPS
-            	    }
+					SMODS.scale_card(card, {
+						ref_table = card.ability.extra,
+						ref_value = "chips",
+						scalar_value = "chips_loss",
+						operation = "-",
+						scaling_message = {
+            	    	    message = localize { type = 'variable', key = 'a_chips_minus', vars = { card.ability.extra.chips_loss } },
+            	        	colour = G.C.CHIPS
+						}
+					})
+					return nil, true
 				end
 			end
 		end

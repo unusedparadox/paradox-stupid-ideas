@@ -22,18 +22,24 @@ SMODS.Joker{ -- Cookie implementation
 				xmult = card.ability.extra.xmult
 			}
 		elseif context.end_of_round and context.cardarea == G.jokers then
-			card.ability.extra.xmult = card.ability.extra.xmult - card.ability.extra.xmult_loss
-			if card.ability.extra.xmult <= 1 then
+			if card.ability.extra.xmult <= (1 + card.ability.extra.xmult_loss) then
 				PSI.consumefood(card)
                 return {
                     message = localize('k_eaten_ex'),
                     colour = G.C.ATTENTION
                 }
 			else
-                return {
-                    message = localize { type = 'variable', key = 'a_xmult_minus', vars = { card.ability.extra.xmult_loss } },
-                    colour = G.C.MULT
-                }
+				SMODS.scale_card(card, {
+					ref_table = card.ability.extra,
+					ref_value = "xmult",
+					scalar_value = "xmult_loss",
+					operation = "-",
+					scaling_message = {
+                    	message = localize { type = 'variable', key = 'a_xmult_minus', vars = { card.ability.extra.xmult_loss } },
+                    	colour = G.C.MULT
+					}
+				})
+				return nil, true
 			end
 		end
 	end,

@@ -84,7 +84,12 @@ SMODS.Joker{ -- < • Astro :3c • > implementation
 			local extra = nil
 			for _, v in pairs(context.scoring_hand) do
 				if v:is_suit("Spades") then
-					card.ability.extra.echips = card.ability.extra.echips + card.ability.extra.echips_gain
+					SMODS.scale_card(card, {
+						ref_table = card.ability.extra,
+						ref_value = "echips",
+						scalar_value = "echips_gain",
+						no_message = true
+					})
 					juice_card(v)
 					scaled = true
 				end
@@ -98,7 +103,12 @@ SMODS.Joker{ -- < • Astro :3c • > implementation
 					end
 				end
 				if count >= req then -- Scale and set the extra table if hand contains a Flush and at least the requirement for a flush of the given suit.
-					card.ability.extra.xchips = card.ability.extra.xchips + card.ability.extra.xchips_gain
+					SMODS.scale_card(card, {
+						ref_table = card.ability.extra,
+						ref_value = "xchips",
+						scalar_value = "xchips_gain",
+						no_message = true
+					})
 					extra = {
 						message = localize({type = "variable", key = "a_xchips", vars = {number_format(to_big(card.ability.extra.xchips))}}),
 						colour = G.C.CHIPS
@@ -119,29 +129,42 @@ SMODS.Joker{ -- < • Astro :3c • > implementation
 		elseif context.using_consumeable and context.consumeable.ability.set == "Planet" then -- Check if a planet is used.
 			if SMODS.pseudorandom_probability(card, 'para_astro_unfiltered_planets', card.ability.extra.numerator_planet, card.ability.extra.denominator_planet, 'para_astro_unfiltered_planets') then -- Check the 1 in 3 chance.
 				for i = 1, card.ability.extra.planet_retrigger do
+					SMODS.calculate_effect({message = localize("k_again_ex"), colour = G.C.SECONDARY_SET.Planet}, context.consumeable)
 					context.consumeable:use_consumeable(context.consumeable)
 				end
 			end
 		elseif context.individual and context.cardarea == G.play and not context.blueprint then
+			local scaled = false
 			if context.other_card:get_id() == 9 then -- Check for triggered nines
 				card.ability.extra.nine_counter = card.ability.extra.nine_counter - 1
+				scaled = true
 				if card.ability.extra.nine_counter <= 0 then
+					SMODS.scale_card(card, {
+						ref_table = card.ability.extra,
+						ref_value = "planet_retrigger",
+						scalar_value = "planet_retrigger_growth",
+						scaling_message = {
+    				    	message = localize('k_upgrade_ex'),
+    				    	colour = G.C.SECONDARY_SET.Planet,
+    			    		message_card = card
+						}
+					})
 					card.ability.extra.nine_counter = card.ability.extra.nine_requirement
-					card.ability.extra.planet_retrigger = card.ability.extra.planet_retrigger + card.ability.extra.planet_retrigger_growth
-    				return {
-    				    message = localize('k_upgrade_ex'),
-    				    colour = G.C.SECONDARY_SET.PLANET,
-    			    	message_card = card
-    				}
 				end
 			end
 			if SMODS.has_enhancement(context.other_card, 'm_lucky') then -- Check for Lucky Cards
-				card.ability.extra.x_probability = card.ability.extra.x_probability + card.ability.extra.x_probability_growth
-    			return {
-    			    message = localize('k_upgrade_ex'),
-    			    colour = G.C.GREEN
-    			}
+				SMODS.scale_card(card, {
+					ref_table = card.ability.extra,
+					ref_value = "x_probability",
+					scalar_value = "x_probability_growth",
+					scaling_message = {
+    			    	message = localize('k_upgrade_ex'),
+    			    	colour = G.C.GREEN
+					}
+				})
+				scaled = true
 			end
+			if scaled then return nil, true end
 		elseif context.mod_probability and not context.blueprint then -- apply xprobability
 			return {
 				numerator = context.numerator * card.ability.extra.x_probability

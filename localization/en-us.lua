@@ -235,7 +235,7 @@ return {
                 text = {
                     '{C:mult}+#1#{} Mult',
                     '{C:mult}-#2#{} Mult at end of round',
-                    '{X:mult,C:white}XMult{} effects will not trigger',
+                    '{X:mult,C:white}XMult{} and {X:chips,C:white}XChips{} will not trigger',
                     '{C:inactive,s:0.8}Don\'t eat pineapples!',
                     '{C:inactive,s:0.8}You\'re allergic.'
                 }
@@ -253,7 +253,7 @@ return {
                 text = {
                     '{C:mult}+#1#{} Mult',
                     '{C:mult}-#2#{} Mult at end of round',
-                    '{X:mult,C:white}XMult{} effects will not trigger',
+                    '{X:mult,C:white}XMult{} and {X:chips,C:white}XChips{} will not trigger',
                     '{C:inactive,s:0.8}Don\'t eat pineapples!',
                     '{C:inactive,s:0.8}You\'re allergic.'
                 }
@@ -536,7 +536,7 @@ return {
                 name = "Volcanic Eruption",
                 text = {
                     "No played cards will score",
-                    "{X:chips,C:white}X#2#{} Chips for each unscored card",
+                    "Gain {X:chips,C:white}X#2#{} Chips for each unscored card",
                     "{C:inactive}(Currently {X:chips,C:white}X#1#{C:inactive} Chips)"
                 }
             },

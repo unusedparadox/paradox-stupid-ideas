@@ -22,18 +22,24 @@ SMODS.Joker{ -- Burnt Samosas implementation
 				chips = card.ability.extra.chips
 			}
 		elseif context.end_of_round and context.cardarea == G.jokers then
-			card.ability.extra.chips = card.ability.extra.chips - card.ability.extra.chip_loss
-			if card.ability.extra.chips <= 0 then
+			if card.ability.extra.chips <= (0 + card.ability.extra.chip_loss) then
 				PSI.consumefood(card)
         	    return {
         	        message = localize('k_eaten_ex'),
         	        colour = G.C.ATTENTION
         	    }
 			else
-				return {
-					message = localize{type = 'variable', key = 'a_chips_minus', vars = {to_big(card.ability.extra.chip_loss)}},
-					colour = G.C.CHIPS
-				}
+				SMODS.scale_card(card, {
+					ref_table = card.ability.extra,
+					ref_value = "chips",
+					scalar_value = "chip_loss",
+					operation = "-",
+					scaling_message = {
+						message = localize{type = 'variable', key = 'a_chips_minus', vars = {to_big(card.ability.extra.chip_loss)}},
+						colour = G.C.CHIPS
+					}
+				})
+				return nil, true
 			end
 		end
 	end,

@@ -100,6 +100,8 @@ local effectcalc = SMODS.calculate_individual_effect
 SMODS.calculate_individual_effect = function(effect, scored_card, key, amount, from_edition)
 	if (key == 'x_mult' or key == 'xmult' or key == 'Xmult' or key == 'x_mult_mod' or key == 'Xmult_mod') and amount ~= 1 and next(SMODS.find_card("j_para_pineapple")) and PSI.get_gameset().upgraded then
 		return true
+	elseif (key == 'x_chips' or key == 'xchips' or key == 'Xchips' or key == 'x_chips_mod' or key == 'Xchips_mod') and amount ~= 1 and next(SMODS.find_card("j_para_pineapple")) and PSI.get_gameset().upgraded then
+		return true
 	end
 	return effectcalc(effect, scored_card, key, amount, from_edition)
 end

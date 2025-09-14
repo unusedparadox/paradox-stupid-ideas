@@ -19,11 +19,17 @@ SMODS.Joker{ -- Palmier implementation
  	calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play and card.ability.extra.chips > 0 and not context.blueprint then
             context.other_card.ability.perma_bonus = (context.other_card.ability.perma_bonus or 0) + card.ability.extra.chip_loss
-			card.ability.extra.chips = card.ability.extra.chips - card.ability.extra.chip_loss
-            return {
-                message = localize('k_upgrade_ex'),
-                colour = G.C.CHIPS
-            }
+			SMODS.scale_card(card, {
+				ref_table = card.ability.extra,
+				ref_value = "chips",
+				scalar_value = "chip_loss",
+				operation = "-",
+				scaling_message = {
+                	message = localize('k_upgrade_ex'),
+                	colour = G.C.CHIPS
+				}
+			})
+			return nil, true
 		elseif context.after and card.ability.extra.chips <= 0 and not context.blueprint then
 			PSI.consumefood(card)
             return {
