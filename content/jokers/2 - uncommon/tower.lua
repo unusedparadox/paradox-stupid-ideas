@@ -16,7 +16,7 @@ SMODS.Joker{ -- Tower implementation
 		return {vars = {card.ability.extra.money_gain, card.ability.extra.money_req}}
 	end,
 	calc_dollar_bonus = function(self, card)
-		if (G.GAME.dollars + (G.GAME.dollar_buffer or 0) < 0) and PSI.get_gameset().upgraded then
+		if (to_big(G.GAME.dollars + (G.GAME.dollar_buffer or 0)) < to_big(0)) and PSI.get_gameset().upgraded then
 			return nil
 		end
 		return math.floor((G.GAME.dollars + (G.GAME.dollar_buffer or 0)) / card.ability.extra.money_req) * card.ability.extra.money_gain
