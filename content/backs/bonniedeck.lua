@@ -18,7 +18,8 @@ SMODS.Back{
 					key = 'j_para_bonnie',
 					edition = "e_base",
 					no_edition = true,
-					stickers = {"eternal"}
+					stickers = {"eternal"},
+					force_stickers = {"eternal"}
 				})
                 card:add_to_deck()
                 G.jokers:emplace(card)
@@ -27,7 +28,7 @@ SMODS.Back{
 					local card2 = SMODS.create_card({
 						set = "Food",
 						area = G.jokers,
-						key_append = "friend inside me"
+						key_append = "b_para_bonniedeck"
 					})
                 	card2:add_to_deck()
                 	G.jokers:emplace(card2)

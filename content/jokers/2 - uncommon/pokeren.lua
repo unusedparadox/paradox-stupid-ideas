@@ -82,5 +82,6 @@ SMODS.Joker{
 		["art"] = "Astro",
 		["code"] = "UnusedParadox"
 	},
-    pronouns = "she_it"
+    pronouns = "she_it",
+    hpot_unbreedable = true
 }

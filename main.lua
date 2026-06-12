@@ -26,7 +26,7 @@ function PARA_ASPL.FUNC.RequireFolder(path)
 		local file_name = files[i].name
 		if file_name:sub(-4) == ".lua" then
 			assert(SMODS.load_file(path .. file_name))()
-			print("[PSI] Loaded " .. path .. file_name)
+			--print("[PSI] Loaded " .. path .. file_name)
 		end
 	end
 end
@@ -48,7 +48,7 @@ function PARA_ASPL.FUNC.RequireFolderRecursive(path)
 			elseif fileType == "file" and fileName:sub(-4) == ".lua" then
 				-- Load the Lua file with proper relative path
 				assert(SMODS.load_file(childPath))()
-				print("[PSI]Loaded " .. childPath)
+				--print("[PSI] Loaded " .. childPath)
 			end
 		end
 	end

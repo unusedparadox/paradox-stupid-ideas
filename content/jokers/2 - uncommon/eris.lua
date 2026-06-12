@@ -40,7 +40,8 @@ SMODS.Joker{
 		["art"] = "Astro",
 		["code"] = "UnusedParadox"
 	},
-	pronouns = "any_all"
+	pronouns = "any_all",
+	hpot_unbreedable = true
 }
 local card_is_suit_ref = Card.is_suit
 function Card:is_suit(suit, bypass_debuff, flush_calc)

@@ -35,3 +35,11 @@ pattern = "if args.operation == '-' and scalar_value < 0 then scalar_value = sca
 position = 'at'
 payload = "if args.operation == '-' and to_big(scalar_value) < to_big(0) then scalar_value = scalar_value * -1 end"
 match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'functions/misc_functions.lua'
+pattern = "G.ARGS.LOC_COLOURS = G.ARGS.LOC_COLOURS or {"
+position = 'at'
+payload = "G.ARGS.LOC_COLOURS = {"
+match_indent = true

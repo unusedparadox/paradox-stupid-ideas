@@ -203,6 +203,21 @@ return {
 			        '{C:inactive,s:0.8}I\'m a chef cooker!!!'
 		        }
             },
+            j_para_oopsalloopsallsixes = {
+		        name = 'Oops! All Oops! All 6s',
+		        text = {
+			        'All cards and packs',
+                    "in {C:attention}shop{} are",
+			        '{C:green,E:1}Oops! All 6s',
+                    "{C:inactive}(Cards spawned from Tags excluded)"
+		        },
+                unlock = {
+                    "In one hand,",
+                    "earn at least",
+                    "{E:1,C:attention}#1#{} chips",
+                    "while owning {C:green,E:1}Oops! All 6s"
+                },
+            },
             j_para_bluecard = {
                 name = 'Blue Card',
 		        text = {
@@ -611,6 +626,23 @@ return {
                     "Convert a random non-{C:club}Club{} remaining in {C:attention}deck",
                     "to {C:clubs}Clubs{} for each {C:attention}Stone Card{} played",
                     "{C:attention}Stone Cards{} are considered {C:clubs}Clubs"
+                }
+            },
+            j_para_chillingwinter = {
+                name = "Chilling Winter",
+                text = {
+                    "Gain {X:chips,C:white}X#1#{} Chips when the final blind",
+                    "of an Ante is defeated",
+                    "Reset if a card is {C:attention}sold{} or {C:attention}destroyed{}",
+                    "{C:inactive}(Currently {X:chips,C:white}X#2#{C:inactive} Chips)"
+                }
+            },
+            j_para_republicandiscordserver = {
+                name = "Republican Discord Server",
+                text = {
+                    "When {C:attention}Blind{} is selected, fill",
+                    "joker slots with {C:red}Republican{} Jokers",
+                    "All non-{C:red}Republican{} Jokers are {C:attention}debuffed",
                 }
             }
         },
@@ -1033,6 +1065,16 @@ return {
                     "{s:1.6}this will likely not be handled"
                 }
             },
+        },
+        para_items = {
+            para_itemeternal = {
+                name = "testing {C:blue}1 {C:legendary}2 {C:green}3",
+                text = {
+                    "This is a line",
+                    "loc_vars: #1# and #2#",
+                    "{C:attention}Colorful {s:1.5}Big {E:1}Wavy"
+                }
+            },
         }
     },
     misc = {
@@ -1047,7 +1089,8 @@ return {
         blind_states = {},
         challenge_names = {
             c_para_endurance = "Endurance Test",
-            c_para_easy = "Easy...?"
+            c_para_easy = "Easy...?",
+            c_para_oopsalloopsalloopsallsixes = "Oops! All Oops! All Oops! All Sixes"
         },
         collabs = {},
         dictionary = {
@@ -1077,6 +1120,7 @@ return {
             k_para_upgraded_dialog_description = "A more fine-tuned vanilla experience",
             k_para_unfiltered_dialog_text = "Unfiltered",
             k_para_unfiltered_dialog_description = "A bit less balanced with some more content",
+            para_joke = "Enable Joke Content",
             k_para_balance_descriptions = {
                 'More content and jokes with less balance',
                 'A handcrafted vanilla-esque experience',
@@ -1104,6 +1148,18 @@ return {
                 "Extra"
             },
             k_para_config_infobox_txt = "Infoboxes",
+            para_xchips_mode = "Amount of XChips",
+            para_xchips_desc = {
+                'No XChips',
+                'The standard amount of XChips.',
+                "XMult becomes XChips",
+            },
+            para_xchips_sel = {
+                'None',
+                'Standard',
+                "Max"
+            },
+            para_green_mode = "Green Mode"
         },
         high_scores = {},
         labels = {
@@ -1129,6 +1185,8 @@ return {
             para_code = { "Code: #1#" },
             para_idea = { "Idea: #1#" },
         },
-        v_text = {},
+        v_text = {
+            ch_c_para_oopsalloopsalloopsallsixes = { "All cards in shop are {C:green,E:1}Oops! All Oops! All Sixes" },
+        },
     },
 }

@@ -71,5 +71,6 @@ SMODS.Tag{
 	para_credits = {
 		["art"] = "Astro",
 		["code"] = "UnusedParadox"
-	}
+	},
+	hpot_unbreedable = true
 }

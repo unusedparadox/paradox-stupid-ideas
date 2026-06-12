@@ -72,5 +72,6 @@ SMODS.Joker{ -- < • Astro :3c • > implementation
 		["art"] = "Astro",
 		["code"] = "UnusedParadox"
 	},
-	pronouns = "he_him"
+	pronouns = "he_him",
+	hpot_unbreedable = true
 }

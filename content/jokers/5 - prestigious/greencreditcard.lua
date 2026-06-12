@@ -94,3 +94,15 @@ G.FUNCS.can_reroll = function(e)
 		return para_rerollcheck(e)
     end
 end
+local para_buyusecheck = G.FUNCS.can_buy_and_use
+G.FUNCS.can_buy_and_use = function(e)
+    if next(SMODS.find_card("j_para_green_credit_card", false)) and PSI.get_gameset().unfiltered then
+        if e.config.ref_table.highlighted then
+          e.UIBox.states.visible = true
+        end
+        e.config.colour = G.C.SECONDARY_SET.Voucher
+        e.config.button = 'buy_from_shop'
+	else
+		return para_buyusecheck(e)
+    end
+end

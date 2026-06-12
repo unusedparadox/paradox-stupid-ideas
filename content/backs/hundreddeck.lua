@@ -1,4 +1,4 @@
-if next(SMODS.find_mod("Talisman")) and Talisman and (Talisman.config_file.score_opt_id >= 2) and PSI.get_gameset().unfiltered then
+if PSI.is_bignum_enabled() and PSI.get_gameset().unfiltered then
 	SMODS.Back{
 	    key = "hundreddeck",
 	    unlocked = false,

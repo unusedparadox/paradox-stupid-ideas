@@ -147,3 +147,37 @@ SMODS.ObjectType{
 	key = "parajoker",
 	default = "j_para_bluecard"
 }
+PSI.republicans = {
+    ["j_castle"] = true,
+    ["j_baron"] = true,
+    ["j_hanging_chad"] = true,
+    ["j_popcorn"] = true,
+    ["j_even_steven"] = true,
+    ["j_diet_cola"] = true,
+    ["j_caino"] = true,
+    ["j_triboulet"] = true,
+    ["j_burglar"] = true,
+    ["j_wrathful_joker"] = true,
+    ["j_onyx_agate"] = true,
+	["j_bootstraps"] = true,
+    ["j_para_republicandiscordserver"] = true,
+}
+local function inject_republicans(self)
+	for k, v in pairs(PSI.republicans) do
+		if G.P_CENTERS[k] or SMODS.Centers[k] then
+			local center = G.P_CENTERS[k] or SMODS.Centers[k]
+			if not table.contains(self, center) then
+				self:inject_card(center)
+			end
+		end
+	end
+end
+SMODS.ObjectType({
+	key = "para_republican",
+	default = "j_hanging_chad",
+	cards = PSI.republicans,
+	inject = function(self)
+		SMODS.ObjectType.inject(self)
+		inject_republicans(self)
+	end,
+})

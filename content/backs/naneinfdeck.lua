@@ -1,7 +1,7 @@
 local unlockednaneinf = true
 local unlock_condition_naneinf = function(self, args) return true end
 local win_ante = 38
-if next(SMODS.find_mod("Talisman")) and Talisman and (Talisman.config_file.score_opt_id >= 2) then
+if PSI.is_bignum_enabled() then
 	unlockednaneinf = false
 	unlock_condition_naneinf = function(self, args)
 		if args.type == "chip_score" and to_big(args.chips) >= to_big(1.8) * (to_big(10) ^ to_big(308)) then
@@ -30,7 +30,8 @@ if PSI.get_gameset().unfiltered then
 						area = G.jokers,
 						key = 'j_baron',
 						edition = "e_negative",
-						stickers = {"eternal"}
+						stickers = {"eternal"},
+						force_stickers = {"eternal"}
 					})
 	                card:add_to_deck()
 	                G.jokers:emplace(card)
@@ -40,7 +41,8 @@ if PSI.get_gameset().unfiltered then
 						area = G.jokers,
 						key = 'j_mime',
 						edition = "e_negative",
-						stickers = {"eternal"}
+						stickers = {"eternal"},
+						force_stickers = {"eternal"}
 					})
 	                card2:add_to_deck()
 	                G.jokers:emplace(card2)

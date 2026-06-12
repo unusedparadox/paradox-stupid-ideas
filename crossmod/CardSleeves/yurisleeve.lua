@@ -29,7 +29,8 @@ CardSleeves.Sleeve {
 					area = G.jokers,
 					key = 'j_blueprint',
 					edition = edition,
-					stickers = {"eternal"}
+					stickers = {"eternal"},
+					force_stickers = {"eternal"}
 				})
                 card:add_to_deck()
                 G.jokers:emplace(card)
@@ -39,7 +40,8 @@ CardSleeves.Sleeve {
 					area = G.jokers,
 					key = 'j_brainstorm',
 					edition = edition,
-					stickers = {"eternal"}
+					stickers = {"eternal"},
+					force_stickers = {"eternal"}
 				})
                 card2:add_to_deck()
                 G.jokers:emplace(card2)

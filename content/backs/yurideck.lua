@@ -19,7 +19,8 @@ if PSI.get_gameset().unfiltered then
 						area = G.jokers,
 						key = 'j_blueprint',
 						edition = "e_base",
-						stickers = {"eternal"}
+						stickers = {"eternal"},
+						force_stickers = {"eternal"}
 					})
 	                card:add_to_deck()
 	                G.jokers:emplace(card)
@@ -29,7 +30,8 @@ if PSI.get_gameset().unfiltered then
 						area = G.jokers,
 						key = 'j_brainstorm',
 						edition = "e_base",
-						stickers = {"eternal"}
+						stickers = {"eternal"},
+						force_stickers = {"eternal"}
 					})
 	                card2:add_to_deck()
 	                G.jokers:emplace(card2)

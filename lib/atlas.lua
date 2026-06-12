@@ -48,19 +48,24 @@ SMODS.Atlas{
 	px = 34,
 	py = 34,
 }
+SMODS.Atlas{
+	key = 'Items',
+	path = 'Items.png',
+	px = 71,
+	py = 95
+}
+SMODS.Atlas {
+    key = "HDCards",
+    path = "hd.png",
+    px = 710,
+    py = 950
+}
 -- Mod Icon
 SMODS.Atlas {
     key = "modicon",
     path = "modicon.png",
     px = 256,
     py = 256
-}
--- Gameset config intro
-SMODS.Atlas {
-    key = 'paradox_intro',
-    path = 'paraintro.png',
-    px = 49,
-    py = 89
 }
 -- Crossmod atlases down here
 SMODS.Atlas{

@@ -1,4 +1,5 @@
 -- I'm gonna be honest 99% of this is Aikoshen code and the other 1% is also Aikoshen code
+-- also i dont use most of this anymore
 PSI.gameset = {
     unfiltered = nil,
     upgraded = nil
@@ -238,14 +239,15 @@ G.FUNCS.para_change_balance_toggle = function(e)
     PSI.config_balance_text:update_text(true)
     PSI.config_balance_text:update()
 end
+PSI.config = SMODS.current_mod.config
 PSI.get_gameset = function()
     if PSI.forced_gameset then
         if PSI.forced_gameset == "unfiltered" then return {unfiltered = true, upgraded = false}
         elseif PSI.forced_gameset == "upgraded" then return {unfiltered = false, upgraded = true} end
     end
-    if not PSI.gameset_choice_disabled then
+    --[[if not PSI.gameset_choice_disabled then
         if G.PROFILES[G.SETTINGS.profile].para_gameset == "unfiltered" then return {unfiltered = true, upgraded = false}
         elseif G.PROFILES[G.SETTINGS.profile].para_gameset == "upgraded" then return {unfiltered = false, upgraded = true} end
-    end
-    return {unfiltered = false, upgraded = true}
+    end]]--
+    if PSI.config.joke then return {unfiltered = true, upgraded = false} else return {unfiltered = false, upgraded = true} end
 end

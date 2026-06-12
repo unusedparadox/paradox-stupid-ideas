@@ -74,3 +74,6 @@ PSI.compare_singular = function(a, b)
     end
     return false
 end
+PSI.is_bignum_enabled = function()
+    return Talisman and not Talisman.config_file.disable_omega
+end

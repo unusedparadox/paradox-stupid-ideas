@@ -33,5 +33,6 @@ SMODS.Joker{ -- no way thats me
 		["art"] = "Astro",
 		["code"] = "UnusedParadox"
 	},
-	pronouns = "any_all"
+	pronouns = "any_all",
+	hpot_unbreedable = true
 }

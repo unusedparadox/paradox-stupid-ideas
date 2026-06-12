@@ -13,13 +13,8 @@ G.FUNCS.para_change_infobox_toggle = function(e)
     PSI.config_infobox_text:update_text(true)
     PSI.config_infobox_text:update()
 end
-local mainmenu_old = Game.main_menu
-function Game:main_menu(ctx)
-    local ret = mainmenu_old(self,ctx)
-    if not G.PROFILES[G.SETTINGS.profile].para_infoboxes then
-        G.PROFILES[G.SETTINGS.profile].para_infoboxes = "standard"
-    end
-    return ret
+if not G.PROFILES[G.SETTINGS.profile].para_infoboxes then
+    G.PROFILES[G.SETTINGS.profile].para_infoboxes = "standard"
 end
 PSI.infobox_map = {
     ["none"] = 1,
@@ -70,4 +65,11 @@ create_UIBox_detailed_tooltip = function(tooltip)
         return nil
     end
     return detailed_tooltip(tooltip)
+end
+local blindpopup = create_UIBox_blind_popup
+create_UIBox_blind_popup = function(blind, discovered, vars)
+    if PSI.get_infobox_settings().none then
+        return nil
+    end
+    return blindpopup(blind, discovered, vars)
 end
