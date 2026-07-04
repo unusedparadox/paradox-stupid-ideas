@@ -33,6 +33,28 @@ PSI.Item = SMODS.GameObject:extend {
     end
 }
 PSI.shared_items = {}
+--Automatically generates consumables for your items if autogen_consumable is true. Set to a table to overwrite consumable defaults.
+function PSI.Item:__call(o)
+    local ret = SMODS.GameObject:__call(o)
+    if ret.autogen_consumable then
+        local consumable_args = {
+            key = o.key,
+            set = "para_Item",
+            config = {item = ret.key},
+            can_use = function(self, card)
+                return G.jokers and (#G.jokers.highlighted == 1)
+            end,
+            use = function(self, card, area, copier)
+                PSI.apply_item(G.jokers.highlighted[1], self.ability.item)
+            end,
+        }
+        if type(ret.autogen_consumable) == "table" then
+            consumable_args = SMODS.merge_defaults(ret.autogen_consumable, consumable_args)
+        end
+        SMODS.Consumable:__call(consumable_args)
+    end
+    return ret
+end
 
 -- draw items on the joker
 SMODS.DrawStep {

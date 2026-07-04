@@ -8,7 +8,7 @@ SMODS.Joker{ -- Jokerrune implementation
 	key = 'jokerrune',
 	config = { extra = {
 		xmult_gain = 1,
-		xmult = 4
+		xmult = 5
 	}},
 	atlas = 'Jokers',
 	pos = {x = 4, y = 1},
