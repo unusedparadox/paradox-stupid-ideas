@@ -10,8 +10,8 @@ pattern = '''local obj = _card.config.center
 if obj.calc_scaling and type(obj.calc_scaling) == "function" then'''
 position = 'before'
 payload = '''
-if _card.ability.item then
-    local ret = _card.ability.item:calculate_item({initial = initial, scalar_value = scalar_value, other_card = card, args = args, alter_scaling = true})
+if _card.ability.para_item then
+    local ret = _card.ability.para_item:calculate_item({initial = initial, scalar_value = scalar_value, other_card = card, args = args, alter_scaling = true})
     if ret then
         if ret.override_value and not args.block_overrides.value then initial = ret.override_value.value; SMODS.calculate_effect(ret.override_value, _card) end
         if ret.override_scalar_value and not args.block_overrides.scalar then scalar_value = ret.override_scalar_value.value; SMODS.calculate_effect(ret.override_scalar_value, _card) end
@@ -23,7 +23,7 @@ end
 '''
 match_indent = true
 
-# calculate items
+# calculate items pt 1
 [[patches]]
 [patches.pattern]
 target = "functions/common_events.lua"
@@ -39,14 +39,39 @@ end
 match_indent = true
 position = "after"
 payload = """
-for _,k in ipairs(PSI.Item.obj_buffer) do
-    local v = PSI.Items[k]
+if card.ability.para_item then
     local item = card:calculate_item(context)
     if item then
-        ret[v] = item
+        ret.item = item
     end
 end
 """
+
+# calculate items pt 2
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = '''
+if eval.edition then effects[#effects+1] = eval end
+'''
+match_indent = true
+position = "after"
+payload = """
+if eval.item and not eval.edition then effects[#effects+1] = eval end
+"""
+
+# calculate items pt 3
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+pattern = '''
+SMODS.calculate_effect_table_key(effect_table, 'individual', card, ret)
+'''
+position = 'after'
+payload = '''
+SMODS.calculate_effect_table_key(effect_table, 'item', card, ret)
+'''
+match_indent = true
 
 # Card:generate_UIBox_ability_table(): add item badge
 [[patches]]
@@ -61,7 +86,7 @@ payload = """
 if self.ability.para_item then badges[#badges + 1] = self.ability.para_item.key end
 """
 
-# generate_card_ui(): set up item badge
+# generate_card_ui(): set up info_queue
 [[patches]]
 [patches.pattern]
 target = "functions/common_events.lua"
@@ -74,7 +99,7 @@ if item then
     local t = { key = v, set = 'para_items' }
     local res = {}
     if item.loc_vars and type(item.loc_vars) == 'function' then
-        res = item:loc_vars(info_queue, card) or {}
+        res = item.loc_vars(card.ability.para_item, info_queue, card) or {}
         t.vars = res.vars or {}
         t.key = res.key or t.key
         t.set = res.set or t.set
@@ -82,7 +107,7 @@ if item then
     info_queue[#info_queue+1] = t
 end'''
 
-# generate_card_ui(): load item badge description
+# generate_card_ui(): load info_queue description
 [[patches]]
 [patches.pattern]
 target = "functions/common_events.lua"
@@ -105,3 +130,36 @@ payload = '''
 for k, v in pairs(PSI.Items) do
     G.BADGE_COL[k] = v.badge_colour
 end'''
+
+# assign badge text pt 1
+[[patches]]
+[patches.pattern]
+target = 'functions/UI_definitions.lua'
+pattern = 'badges[#badges + 1] = create_badge(localize(v, "labels"), get_badge_colour(v), SMODS.get_badge_text_colour(v))'
+position = 'after'
+match_indent = true
+payload = '''
+::skip_regular_badge::'''
+
+# assign badge text pt 2
+[[patches]]
+[patches.pattern]
+target = 'functions/UI_definitions.lua'
+pattern = 'badges[#badges + 1] = create_badge(localize(v, "labels"), get_badge_colour(v), SMODS.get_badge_text_colour(v))'
+position = 'before'
+match_indent = true
+payload = '''
+if v:sub(1, 2) == "i_" then
+    badges[#badges + 1] = create_badge(localize(v, "item_badge_labels"), get_badge_colour(v), SMODS.get_badge_text_colour(v))
+    goto skip_regular_badge
+end'''
+
+# assign badge text pt 3
+[[patches]]
+[patches.pattern]
+target = 'functions/misc_functions.lua'
+pattern = "if args and not (type(args) == 'table') then"
+position = 'before'
+match_indent = true
+payload = '''
+if misc_cat == "item_badge_labels" then return G.localization.descriptions.para_items[args].label or G.localization.descriptions.para_items[args].name or 'ERROR' end'''

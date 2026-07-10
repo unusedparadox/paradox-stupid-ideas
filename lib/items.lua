@@ -27,7 +27,7 @@ PSI.Item = SMODS.GameObject:extend {
         if val then
             card.ability.para_item = {
                 ability = copy_table(self.config),
-                key = self.key,
+                key = self.key
             }
         else card.ability.para_item = nil end
     end
@@ -40,6 +40,9 @@ function PSI.Item:__call(o)
         local consumable_args = {
             key = o.key,
             set = "para_Item",
+            atlas = o.atlas,
+            pos = {x = o.pos.x - 2, y = o.pos.y},
+            soul_pos = {x = o.pos.x - 1, y = o.pos.y},
             config = {item = ret.key},
             can_use = function(self, card)
                 return G.jokers and (#G.jokers.highlighted == 1)
@@ -97,9 +100,9 @@ end
 
 -- calculate the item effect on a card
 function Card:calculate_item(context)
-    local item = self.ability.para_item
+    local item = PSI.Items[self.ability.para_item.key]
     if item and item.calculate then
-        local o = item:calculate(item, self, context)
+        local o = item.calculate(self.ability.para_item, self, context)
         if o then
             if not o.card then o.card = self end
             return o
@@ -118,31 +121,33 @@ SMODS.ConsumableType {
 }
 
 PSI.Item{
-    key = "para_itemeternal",
+    key = "glass_shard",
     badge_colour = HEX('c75985'),
-    pos = { x = 2, y = 0 },
-    shiny = false,
+    pos = { x = 5, y = 1 },
+    config = {extra = {
+        xmult = 1.5,
+        numerator = 1,
+        odds = 6
+    }},
     calculate = function(self, card, context)
-        if context.pre_joker then
-            print("prejoker")
-        end
         if context.post_joker then
-            print("postjoker")
+            if SMODS.pseudorandom_probability(self, 'i_para_glass_shard', self.ability.extra.numerator, self.ability.extra.odds, 'i_para_glass_shard') then
+                G.E_MANAGER:add_event(Event({
+                    trigger = "immediate",
+                    func = function()
+                        PSI.remove_item(card)
+                        play_sound('glass'..math.random(1, 6), math.random()*0.2 + 0.9,0.5)
+                        play_sound('generic1', math.random()*0.2 + 0.9,0.5)
+                        return true
+                    end
+                }))
+                return {xmult = self.ability.extra.xmult, message = "Shattered!"}
+            end
+            return {xmult = self.ability.extra.xmult}
         end
     end,
     loc_vars = function(self, info_queue, card)
-        return {vars = {"e", 4}}
-    end,
-    on_apply = function(self, card)
-        print("apple")
-    end,
-    on_remove = function(self, card)
-        print("juice")
+        local num, denom = SMODS.get_probability_vars(self, self.ability.extra.numerator, self.ability.extra.odds, 'i_para_glass_shard')
+        return {vars = {self.ability.extra.xmult, num, denom}}
     end
-}
-PSI.Item{
-    key = "para_itemrental",
-    badge_colour = HEX('c75985'),
-    pos = { x = 5, y = 0 },
-    shiny = true
 }

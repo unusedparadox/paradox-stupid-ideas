@@ -12,6 +12,11 @@ if G.PROFILES[G.SETTINGS.profile].para_gameset == "unfiltered" then
 elseif G.PROFILES[G.SETTINGS.profile].para_gameset == "upgraded" then
 	PSI.gameset.upgraded = true
 end
+SMODS.current_mod.optional_features = function()
+    return {
+        post_trigger = true,
+    }
+end
 -- wow a bunch of 0% original code. why is it PARA_ASPL? in case something else needs aspl table and this breaks weirdly. idk
 PARA_ASPL = {}
 PARA_ASPL.FUNC = {}

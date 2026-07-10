@@ -1067,13 +1067,15 @@ return {
             },
         },
         para_items = {
-            para_itemeternal = {
-                name = "testing {C:blue}1 {C:legendary}2 {C:green}3",
+            i_para_glass_shard = {
+                name = "Glass Shard",
                 text = {
-                    "This is a line",
-                    "loc_vars: #1# and #2#",
-                    "{C:attention}Colorful {s:1.5}Big {E:1}Wavy"
-                }
+                    "{X:mult,C:white}X#1#{} Mult",
+                    "{C:green}#2# in #3#{} chance for this",
+                    "Item to {C:attention}self destruct",
+                    "{C:inactive,s:0.8}Shiny. Sharp. Use carefully."
+                },
+                label = "Glass Shard"
             },
         }
     },
