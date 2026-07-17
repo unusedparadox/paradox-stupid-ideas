@@ -1,6 +1,6 @@
 PSI.Items = {}
 PSI.Item = SMODS.GameObject:extend {
-    obj_table = PSI.Items,
+   obj_table = PSI.Items,
     obj_buffer = {},
     class_prefix = "i",
     should_apply = false,
@@ -21,6 +21,49 @@ PSI.Item = SMODS.GameObject:extend {
     inject = function(self)
         self.item_sprite = SMODS.create_sprite(0, 0, G.CARD_W, G.CARD_H, self.atlas, self.pos)
         PSI.shared_items[self.key] = self.item_sprite
+        --autocreate consumables. set to a table to overwrite parameters
+        if self.autogen_consumable and not self.consumable_generated then
+            local consumable_args = {
+                key = self.original_key,
+                set = "para_item",
+                atlas = self.atlas or "para_Items",
+                pos = {x = self.pos.x - 2, y = self.pos.y},
+                soul_pos = {x = self.pos.x - 1, y = self.pos.y},
+                config = {extra = {item = self.key, jokers = 1}},
+                loc_txt = {
+                    name = "#1#",
+                    text = {
+                        "Apply {C:attention}#1#",
+                        "to #2#{C:attention}#3#{} selected {C:attention}Joker#4#"
+                    }
+                },
+                can_use = function(self, card)
+                    return G.jokers and (#G.jokers.highlighted >= 1) and (#G.jokers.highlighted <= card.ability.extra.jokers)
+                end,
+                loc_vars = function(self,info_queue,card)
+                    info_queue[#info_queue + 1] = {set = "para_items", key = card.ability.extra.item,
+                    vars = PSI.Items[card.ability.extra.item]:collection_loc_vars(info_queue).vars}
+                	return {vars = {localize({type = "name_text", set = "para_items", key = card.ability.extra.item}),
+                    (card.ability.extra.jokers < 2 and "" or "up to "), card.ability.extra.jokers, card.ability.extra.jokers >= 2 and "s" or ""}}
+                end,
+                use = function(self, card, area, copier)
+                    PSI.apply_item(G.jokers.highlighted[1], card.ability.extra.item)
+                end,
+            }
+            if type(self.autogen_consumable) == "table" then
+                consumable_args = SMODS.merge_defaults(self.autogen_consumable, consumable_args)
+            end
+            local autogenned_consumable = SMODS.Consumable:__call(consumable_args)
+            if autogenned_consumable._discovered_unlocked_overwritten then
+                autogenned_consumable.discovered, autogenned_consumable.unlocked = autogenned_consumable._d, autogenned_consumable._u
+                autogenned_consumable._discovered_unlocked_overwritten = false
+            else
+                SMODS._save_d_u(autogenned_consumable)
+            end
+            autogenned_consumable:inject()
+            autogenned_consumable:process_loc_text()
+            self.consumable_generated = true
+        end
     end,
 
     apply = function(self, card, val)
@@ -30,34 +73,9 @@ PSI.Item = SMODS.GameObject:extend {
                 key = self.key
             }
         else card.ability.para_item = nil end
-    end
+    end,
 }
 PSI.shared_items = {}
---Automatically generates consumables for your items if autogen_consumable is true. Set to a table to overwrite consumable defaults.
-function PSI.Item:__call(o)
-    local ret = SMODS.GameObject:__call(o)
-    if ret.autogen_consumable then
-        local consumable_args = {
-            key = o.key,
-            set = "para_Item",
-            atlas = o.atlas,
-            pos = {x = o.pos.x - 2, y = o.pos.y},
-            soul_pos = {x = o.pos.x - 1, y = o.pos.y},
-            config = {item = ret.key},
-            can_use = function(self, card)
-                return G.jokers and (#G.jokers.highlighted == 1)
-            end,
-            use = function(self, card, area, copier)
-                PSI.apply_item(G.jokers.highlighted[1], self.ability.item)
-            end,
-        }
-        if type(ret.autogen_consumable) == "table" then
-            consumable_args = SMODS.merge_defaults(ret.autogen_consumable, consumable_args)
-        end
-        SMODS.Consumable:__call(consumable_args)
-    end
-    return ret
-end
 
 -- draw items on the joker
 SMODS.DrawStep {
@@ -77,9 +95,6 @@ SMODS.DrawStep {
     end,
     conditions = { vortex = false, facing = 'front' },
 }
-
--- no loc_txt. im not adding it nobody should be using it anyways
-G.localization.descriptions.para_items = {}
 
 --takes a card and an item/item key to apply on it
 PSI.apply_item = function(card, item)
@@ -102,7 +117,7 @@ end
 function Card:calculate_item(context)
     local item = PSI.Items[self.ability.para_item.key]
     if item and item.calculate then
-        local o = item.calculate(self.ability.para_item, self, context)
+        local o = item:calculate(self, context, self.ability.para_item)
         if o then
             if not o.card then o.card = self end
             return o
@@ -112,26 +127,27 @@ end
 
 -- Item consumable set & Boosters
 SMODS.ConsumableType {
-    key = 'para_Item',
+    key = 'para_item',
     primary_colour = HEX('424e54'),
     secondary_colour = HEX('4486bb'),
     collection_rows = { 5, 5 },
-    default = 'c_para_pyrite_ring',
+    default = 'c_para_glass_shard',
     shop_rate = 0,
 }
 
 PSI.Item{
     key = "glass_shard",
     badge_colour = HEX('c75985'),
+    autogen_consumable = true,
     pos = { x = 5, y = 1 },
     config = {extra = {
         xmult = 1.5,
         numerator = 1,
         odds = 6
     }},
-    calculate = function(self, card, context)
+    calculate = function(self, card, context, item)
         if context.post_joker then
-            if SMODS.pseudorandom_probability(self, 'i_para_glass_shard', self.ability.extra.numerator, self.ability.extra.odds, 'i_para_glass_shard') then
+            if SMODS.pseudorandom_probability(item, 'i_para_glass_shard', item.ability.extra.numerator, item.ability.extra.odds, 'i_para_glass_shard') then
                 G.E_MANAGER:add_event(Event({
                     trigger = "immediate",
                     func = function()
@@ -141,13 +157,17 @@ PSI.Item{
                         return true
                     end
                 }))
-                return {xmult = self.ability.extra.xmult, message = "Shattered!"}
+                return {xmult = item.ability.extra.xmult, message = "Shattered!"}
             end
-            return {xmult = self.ability.extra.xmult}
+            return {xmult = item.ability.extra.xmult}
         end
     end,
-    loc_vars = function(self, info_queue, card)
-        local num, denom = SMODS.get_probability_vars(self, self.ability.extra.numerator, self.ability.extra.odds, 'i_para_glass_shard')
-        return {vars = {self.ability.extra.xmult, num, denom}}
+    loc_vars = function(self, info_queue, card, item)
+        local num, denom = SMODS.get_probability_vars(item, item.ability.extra.numerator, item.ability.extra.odds, 'i_para_glass_shard')
+        return {vars = {item.ability.extra.xmult, num, denom}}
+    end,
+    collection_loc_vars = function(self, info_queue, card, item)
+        local num, denom = SMODS.get_probability_vars(self, self.config.extra.numerator, self.config.extra.odds, 'i_para_glass_shard')
+        return {vars = {self.config.extra.xmult, num, denom}}
     end
 }

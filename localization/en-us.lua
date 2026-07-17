@@ -644,7 +644,16 @@ return {
                     "joker slots with {C:red}Republican{} Jokers",
                     "All non-{C:red}Republican{} Jokers are {C:attention}debuffed",
                 }
-            }
+            },
+            j_para_9_ball = {
+                name = "9 Ball",
+                text = {
+                    "{C:green}#1# in #2#{} chance for each",
+                    "played {C:attention}9{} to create a",
+                    "{C:tarot}Tarot{} card when scored",
+                    "{C:inactive}(Must have room)",
+                },
+            },
         },
         Other = {
             p_para_foodpack = {
@@ -767,7 +776,16 @@ return {
                     "{C:attention}levels up{} has {C:dark_edition}no correlation{}",
                     "to its {C:attention}distance{} from the {C:gold}Sun.",
                 }
-            }
+            },
+            undiscovered_para_item = {
+                name = "Not Discovered",
+                text = {
+                    "Purchase or use",
+                    "this card in an",
+                    "unseeded run to",
+                    "learn what it does"
+                },
+            },
         },
         Planet = {},
         Spectral = {
@@ -1161,12 +1179,15 @@ return {
                 'Standard',
                 "Max"
             },
-            para_green_mode = "Green Mode"
+            para_green_mode = "Green Mode",
+            k_para_item = "Item",
+            b_para_item_cards = "Item Cards",
         },
         high_scores = {},
         labels = {
             k_para_prestige = "Prestigious",
-            k_para_nft = "NFT"
+            k_para_nft = "NFT",
+            para_item = "Item"
         },
         poker_hand_descriptions = {},
         poker_hands = {},

@@ -99,7 +99,7 @@ if item then
     local t = { key = v, set = 'para_items' }
     local res = {}
     if item.loc_vars and type(item.loc_vars) == 'function' then
-        res = item.loc_vars(card.ability.para_item, info_queue, card) or {}
+        res = item.loc_vars(item, info_queue, card, card.ability.para_item) or {}
         t.vars = res.vars or {}
         t.key = res.key or t.key
         t.set = res.set or t.set
