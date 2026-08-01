@@ -1,6 +1,6 @@
 PSI.Items = {}
 PSI.Item = SMODS.GameObject:extend {
-   obj_table = PSI.Items,
+    obj_table = PSI.Items,
     obj_buffer = {},
     class_prefix = "i",
     should_apply = false,
@@ -134,6 +134,38 @@ SMODS.ConsumableType {
     default = 'c_para_glass_shard',
     shop_rate = 0,
 }
+
+--items in collection
+SMODS.current_mod.custom_collection_tabs = function()
+    local amount = #PSI.Item.obj_buffer
+    return {
+        UIBox_button({
+            button = 'your_collection_para_items_notcards',
+            id = 'your_collection_para_items_notcards',
+            label = { localize('para_ui_items') },
+            count = { tally = amount, of = amount },
+            minw = 5,
+            minh = 1
+        })
+    }
+end
+G.FUNCS.your_collection_para_items_notcards = function()
+    G.SETTINGS.paused = true
+    G.FUNCS.overlay_menu {
+        definition = SMODS.card_collection_UIBox(PSI.Items, { 6, 5 }, {
+            snap_back = true,
+            hide_single_page = true,
+            collapse_single_page = true,
+            center = 'j_joker',
+            h_mod = 1.03,
+            --back_func = 'your_collection_other_gameobjects',
+            modify_card = function(card, center)
+                card.ignore_pinned = true
+                PSI.apply_item(card, center.key)
+            end,
+        })
+    }
+end
 
 PSI.Item{
     key = "glass_shard",

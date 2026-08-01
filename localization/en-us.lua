@@ -1182,6 +1182,7 @@ return {
             para_green_mode = "Green Mode",
             k_para_item = "Item",
             b_para_item_cards = "Item Cards",
+            para_ui_items = "Items"
         },
         high_scores = {},
         labels = {
