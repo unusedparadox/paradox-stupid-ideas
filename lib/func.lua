@@ -77,3 +77,11 @@ end
 PSI.is_bignum_enabled = function()
     return Talisman and not Talisman.config_file.disable_omega
 end
+-- takes a card and sticker key and checks if, based on the other stickers on the card and other factors, that sticker is applicable
+PSI.check_sticker_compat = function(card, sticker)
+    local ability = card.ability
+    if (ability.eternal or SMODS.is_eternal(card, {para_sticker_compat_check = true})) and (sticker == "perishable" or
+    sticker == "paperback_temporary" or sticker == "minty_pirated") then return false end
+    if (ability.perishable or ability.minty_pirated) and sticker == "eternal" then return false end
+    return true
+end

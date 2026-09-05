@@ -10,6 +10,8 @@ SMODS.Joker{ -- mmm yummy pancake
 	}},
 	pools = { ["Food"] = true, ["parajoker"] = true },
 	blueprint_compat = true,
+	eternal_compat = false,
+	perishable_compat = false,
 	loc_vars = function(self, info_queue, card)
 		return {vars = {card.ability.extra.mult, card.ability.extra.mult_loss}}
 	end,

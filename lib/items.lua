@@ -42,7 +42,7 @@ PSI.Item = SMODS.GameObject:extend {
                 end,
                 loc_vars = function(self,info_queue,card)
                     info_queue[#info_queue + 1] = {set = "para_items", key = card.ability.extra.item,
-                    vars = PSI.Items[card.ability.extra.item]:collection_loc_vars(info_queue).vars}
+                    vars = PSI.Items[card.ability.extra.item].collection_loc_vars and PSI.Items[card.ability.extra.item]:collection_loc_vars(info_queue).vars or nil}
                 	return {vars = {localize({type = "name_text", set = "para_items", key = card.ability.extra.item}),
                     (card.ability.extra.jokers < 2 and "" or "up to "), card.ability.extra.jokers, card.ability.extra.jokers >= 2 and "s" or ""}}
                 end,
@@ -74,6 +74,7 @@ PSI.Item = SMODS.GameObject:extend {
             }
         else card.ability.para_item = nil end
     end,
+    order = 0,
 }
 PSI.shared_items = {}
 
@@ -166,40 +167,10 @@ G.FUNCS.your_collection_para_items_notcards = function()
         })
     }
 end
-
-PSI.Item{
-    key = "glass_shard",
-    badge_colour = HEX('c75985'),
-    autogen_consumable = true,
-    pos = { x = 5, y = 1 },
-    config = {extra = {
-        xmult = 1.5,
-        numerator = 1,
-        odds = 6
-    }},
-    calculate = function(self, card, context, item)
-        if context.post_joker then
-            if SMODS.pseudorandom_probability(item, 'i_para_glass_shard', item.ability.extra.numerator, item.ability.extra.odds, 'i_para_glass_shard') then
-                G.E_MANAGER:add_event(Event({
-                    trigger = "immediate",
-                    func = function()
-                        PSI.remove_item(card)
-                        play_sound('glass'..math.random(1, 6), math.random()*0.2 + 0.9,0.5)
-                        play_sound('generic1', math.random()*0.2 + 0.9,0.5)
-                        return true
-                    end
-                }))
-                return {xmult = item.ability.extra.xmult, message = "Shattered!"}
-            end
-            return {xmult = item.ability.extra.xmult}
-        end
-    end,
-    loc_vars = function(self, info_queue, card, item)
-        local num, denom = SMODS.get_probability_vars(item, item.ability.extra.numerator, item.ability.extra.odds, 'i_para_glass_shard')
-        return {vars = {item.ability.extra.xmult, num, denom}}
-    end,
-    collection_loc_vars = function(self, info_queue, card, item)
-        local num, denom = SMODS.get_probability_vars(self, self.config.extra.numerator, self.config.extra.odds, 'i_para_glass_shard')
-        return {vars = {self.config.extra.xmult, num, denom}}
+function Card:calculate_dollar_bonus_item()
+    if not self.ability.para_item then return end
+    local obj = PSI.Items[self.ability.para_item.key]
+    if obj.calc_dollar_bonus and type(obj.calc_dollar_bonus) == 'function' then
+        return obj:calc_dollar_bonus(self, self.ability.para_item)
     end
-}
+end

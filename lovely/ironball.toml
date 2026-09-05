@@ -1,0 +1,92 @@
+[manifest]
+version = "1.0.0"
+priority = 1
+
+# Interrupt calculations
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "function Card:calculate_joker(context)"
+position = "after"
+payload = '''
+    for k, v in pairs(context) do
+        if v and PSI.scoring_contexts[k] then goto check_delayed_scoring end
+    end
+    goto skip_check
+    ::check_delayed_scoring::
+    if G.GAME.para_calculating_delayed_scoring ~= nil then
+        if G.GAME.para_calculating_delayed_scoring ~= (type(self.ability) == "table" and type(self.ability.para_item) == "table" and self.ability.para_item.key == "i_para_iron_ball") then
+            return
+        end
+    end
+    ::skip_check::
+'''
+match_indent = true
+overwrite = false
+
+# Goto label and setup first pass
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "if modded then update_hand_text({sound = 'chips2', modded = modded}, {chips = hand_chips, mult = mult}) end"
+position = "after"
+payload = """   G.GAME.para_calculating_delayed_scoring = false
+    ::delayed_scoring::"""
+match_indent = true
+overwrite = false
+
+# Set up second pass
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "local nu_chip, nu_mult = G.GAME.selected_back:trigger_effect{context = 'final_scoring_step', chips = hand_chips, mult = mult}"
+position = "before"
+payload = """if not G.GAME.para_calculating_delayed_scoring then
+    G.GAME.para_calculating_delayed_scoring = true
+    goto delayed_scoring
+else
+    G.GAME.para_calculating_delayed_scoring = nil
+end
+"""
+match_indent = true
+overwrite = false
+
+# Don't score enhancements, editions, etc. on second pass
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "if context.cardarea == G.play and context.main_scoring then"
+position = "at"
+payload = "if context.cardarea == G.play and context.main_scoring and not G.GAME.para_calculating_delayed_scoring then"
+match_indent = true
+
+# Don't score enhancements, editions, etc. on second pass pt 2
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "if context.cardarea == G.hand and context.main_scoring then"
+position = "at"
+payload = "if context.cardarea == G.hand and context.main_scoring and not G.GAME.para_calculating_delayed_scoring then"
+match_indent = true
+
+# Don't score enhancements, editions, etc. on second pass pt 3 (goto label is in items.toml)
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = """end
+
+if card.ability.set == 'Enhanced' then"""
+position = "at"
+payload = """end
+if G.GAME.para_calculating_delayed_scoring then goto second_pass_skip end
+if card.ability.set == 'Enhanced' then"""
+match_indent = true
+
+# Don't show Debuffed twice
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+pattern = "if scoring_hand and card.debuff then"
+position = 'at'
+payload = '''if scoring_hand and card.debuff and (G.GAME.para_calculating_delayed_scoring ~= true) then'''
+match_indent = true

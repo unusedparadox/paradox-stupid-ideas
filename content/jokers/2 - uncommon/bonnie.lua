@@ -37,7 +37,7 @@ SMODS.Booster{
 	end,
 	weight = 0,
 	cost = 0,
-	group_key = 'groupfoodpack',
+	group_key = 'para_groupfoodpack',
 	in_pool = function(self, args)
 		return false
 	end

@@ -38,6 +38,18 @@ match_indent = true
 
 [[patches]]
 [patches.pattern]
+target = '=[SMODS _ "src/game_object.lua"]'
+pattern = "SMODS.Sticker = SMODS.GameObject:extend {"
+position = 'after'
+payload = '''extend = function(self, proto)
+    local newclass = SMODS.GameObject.extend(self, proto)
+    newclass.para_sticker_extension = true
+    return newclass
+end,'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
 target = 'functions/misc_functions.lua'
 pattern = "G.ARGS.LOC_COLOURS = G.ARGS.LOC_COLOURS or {"
 position = 'at'

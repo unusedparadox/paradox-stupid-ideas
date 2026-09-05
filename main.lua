@@ -23,7 +23,7 @@ PARA_ASPL.FUNC = {}
 PARA_ASPL.G = {}
 
 PARA_ASPL.G.MODPATH = SMODS.current_mod.path
-local NFS = require("nativefs")
+local NFS = require("SMODS.nativefs")
 
 function PARA_ASPL.FUNC.RequireFolder(path)
 	local files = NFS.getDirectoryItemsInfo(PARA_ASPL.G.MODPATH .. "/" .. path)

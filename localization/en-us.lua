@@ -670,6 +670,33 @@ return {
 		        },
 	        	group_name = 'Credit Card'
             },
+            p_para_item_jumbo = {
+                name = "Jumbo Item Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2#{C:para_item} Item{} cards to",
+                    "be used immediately",
+                },
+                group_name = 'Item Pack'
+            },
+            p_para_item_mega = {
+                name = "Mega Item Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2#{C:para_item} Item{} cards to",
+                    "be used immediately",
+                },
+                group_name = 'Item Pack'
+            },
+            p_para_item_small = {
+                name = "Item Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2#{C:para_item} Item{} cards to",
+                    "be used immediately",
+                },
+                group_name = 'Item Pack'
+            },
             para_to_big_goldseal = {
                 name = "Gold Seal",
                 text = {
@@ -1095,6 +1122,44 @@ return {
                 },
                 label = "Glass Shard"
             },
+            i_para_trick_die = {
+                name = "Trick Die",
+                text = {
+                    "Failed listed {C:green,E:1}probabilities",
+                    "on this Joker are {C:attention}rerolled{} once",
+                    "{C:inactive,s:0.8}A die that somehow, only rolls a 6.",
+                },
+                label = "Trick Die"
+            },
+            i_para_sticker_sheet = {
+                name = "Sticker Sheet",
+                text = {
+                    "At the end of the Ante,",
+                    "apply a random compatible {C:attention}Sticker",
+                    "to this Joker and earn {C:money}$#1#",
+                    "{C:inactive,s:0.8}The sheet is worth 50 cents, so you're",
+                    "{C:inactive,s:0.8}not sure where the #1# dollars comes from."
+                },
+                label = "Sticker Sheet"
+            },
+            i_para_blunder_policy = {
+                name = "Blunder Policy",
+                text = {
+                    "Earn {C:money}$#1#{} when a {C:green,E:1}probability",
+                    "on this Joker {C:red}fails",
+                    "{C:inactive,s:0.8}insert funny nxkoo blunder joke here",
+                },
+                label = "Blunder Policy"
+            },
+            i_para_iron_ball = {
+                name = "Iron Ball",
+                text = {
+                    "{C:attention}Scoring effects{} from this Joker",
+                    "are {C:attention}delayed{} until the end of the hand",
+                    "{C:inactive,s:0.8}Still doesn't make Bloodstone good.",
+                },
+                label = "Iron Ball"
+            },
         }
     },
     misc = {
@@ -1114,8 +1179,9 @@ return {
         },
         collabs = {},
         dictionary = {
-            groupfoodpack = "(You'd like...)",
-            groupcreditpack = "Credit Card",
+            para_groupfoodpack = "(You'd like...)",
+            para_groupcreditpack = "Credit Card",
+            para_groupitempack = "Item Pack",
             para_k_reactivated = "Reactivated!",
             para_k_upgrade = "Upgrade!",
             para_k_active = "Active",
@@ -1181,6 +1247,7 @@ return {
             },
             para_green_mode = "Green Mode",
             k_para_item = "Item",
+            para_k_nostickers = "No stickers to apply!",
             b_para_item_cards = "Item Cards",
             para_ui_items = "Items"
         },
@@ -1208,6 +1275,7 @@ return {
             para_art = { "Art: #1#" },
             para_code = { "Code: #1#" },
             para_idea = { "Idea: #1#" },
+            para_stickerapplied = {"#1# applied!"}
         },
         v_text = {
             ch_c_para_oopsalloopsalloopsallsixes = { "All cards in shop are {C:green,E:1}Oops! All Oops! All Sixes" },

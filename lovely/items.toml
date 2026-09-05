@@ -2,16 +2,16 @@
 version = "1.0.0"
 priority = 1
 
-# add scaling context for items
 [[patches]]
 [patches.pattern]
-target = '=[SMODS _ "src/utils.lua"]'
-pattern = '''local obj = _card.config.center
-if obj.calc_scaling and type(obj.calc_scaling) == "function" then'''
-position = 'before'
-payload = '''
+target = "=[SMODS _ \"src/utils.lua\"]"
+pattern = """
+local obj = _card.config.center
+if obj.calc_scaling and type(obj.calc_scaling) == \"function\" then"""
+position = "before"
+payload = """
 if _card.ability.para_item then
-    local ret = _card.ability.para_item:calculate_item({initial = initial, scalar_value = scalar_value, other_card = card, args = args, alter_scaling = true})
+    local ret = _card:calculate_item({initial = initial, scalar_value = scalar_value, other_card = card, args = args, alter_scaling = true})
     if ret then
         if ret.override_value and not args.block_overrides.value then initial = ret.override_value.value; SMODS.calculate_effect(ret.override_value, _card) end
         if ret.override_scalar_value and not args.block_overrides.scalar then scalar_value = ret.override_scalar_value.value; SMODS.calculate_effect(ret.override_scalar_value, _card) end
@@ -20,14 +20,14 @@ if _card.ability.para_item then
         SMODS.calculate_effect(ret, _card)
     end
 end
-'''
+"""
 match_indent = true
+overwrite = false
 
-# calculate items pt 1
 [[patches]]
 [patches.pattern]
 target = "functions/common_events.lua"
-pattern = '''
+pattern = """
 for _,k in ipairs(SMODS.Sticker.obj_buffer) do
     local v = SMODS.Stickers[k]
     local sticker = card:calculate_sticker(context, k)
@@ -35,8 +35,7 @@ for _,k in ipairs(SMODS.Sticker.obj_buffer) do
         ret[v] = sticker
     end
 end
-'''
-match_indent = true
+"""
 position = "after"
 payload = """
 if card.ability.para_item then
@@ -45,55 +44,56 @@ if card.ability.para_item then
         ret.item = item
     end
 end
+::second_pass_skip:: -- see ironball.toml for why im here
 """
+match_indent = true
+overwrite = false
 
-# calculate items pt 2
 [[patches]]
 [patches.pattern]
 target = "functions/state_events.lua"
-pattern = '''
+pattern = """
 if eval.edition then effects[#effects+1] = eval end
-'''
-match_indent = true
+"""
 position = "after"
 payload = """
 if eval.item and not eval.edition then effects[#effects+1] = eval end
 """
+match_indent = true
+overwrite = false
 
-# calculate items pt 3
 [[patches]]
 [patches.pattern]
-target = '=[SMODS _ "src/utils.lua"]'
-pattern = '''
+target = "=[SMODS _ \"src/utils.lua\"]"
+pattern = """
 SMODS.calculate_effect_table_key(effect_table, 'individual', card, ret)
-'''
-position = 'after'
-payload = '''
+"""
+position = "after"
+payload = """
 SMODS.calculate_effect_table_key(effect_table, 'item', card, ret)
-'''
+"""
 match_indent = true
+overwrite = false
 
-# Card:generate_UIBox_ability_table(): add item badge
 [[patches]]
 [patches.pattern]
 target = "card.lua"
-pattern = '''
+pattern = """
 if self.ability.eternal then badges[#badges + 1] = 'eternal' end
-'''
-match_indent = true
+"""
 position = "before"
 payload = """
 if self.ability.para_item then badges[#badges + 1] = self.ability.para_item.key end
 """
+match_indent = true
+overwrite = false
 
-# generate_card_ui(): set up info_queue
 [[patches]]
 [patches.pattern]
 target = "functions/common_events.lua"
 pattern = "if v == 'eternal' then*"
-match_indent = true
 position = "before"
-payload = '''
+payload = """
 local item = PSI.Items[v]
 if item then
     local t = { key = v, set = 'para_items' }
@@ -105,61 +105,95 @@ if item then
         t.set = res.set or t.set
     end
     info_queue[#info_queue+1] = t
-end'''
+end"""
+match_indent = true
+overwrite = false
 
-# generate_card_ui(): load info_queue description
 [[patches]]
+
 [patches.pattern]
 target = "functions/common_events.lua"
 pattern = "localize{type = 'other', key = _c.key, nodes = desc_nodes, vars = specific_vars or _c.vars}"
-match_indent = true
 position = "after"
-payload = '''
+payload = """
 elseif _c.set == 'para_items' then
-    localize{type = 'descriptions', set = "para_items", key = _c.key, nodes = desc_nodes, vars = specific_vars or _c.vars or {}, config = specific_vars or _c.vars or {}}
-'''
-
-# get_badge_colour()
-[[patches]]
-[patches.pattern]
-target = 'functions/UI_definitions.lua'
-pattern = 'return G.BADGE_COL[key] or {1, 0, 0, 1}'
-position = 'before'
+    localize{type = 'descriptions', set = \"para_items\", key = _c.key, nodes = desc_nodes, vars = specific_vars or _c.vars or {}, config = specific_vars or _c.vars or {}}
+"""
 match_indent = true
-payload = '''
+overwrite = false
+
+[[patches]]
+
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "return G.BADGE_COL[key] or {1, 0, 0, 1}"
+position = "before"
+payload = """
 for k, v in pairs(PSI.Items) do
     G.BADGE_COL[k] = v.badge_colour
-end'''
-
-# assign badge text pt 1
-[[patches]]
-[patches.pattern]
-target = 'functions/UI_definitions.lua'
-pattern = 'badges[#badges + 1] = create_badge(localize(v, "labels"), get_badge_colour(v), SMODS.get_badge_text_colour(v))'
-position = 'after'
+end"""
 match_indent = true
-payload = '''
-::skip_regular_badge::'''
+overwrite = false
 
-# assign badge text pt 2
 [[patches]]
+
 [patches.pattern]
-target = 'functions/UI_definitions.lua'
-pattern = 'badges[#badges + 1] = create_badge(localize(v, "labels"), get_badge_colour(v), SMODS.get_badge_text_colour(v))'
-position = 'before'
+target = "functions/UI_definitions.lua"
+pattern = "badges[#badges + 1] = create_badge(localize(v, \"labels\"), get_badge_colour(v), SMODS.get_badge_text_colour(v))"
+position = "after"
+payload = "::skip_regular_badge::"
 match_indent = true
-payload = '''
-if v:sub(1, 2) == "i_" then
-    badges[#badges + 1] = create_badge(localize(v, "item_badge_labels"), get_badge_colour(v), SMODS.get_badge_text_colour(v))
+overwrite = false
+
+[[patches]]
+
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "badges[#badges + 1] = create_badge(localize(v, \"labels\"), get_badge_colour(v), SMODS.get_badge_text_colour(v))"
+position = "before"
+payload = """
+if v:sub(1, 2) == \"i_\" then
+    badges[#badges + 1] = create_badge(localize(v, \"item_badge_labels\"), get_badge_colour(v), PSI.Items[v].badge_text_colour)
     goto skip_regular_badge
-end'''
-
-# assign badge text pt 3
-[[patches]]
-[patches.pattern]
-target = 'functions/misc_functions.lua'
-pattern = "if args and not (type(args) == 'table') then"
-position = 'before'
+end"""
 match_indent = true
-payload = '''
-if misc_cat == "item_badge_labels" then return G.localization.descriptions.para_items[args].label or G.localization.descriptions.para_items[args].name or 'ERROR' end'''
+overwrite = false
+
+[[patches]]
+
+[patches.pattern]
+target = "functions/misc_functions.lua"
+pattern = "if args and not (type(args) == 'table') then"
+position = "before"
+payload = "if misc_cat == \"item_badge_labels\" then return G.localization.descriptions.para_items[args].label or G.localization.descriptions.para_items[args].name or 'ERROR' end"
+match_indent = true
+overwrite = false
+
+[[patches]]
+
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = """
+        add_round_eval_row({dollars = ret, bonus = true, name='joker'..i, pitch = pitch, card = _card, loc_opts = ret_opts})
+        pitch = pitch + 0.06
+    end
+    dollars = dollars + ret
+end
+"""
+position = "after"
+payload = """
+local itemret, itemret_opts = _card:calculate_dollar_bonus_item()
+itemret_opts = itemret_opts or {}
+if itemret then
+    if not itemret_opts.no_eval_row then
+        i = i+1
+        add_round_eval_row({dollars = itemret, bonus = true, text_scale = 0.6*0.9,
+        name='customitem'..i, pitch = pitch, card = _card, loc_opts = itemret_opts, text_colour = G.C.FILTER,
+        text = localize({type = \"name_text\", set = \"para_items\", key = _card.ability.para_item.key})})
+        pitch = pitch + 0.06
+    end
+    dollars = dollars + itemret
+end
+"""
+match_indent = true
+overwrite = false
