@@ -50,7 +50,10 @@ PSI.Item = SMODS.GameObject:extend {
                     PSI.apply_item(G.jokers.highlighted[1], card.ability.extra.item)
                 end,
             }
+            SMODS.current_mod = PSI.self
             if type(self.autogen_consumable) == "table" then
+                self.autogen_consumable.mod = nil
+                SMODS.current_mod = self.autogen_consumable.mod or SMODS.current_mod
                 consumable_args = SMODS.merge_defaults(self.autogen_consumable, consumable_args)
             end
             local autogenned_consumable = SMODS.Consumable:__call(consumable_args)
@@ -63,6 +66,7 @@ PSI.Item = SMODS.GameObject:extend {
             autogenned_consumable:inject()
             autogenned_consumable:process_loc_text()
             self.consumable_generated = true
+            SMODS.current_mod = nil
         end
     end,
 
