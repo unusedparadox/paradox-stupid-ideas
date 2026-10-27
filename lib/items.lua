@@ -77,6 +77,7 @@ PSI.Item = SMODS.GameObject:extend {
                 key = self.key
             }
         else card.ability.para_item = nil end
+        card:set_cost()
     end,
     order = 0,
 }
@@ -109,13 +110,13 @@ PSI.apply_item = function(card, item)
         itemapplied = PSI.Items[item]
     end
     itemapplied:apply(card, true)
-    if itemapplied.on_apply then itemapplied:on_apply(card) end
+    if itemapplied.on_apply then itemapplied:on_apply(card, card.ability.para_item) end
 end
 --remove a card's item (if it has one)
 PSI.remove_item = function(card)
     local itemremoved = PSI.Items[card.ability.para_item.key]
+    if type(itemremoved.on_remove) == "function" then itemremoved:on_remove(card, card.ability.para_item) end
     itemremoved:apply(card, false)
-    if type(itemremoved.on_remove) == "function" then itemremoved:on_remove(card) end
 end
 
 -- calculate the item effect on a card

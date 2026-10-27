@@ -55,3 +55,23 @@ pattern = "G.ARGS.LOC_COLOURS = G.ARGS.LOC_COLOURS or {"
 position = 'at'
 payload = "G.ARGS.LOC_COLOURS = {"
 match_indent = true
+
+# Pyrite Ring sell button displays an accurate number
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = "self.sell_cost_label = self.facing == 'back' and '?' or self.sell_cost"
+position = 'at'
+payload = "self.sell_cost_label = self.facing == 'back' and '?' or ((self.ability.para_item and self.ability.para_item.key == 'i_para_pyrite_ring') and self.sell_cost - self.ability.para_item.ability.extra.bonus_value or self.sell_cost)"
+match_indent = true
+
+# Pyrite Ring sells for the right amount
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = "ease_dollars(self.sell_cost)"
+position = 'at'
+payload = '''if self.ability.para_item and self.ability.para_item.key == 'i_para_pyrite_ring' then ease_dollars(self.sell_cost - self.ability.para_item.ability.extra.bonus_value)
+else ease_dollars(self.sell_cost)
+end'''
+match_indent = true

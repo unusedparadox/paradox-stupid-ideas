@@ -197,3 +197,12 @@ end
 """
 match_indent = true
 overwrite = false
+
+# Jokers with items cost more and sell for more
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = "self.cost = math.max(1, math.floor((self.base_cost + self.extra_cost + 0.5)*(100-G.GAME.discount_percent)/100))"
+position = 'before'
+payload = "if self.ability.para_item then self.extra_cost = self.extra_cost + 2 end"
+match_indent = true

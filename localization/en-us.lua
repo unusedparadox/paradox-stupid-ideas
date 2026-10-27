@@ -589,8 +589,6 @@ return {
                     "When opening a {C:planet}Celestial{} pack,",
                     "draw {C:attention}playing cards{} to hand",
                     "{C:inactive}(Does not override Telescope)",
-                    "{C:inactive,s:0.8}\"fork found in garage\"",
-                    "{C:inactive,s:0.8}-nxkoo_, 7/16/2025"
                 },
             },
             j_para_the_plain = {
@@ -1147,7 +1145,7 @@ return {
                 text = {
                     "Earn {C:money}$#1#{} when a {C:green,E:1}probability",
                     "on this Joker {C:red}fails",
-                    "{C:inactive,s:0.8}insert funny nxkoo blunder joke here",
+                    "{C:inactive,s:0.8}professional blunderfarming",
                 },
                 label = "Blunder Policy"
             },
@@ -1159,6 +1157,17 @@ return {
                     "{C:inactive,s:0.8}Still doesn't make Bloodstone good.",
                 },
                 label = "Iron Ball"
+            },
+            i_para_pyrite_ring = {
+                name = "Pyrite Ring",
+                text = {
+                    "For all purposes {C:red}except{}",
+                    "selling this Joker,",
+                    "{C:money}+$#1#{} sell value",
+                    "{C:inactive,s:0.8}Looks valuable,",
+                    "{C:inactive,s:0.8}but it's worthless.",
+                },
+                label = "Pyrite Ring"
             },
         }
     },
