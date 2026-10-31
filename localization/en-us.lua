@@ -1169,6 +1169,18 @@ return {
                 },
                 label = "Pyrite Ring"
             },
+            i_para_lizard_tail = {
+                name = "Lizard Tail",
+                text = {
+                    "If this {C:attention}Joker",
+                    "would be destroyed,",
+                    "{C:red}destroy{} this",
+                    "{C:attention}Item{} instead",
+                    "{C:inactive,s:0.8}Not compatible with",
+                    "{C:inactive,s:0.8}Mark of the Bloom"
+                },
+                label = "Lizard Tail"
+            }
         }
     },
     misc = {
@@ -1210,6 +1222,7 @@ return {
             k_para_end = "End",
             para_time = "time",
             para_times = "times",
+            k_para_shed = "Shed!",
             k_para_optimize = "Removed for optimization",
             k_para_upgraded_dialog_text = "Upgraded",
             k_para_upgraded_dialog_description = "A more fine-tuned vanilla experience",
