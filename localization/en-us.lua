@@ -1180,6 +1180,18 @@ return {
                     "{C:inactive,s:0.8}Mark of the Bloom"
                 },
                 label = "Lizard Tail"
+            },
+            i_para_hundred_ton_weight = {
+                name = "Hundred Ton Weight",
+                text = {
+                    "When this {C:attention}Joker{} scales,",
+                    "it scales by {C:attention}x#1#{} what",
+                    "it normally would",
+                    "{C:inactive}(Increases only)",
+                    "{C:inactive,s:0.8}don't ask me how",
+                    "{C:inactive,s:0.8}you even lift this",
+                },
+                label = "Hundred Ton Weight"
             }
         }
     },
@@ -1223,6 +1235,7 @@ return {
             para_time = "time",
             para_times = "times",
             k_para_shed = "Shed!",
+            k_para_lifted = "Lifted!",
             k_para_optimize = "Removed for optimization",
             k_para_upgraded_dialog_text = "Upgraded",
             k_para_upgraded_dialog_description = "A more fine-tuned vanilla experience",
