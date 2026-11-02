@@ -75,3 +75,12 @@ payload = '''if self.ability.para_item and self.ability.para_item.key == 'i_para
 else ease_dollars(self.sell_cost)
 end'''
 match_indent = true
+
+# Shadow Crystal scaling message
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+pattern = "message = localize(args.message_key and {type='variable',key=args.message_key,vars={args.message_key =='a_xmult' and args.ref_table[args.ref_value] or change}} or 'k_upgrade_ex'),"
+position = 'at'
+payload = "message = localize(args.message_key and {type='variable',key=args.message_key,vars={((args.message_key =='a_xmult') or args.para_pass_new_value) and args.ref_table[args.ref_value] or change}} or 'k_upgrade_ex'),"
+match_indent = true

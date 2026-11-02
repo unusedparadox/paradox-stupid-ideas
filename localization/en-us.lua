@@ -1322,11 +1322,11 @@ return {
             para_art = { "Art: #1#" },
             para_code = { "Code: #1#" },
             para_idea = { "Idea: #1#" },
-            para_stickerapplied = {"#1# applied!"}
+            para_stickerapplied = {"#1# applied!"},
+            para_a_x_generic = {"X#1#"}
         },
         v_text = {
             ch_c_para_oopsalloopsalloopsallsixes = { "All cards in shop are {C:green,E:1}Oops! All Oops! All Sixes" },
-            para_a_x_generic = {"X#1#"}
         },
     },
 }
