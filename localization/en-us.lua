@@ -1192,6 +1192,18 @@ return {
                     "{C:inactive,s:0.8}you even lift this",
                 },
                 label = "Hundred Ton Weight"
+            },
+            i_para_shadow_crystal = {
+                name = "Shadow Crystal",
+                text = {
+                    "Money and scoring from this",
+                    "{C:attention}Joker{} are multiplied by {C:dark_edition}x#1#{}",
+                    "Increases by {C:dark_edition}x#2#{}",
+                    "at the end of the round",
+                    "{C:inactive,s:0.8}freedom's just a penumbra",
+                    "{C:inactive,s:0.8}phantasm for big shots",
+                },
+                label = "Shadow Crystal"
             }
         }
     },
@@ -1314,6 +1326,7 @@ return {
         },
         v_text = {
             ch_c_para_oopsalloopsalloopsallsixes = { "All cards in shop are {C:green,E:1}Oops! All Oops! All Sixes" },
+            para_a_x_generic = {"X#1#"}
         },
     },
 }
